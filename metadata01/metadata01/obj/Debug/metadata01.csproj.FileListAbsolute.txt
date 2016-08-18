@@ -1,0 +1,35 @@
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\bin\Debug\metadata01.exe.config
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\bin\Debug\metadata01.exe
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\bin\Debug\metadata01.pdb
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.csprojResolveAssemblyReference.cache
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.Properties.Resources.resources
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.csproj.GenerateResource.Cache
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.exe
+c:\users\hikaru\documents\visual studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.pdb
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.Object_Library_Form.resources
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.Metadata_Form.resources
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.MainForm.resources
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\bin\Debug\Tao.OpenGl.dll
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\bin\Debug\Tao.Sdl.dll
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.OptionsForm.resources
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\bin\Debug\INIFileParser.dll
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\bin\Debug\INIFileParser.xml
+C:\Users\hikaru\Documents\Visual Studio 2013\Projects\metadata01\metadata01\obj\Debug\metadata01.ModulesForm.resources
+E:\bvedev\rb_rewrite\rbrewrite_test\metadata01\metadata01\bin\Debug\metadata01.exe.config
+E:\bvedev\rb_rewrite\rbrewrite_test\metadata01\metadata01\obj\Debug\metadata01.exe
+E:\bvedev\rb_rewrite\rbrewrite_test\metadata01\metadata01\obj\Debug\metadata01.pdb
+E:\bvedev\metadata01\metadata01\bin\Debug\metadata01.exe.config
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.exe
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.pdb
+E:\bvedev\metadata01\metadata01\bin\Debug\metadata01.exe
+E:\bvedev\metadata01\metadata01\bin\Debug\metadata01.pdb
+E:\bvedev\metadata01\metadata01\bin\Debug\INIFileParser.dll
+E:\bvedev\metadata01\metadata01\bin\Debug\INIFileParser.xml
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.csprojResolveAssemblyReference.cache
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.Metadata_Form.resources
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.MainForm.resources
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.ModulesForm.resources
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.Object_Library_Form.resources
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.OptionsForm.resources
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.Properties.Resources.resources
+E:\bvedev\metadata01\metadata01\obj\Debug\metadata01.csproj.GenerateResource.Cache
