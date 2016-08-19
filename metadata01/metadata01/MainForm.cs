@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
 
 namespace metadata01
 {
     public partial  class MainForm : Form
     {
         public static Project active_project;
+        public static Options active_options;
 
         public List<string> exportinterface;
         public StreamWriter exportstream;
@@ -24,6 +26,27 @@ namespace metadata01
                                     
                  ////new project
             active_project = new Project();
+
+            //reading options
+            active_options = new Options();
+            if (!File.Exists(Options.OptionsFile))
+            {
+                MessageBox.Show("Options file not found. Creating options file", "Route Builder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                active_options.SaveToFile();
+            }
+            active_options.ReadFromFile();
+            if (active_options.BVEDirectory == "none")
+            {
+                //this.Close();
+                MessageBox.Show("BVE Directory not set.", "Route Builder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                OptionsForm form = new OptionsForm();
+                form.Show();
+                form.options = active_options;
+                
+
+
+            }
+
 
 
 
@@ -186,6 +209,17 @@ namespace metadata01
         private void btn_modules_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OptionsForm optionsform = new metadata01.OptionsForm();
+            optionsform.Show();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows;
+using System.Xml;
+
 
 namespace metadata01
 {
@@ -21,9 +23,9 @@ namespace metadata01
     {
 
         /// <summary>
-        /// options.ini file path
+        /// options.xml file path
         /// </summary>
-        public static string OptionsFile = Application.StartupPath + "\\options.ini";
+        public static string OptionsFile = Application.StartupPath + "\\options.xml";
 
 
         /// <summary>
@@ -31,49 +33,96 @@ namespace metadata01
         /// </summary>
         public string BVEDirectory;
 
-
+        /// <summary>
+        /// Object Libraries directory name
+        /// </summary>
+        public string ObjectLibDir;
 
         /// <summary>
-        /// Ini file parser
+        /// Object libraries path
         /// </summary>
-        static FileIniDataParser parser = new FileIniDataParser();
-        IniData data = parser.ReadFile(OptionsFile);
-
-
-
-         /// <summary>
-         /// Loads from options.ini file
-         /// </summary>
-        public void LoadFromIni()
+        public string ObjectLibPath
         {
+            get
+            {
+                return Application.StartupPath + "\\" + ObjectLibDir;
+            }
+        }
+
+        /// <summary>
+        /// Read options from file
+        /// </summary>
+        public void ReadFromFile()
+        {
+            //Creating a reader stream
+
+            XmlReader reader = XmlReader.Create(OptionsFile);
+
+
+                reader.ReadStartElement("Options");//<Options>
+
+                reader.ReadStartElement("BVEPath");
+
+            this.BVEDirectory = reader.ReadContentAsString();
+                reader.ReadEndElement();
+
+                reader.ReadStartElement("ObjectLibDir");
+                this.ObjectLibDir = reader.ReadContentAsString();
+                reader.ReadEndElement();
+                //reader.ReadElementContentAsString("BVEPath", this.BVEDirectory);
+                //reader.ReadElementContentAsString("ObjectLibDir", this.ObjectLibDir);
+
+                reader.ReadEndElement();//</Options>
+                reader.Close();
             
 
-            //read BVE directory
+        }
 
+        /// <summary>
+        /// Write options to file
+        /// </summary>
+        public void SaveToFile()
+        {
+            //Creating a writer stream
+            XmlWriter writer = XmlWriter.Create(OptionsFile);
             
+            writer.WriteStartElement("Options"); //<Options>
+            //BVE Directory
+            writer.WriteStartElement("BVEPath");
+            writer.WriteString(this.BVEDirectory);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("ObjectLibDir");
+            writer.WriteString(this.ObjectLibDir);
+            writer.WriteEndElement();
+
+            //writer.WriteElementString("ObjectLibDir", this.ObjectLibDir);
+            writer.WriteEndElement();//</Options>
+            writer.Close();
 
 
 
         }
 
-
         /// <summary>
-        /// Saves to options.ini file
+        /// Creates default options
         /// </summary>
-        public void SaveToIni()
+        public Options()
         {
-
-
-            //save to BVE directory
-
-            
-
+            this.BVEDirectory = "none";
+            this.ObjectLibDir = "lib";
         }
-
-
-
-
 
 
     }
+
+
+
+
+
+
+
+
+
 }
+
