@@ -66,8 +66,6 @@
             this.dikel_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.diker_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.raitabpage = new System.Windows.Forms.TabPage();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.railname_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.frmtabpage = new System.Windows.Forms.TabPage();
             this.btn_formchooseright = new System.Windows.Forms.Button();
             this.btn_formchoosecright = new System.Windows.Forms.Button();
@@ -147,6 +145,11 @@
             this.RoofR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btn_RailDelete = new System.Windows.Forms.Button();
+            this.btn_RailAdd = new System.Windows.Forms.Button();
+            this.raillistview = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
@@ -477,28 +480,15 @@
             // 
             // raitabpage
             // 
-            this.raitabpage.Controls.Add(this.listView2);
+            this.raitabpage.Controls.Add(this.btn_RailDelete);
+            this.raitabpage.Controls.Add(this.btn_RailAdd);
+            this.raitabpage.Controls.Add(this.raillistview);
             this.raitabpage.Location = new System.Drawing.Point(4, 22);
             this.raitabpage.Name = "raitabpage";
             this.raitabpage.Size = new System.Drawing.Size(454, 283);
             this.raitabpage.TabIndex = 3;
             this.raitabpage.Text = "Rails";
             this.raitabpage.UseVisualStyleBackColor = true;
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.railname_col});
-            this.listView2.Location = new System.Drawing.Point(4, 4);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(298, 128);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // railname_col
-            // 
-            this.railname_col.Text = "Name";
             // 
             // frmtabpage
             // 
@@ -1131,6 +1121,48 @@
             this.CrackR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
             this.CrackR_OpenFileDialog.Title = "Choose right object file";
             // 
+            // btn_RailDelete
+            // 
+            this.btn_RailDelete.Location = new System.Drawing.Point(344, 41);
+            this.btn_RailDelete.Name = "btn_RailDelete";
+            this.btn_RailDelete.Size = new System.Drawing.Size(104, 31);
+            this.btn_RailDelete.TabIndex = 5;
+            this.btn_RailDelete.Text = "Delete";
+            this.btn_RailDelete.UseVisualStyleBackColor = true;
+            this.btn_RailDelete.Click += new System.EventHandler(this.btn_RailDelete_Click);
+            // 
+            // btn_RailAdd
+            // 
+            this.btn_RailAdd.Location = new System.Drawing.Point(344, 4);
+            this.btn_RailAdd.Name = "btn_RailAdd";
+            this.btn_RailAdd.Size = new System.Drawing.Size(104, 31);
+            this.btn_RailAdd.TabIndex = 4;
+            this.btn_RailAdd.Text = "Add";
+            this.btn_RailAdd.UseVisualStyleBackColor = true;
+            this.btn_RailAdd.Click += new System.EventHandler(this.btn_RailAdd_Click);
+            // 
+            // raillistview
+            // 
+            this.raillistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.raillistview.FullRowSelect = true;
+            this.raillistview.Location = new System.Drawing.Point(0, 3);
+            this.raillistview.MultiSelect = false;
+            this.raillistview.Name = "raillistview";
+            this.raillistview.Size = new System.Drawing.Size(337, 143);
+            this.raillistview.TabIndex = 3;
+            this.raillistview.UseCompatibleStateImageBehavior = false;
+            this.raillistview.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "ID";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "File name";
+            // 
             // Object_Library_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1193,8 +1225,6 @@
         private System.Windows.Forms.ColumnHeader formcl_col;
         private System.Windows.Forms.ColumnHeader formcr_col;
         private System.Windows.Forms.ColumnHeader formr_col;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ColumnHeader railname_col;
         private System.Windows.Forms.TabPage bcktabpage;
         private System.Windows.Forms.PictureBox bckpreviewpicbox;
         private System.Windows.Forms.ListBox listBox1;
@@ -1289,5 +1319,10 @@
         private System.Windows.Forms.OpenFileDialog RoofR_OpenFileDialog;
         private System.Windows.Forms.OpenFileDialog CrackL_OpenFileDialog;
         private System.Windows.Forms.OpenFileDialog CrackR_OpenFileDialog;
+        private System.Windows.Forms.Button btn_RailDelete;
+        private System.Windows.Forms.Button btn_RailAdd;
+        private System.Windows.Forms.ListView raillistview;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

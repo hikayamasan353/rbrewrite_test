@@ -88,6 +88,8 @@ namespace metadata01
 
         public List<Pole> lib_poles;
 
+        public List<Rail> lib_rails;
+
 
 
         
@@ -229,6 +231,16 @@ namespace metadata01
             /// Object file name
             /// </summary>
             public string filename;
+
+            public Rail(string fname)
+            {
+                this.filename = fname;
+            }
+
+            public string CSVParsed(int index)
+            {
+                return ".Rail(" + index.ToString() + ") " + this.filename + ", ";
+            }
 
 
         }
@@ -661,6 +673,7 @@ namespace metadata01
             //Create all lists blank
             this.lib_backgrounds = new List<metadata01.ObjectLibrary.Background>();
             this.lib_grounds = new List<Ground>();
+            this.lib_rails = new List<Rail>();
             this.lib_walls = new List<metadata01.ObjectLibrary.Wall>();
             this.lib_dikes = new List<metadata01.ObjectLibrary.Dike>();
             this.lib_platforms = new List<metadata01.ObjectLibrary.Platform>();

@@ -218,6 +218,12 @@ namespace metadata01
                 gndlistview.Items[i].Text = gndlistview.Items.IndexOf(gndlistview.Items[i]).ToString();
             }
 
+            //Check rail list IDs
+            for (int i = 0; i < raillistview.Items.Count; i++)
+            {
+                raillistview.Items[i].Text = raillistview.Items.IndexOf(raillistview.Items[i]).ToString();
+            }
+
             //Check form list IDs
             for (int i = 0; i < formlistview.Items.Count; i++)
             {
@@ -429,7 +435,7 @@ namespace metadata01
 
 
         //
-        //Temporary code: Export the object library.
+        //Temporary code: Export the object library as CSV code
         private void button3_Click(object sender, EventArgs e)
         {
             //String list for exporting
@@ -439,6 +445,11 @@ namespace metadata01
             for (int i = 0; i < objectlibrary.lib_grounds.Count; i++)
             {
                 exportinterface.Add(objectlibrary.lib_grounds[i].CSVParsed(i));
+            }
+            //Adding rails
+            for (int i = 0; i < objectlibrary.lib_rails.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_rails[i].CSVParsed(i));
             }
             //Adding walls and dikes
             for (int i = 0; i < objectlibrary.lib_walls.Count; i++)
@@ -458,6 +469,26 @@ namespace metadata01
             {
                 exportinterface.Add(objectlibrary.lib_roofs[i].CSVParsed(i));
             }
+            //Adding poles
+            for(int i=0;i<objectlibrary.lib_poles.Count;i++)
+            {
+                exportinterface.Add(objectlibrary.lib_poles[i].CSVParsed(i));
+            }
+            //Adding cracks
+            for(int i=0;i<objectlibrary.lib_cracks.Count;i++)
+            {
+                exportinterface.Add(objectlibrary.lib_cracks[i].CSVParsed(i));
+            }
+            //Adding freeobjs
+            for(int i=0;i<objectlibrary.lib_freeobjs.Count;i++)
+            {
+                exportinterface.Add(objectlibrary.lib_freeobjs[i].CSVParsed(i));
+            }
+            //Adding beacons
+            for (int i = 0; i < objectlibrary.lib_beacons.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_beacons[i].CSVParsed(i));
+            }
 
             StreamWriter exportstream = new StreamWriter(Application.StartupPath + "\\dna.txt");
             for (int i = 0; i < exportinterface.Count; i++)
@@ -467,6 +498,32 @@ namespace metadata01
             exportstream.Close();
 
 
+
+        }
+
+        private void btn_RailAdd_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem();
+            raillistview.Items.Add(item);
+            item.Text = item.Index.ToString();
+            item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
+
+            objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined"));
+            UpdateIDs();
+
+
+
+        }
+
+        private void btn_RailDelete_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < raillistview.SelectedIndices.Count; i++)
+            {
+                int index = raillistview.SelectedIndices[i];
+                objectlibrary.lib_rails.RemoveAt(index);
+                raillistview.Items.RemoveAt(index);
+            }
+            UpdateIDs();
 
         }
     }
