@@ -47,18 +47,6 @@
             this.gndcycleid_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lab_ground_note = new System.Windows.Forms.Label();
             this.ccltabpage = new System.Windows.Forms.TabPage();
-            this.combobox_choosecycle = new System.Windows.Forms.ComboBox();
-            this.lab_cycle_id = new System.Windows.Forms.Label();
-            this.groundsincycle_listbox = new System.Windows.Forms.ListBox();
-            this.lab_groundsincycle = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.btn_cycle_deleteground = new System.Windows.Forms.Button();
-            this.btn_cycle_addground = new System.Windows.Forms.Button();
-            this.cyclegroundlistbox = new System.Windows.Forms.ListBox();
-            this.lab_groundobjects = new System.Windows.Forms.Label();
-            this.btn_deletecycle = new System.Windows.Forms.Button();
-            this.btn_cycleadd = new System.Windows.Forms.Button();
             this.waltabpage = new System.Windows.Forms.TabPage();
             this.btn_wallchooseright = new System.Windows.Forms.Button();
             this.btn_wallchooseleft = new System.Windows.Forms.Button();
@@ -78,11 +66,8 @@
             this.dikel_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.diker_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.raitabpage = new System.Windows.Forms.TabPage();
-            this.btn_raildelete = new System.Windows.Forms.Button();
-            this.btn_railadd = new System.Windows.Forms.Button();
-            this.raillistview = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.railname_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.frmtabpage = new System.Windows.Forms.TabPage();
             this.btn_formchooseright = new System.Windows.Forms.Button();
             this.btn_formchoosecright = new System.Windows.Forms.Button();
@@ -128,8 +113,8 @@
             this.btn_beacondelete = new System.Windows.Forms.Button();
             this.btn_beaconadd = new System.Windows.Forms.Button();
             this.beaconlistview = new System.Windows.Forms.ListView();
-            this.beaconid_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.beaconname_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.poltabpage = new System.Windows.Forms.TabPage();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lab_railnum = new System.Windows.Forms.Label();
@@ -150,14 +135,22 @@
             this.WallR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.FreeObj_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.libraryOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RailOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.DikeL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.DikeR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FormCL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FormCR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FormL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FormR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RoofCL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RoofCR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RoofL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RoofR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.CrackL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.CrackR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
             this.gndtabpage.SuspendLayout();
-            this.ccltabpage.SuspendLayout();
             this.waltabpage.SuspendLayout();
             this.diktabpage.SuspendLayout();
             this.raitabpage.SuspendLayout();
@@ -188,7 +181,7 @@
             this.objlib_tabcontrol.Location = new System.Drawing.Point(12, 27);
             this.objlib_tabcontrol.Name = "objlib_tabcontrol";
             this.objlib_tabcontrol.SelectedIndex = 0;
-            this.objlib_tabcontrol.Size = new System.Drawing.Size(462, 318);
+            this.objlib_tabcontrol.Size = new System.Drawing.Size(462, 309);
             this.objlib_tabcontrol.TabIndex = 0;
             // 
             // bcktabpage
@@ -199,7 +192,7 @@
             this.bcktabpage.Controls.Add(this.listBox1);
             this.bcktabpage.Location = new System.Drawing.Point(4, 22);
             this.bcktabpage.Name = "bcktabpage";
-            this.bcktabpage.Size = new System.Drawing.Size(454, 292);
+            this.bcktabpage.Size = new System.Drawing.Size(454, 283);
             this.bcktabpage.TabIndex = 10;
             this.bcktabpage.Text = "Backgrounds";
             this.bcktabpage.ToolTipText = "Background images for the route";
@@ -250,7 +243,7 @@
             this.gndtabpage.Location = new System.Drawing.Point(4, 22);
             this.gndtabpage.Name = "gndtabpage";
             this.gndtabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.gndtabpage.Size = new System.Drawing.Size(454, 292);
+            this.gndtabpage.Size = new System.Drawing.Size(454, 283);
             this.gndtabpage.TabIndex = 0;
             this.gndtabpage.Text = "Grounds";
             this.gndtabpage.UseVisualStyleBackColor = true;
@@ -308,139 +301,16 @@
             this.lab_ground_note.Name = "lab_ground_note";
             this.lab_ground_note.Size = new System.Drawing.Size(228, 13);
             this.lab_ground_note.TabIndex = 4;
-            this.lab_ground_note.Text = "Note: The cycle\'s ID overrides the ground\'s ID!";
+            this.lab_ground_note.Text = "Note: The ground\'s ID overrides the cycle\'s ID!";
             // 
             // ccltabpage
             // 
-            this.ccltabpage.Controls.Add(this.combobox_choosecycle);
-            this.ccltabpage.Controls.Add(this.lab_cycle_id);
-            this.ccltabpage.Controls.Add(this.groundsincycle_listbox);
-            this.ccltabpage.Controls.Add(this.lab_groundsincycle);
-            this.ccltabpage.Controls.Add(this.button6);
-            this.ccltabpage.Controls.Add(this.button5);
-            this.ccltabpage.Controls.Add(this.btn_cycle_deleteground);
-            this.ccltabpage.Controls.Add(this.btn_cycle_addground);
-            this.ccltabpage.Controls.Add(this.cyclegroundlistbox);
-            this.ccltabpage.Controls.Add(this.lab_groundobjects);
-            this.ccltabpage.Controls.Add(this.btn_deletecycle);
-            this.ccltabpage.Controls.Add(this.btn_cycleadd);
             this.ccltabpage.Location = new System.Drawing.Point(4, 22);
             this.ccltabpage.Name = "ccltabpage";
-            this.ccltabpage.Size = new System.Drawing.Size(454, 292);
+            this.ccltabpage.Size = new System.Drawing.Size(454, 283);
             this.ccltabpage.TabIndex = 11;
             this.ccltabpage.Text = "Cycles";
             this.ccltabpage.UseVisualStyleBackColor = true;
-            // 
-            // combobox_choosecycle
-            // 
-            this.combobox_choosecycle.FormattingEnabled = true;
-            this.combobox_choosecycle.Location = new System.Drawing.Point(56, 4);
-            this.combobox_choosecycle.Name = "combobox_choosecycle";
-            this.combobox_choosecycle.Size = new System.Drawing.Size(117, 21);
-            this.combobox_choosecycle.TabIndex = 12;
-            this.combobox_choosecycle.SelectedIndexChanged += new System.EventHandler(this.combobox_choosecycle_SelectedIndexChanged);
-            // 
-            // lab_cycle_id
-            // 
-            this.lab_cycle_id.AutoSize = true;
-            this.lab_cycle_id.Location = new System.Drawing.Point(3, 7);
-            this.lab_cycle_id.Name = "lab_cycle_id";
-            this.lab_cycle_id.Size = new System.Drawing.Size(47, 13);
-            this.lab_cycle_id.TabIndex = 11;
-            this.lab_cycle_id.Text = "Cycle ID";
-            // 
-            // groundsincycle_listbox
-            // 
-            this.groundsincycle_listbox.FormattingEnabled = true;
-            this.groundsincycle_listbox.Location = new System.Drawing.Point(312, 20);
-            this.groundsincycle_listbox.Name = "groundsincycle_listbox";
-            this.groundsincycle_listbox.Size = new System.Drawing.Size(77, 147);
-            this.groundsincycle_listbox.TabIndex = 10;
-            // 
-            // lab_groundsincycle
-            // 
-            this.lab_groundsincycle.AutoSize = true;
-            this.lab_groundsincycle.Location = new System.Drawing.Point(309, 4);
-            this.lab_groundsincycle.Name = "lab_groundsincycle";
-            this.lab_groundsincycle.Size = new System.Drawing.Size(33, 13);
-            this.lab_groundsincycle.TabIndex = 9;
-            this.lab_groundsincycle.Text = "Cycle";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(395, 49);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(56, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Down";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(395, 20);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(56, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Up";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // btn_cycle_deleteground
-            // 
-            this.btn_cycle_deleteground.Location = new System.Drawing.Point(265, 49);
-            this.btn_cycle_deleteground.Name = "btn_cycle_deleteground";
-            this.btn_cycle_deleteground.Size = new System.Drawing.Size(37, 23);
-            this.btn_cycle_deleteground.TabIndex = 6;
-            this.btn_cycle_deleteground.Text = "<<<";
-            this.btn_cycle_deleteground.UseVisualStyleBackColor = true;
-            this.btn_cycle_deleteground.Click += new System.EventHandler(this.btn_cycle_deleteground_Click);
-            // 
-            // btn_cycle_addground
-            // 
-            this.btn_cycle_addground.Location = new System.Drawing.Point(265, 20);
-            this.btn_cycle_addground.Name = "btn_cycle_addground";
-            this.btn_cycle_addground.Size = new System.Drawing.Size(37, 23);
-            this.btn_cycle_addground.TabIndex = 5;
-            this.btn_cycle_addground.Text = ">>>";
-            this.btn_cycle_addground.UseVisualStyleBackColor = true;
-            this.btn_cycle_addground.Click += new System.EventHandler(this.btn_cycle_addground_Click);
-            // 
-            // cyclegroundlistbox
-            // 
-            this.cyclegroundlistbox.FormattingEnabled = true;
-            this.cyclegroundlistbox.Location = new System.Drawing.Point(182, 20);
-            this.cyclegroundlistbox.Name = "cyclegroundlistbox";
-            this.cyclegroundlistbox.Size = new System.Drawing.Size(77, 147);
-            this.cyclegroundlistbox.TabIndex = 4;
-            this.cyclegroundlistbox.SelectedIndexChanged += new System.EventHandler(this.cyclegroundlistbox_SelectedIndexChanged);
-            // 
-            // lab_groundobjects
-            // 
-            this.lab_groundobjects.AutoSize = true;
-            this.lab_groundobjects.Location = new System.Drawing.Point(179, 4);
-            this.lab_groundobjects.Name = "lab_groundobjects";
-            this.lab_groundobjects.Size = new System.Drawing.Size(81, 13);
-            this.lab_groundobjects.TabIndex = 3;
-            this.lab_groundobjects.Text = "Ground Objects";
-            // 
-            // btn_deletecycle
-            // 
-            this.btn_deletecycle.Location = new System.Drawing.Point(6, 60);
-            this.btn_deletecycle.Name = "btn_deletecycle";
-            this.btn_deletecycle.Size = new System.Drawing.Size(167, 23);
-            this.btn_deletecycle.TabIndex = 2;
-            this.btn_deletecycle.Text = "Delete cycle";
-            this.btn_deletecycle.UseVisualStyleBackColor = true;
-            this.btn_deletecycle.Click += new System.EventHandler(this.btn_deletecycle_Click);
-            // 
-            // btn_cycleadd
-            // 
-            this.btn_cycleadd.Location = new System.Drawing.Point(6, 31);
-            this.btn_cycleadd.Name = "btn_cycleadd";
-            this.btn_cycleadd.Size = new System.Drawing.Size(167, 23);
-            this.btn_cycleadd.TabIndex = 1;
-            this.btn_cycleadd.Text = "Add cycle";
-            this.btn_cycleadd.UseVisualStyleBackColor = true;
-            this.btn_cycleadd.Click += new System.EventHandler(this.btn_cycleadd_Click);
             // 
             // waltabpage
             // 
@@ -452,7 +322,7 @@
             this.waltabpage.Location = new System.Drawing.Point(4, 22);
             this.waltabpage.Name = "waltabpage";
             this.waltabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.waltabpage.Size = new System.Drawing.Size(454, 292);
+            this.waltabpage.Size = new System.Drawing.Size(454, 283);
             this.waltabpage.TabIndex = 1;
             this.waltabpage.Text = "Walls";
             this.waltabpage.UseVisualStyleBackColor = true;
@@ -533,7 +403,7 @@
             this.diktabpage.Controls.Add(this.dikelistview);
             this.diktabpage.Location = new System.Drawing.Point(4, 22);
             this.diktabpage.Name = "diktabpage";
-            this.diktabpage.Size = new System.Drawing.Size(454, 292);
+            this.diktabpage.Size = new System.Drawing.Size(454, 283);
             this.diktabpage.TabIndex = 2;
             this.diktabpage.Text = "Dikes";
             this.diktabpage.UseVisualStyleBackColor = true;
@@ -607,57 +477,28 @@
             // 
             // raitabpage
             // 
-            this.raitabpage.Controls.Add(this.btn_raildelete);
-            this.raitabpage.Controls.Add(this.btn_railadd);
-            this.raitabpage.Controls.Add(this.raillistview);
+            this.raitabpage.Controls.Add(this.listView2);
             this.raitabpage.Location = new System.Drawing.Point(4, 22);
             this.raitabpage.Name = "raitabpage";
-            this.raitabpage.Size = new System.Drawing.Size(454, 292);
+            this.raitabpage.Size = new System.Drawing.Size(454, 283);
             this.raitabpage.TabIndex = 3;
             this.raitabpage.Text = "Rails";
             this.raitabpage.UseVisualStyleBackColor = true;
             // 
-            // btn_raildelete
+            // listView2
             // 
-            this.btn_raildelete.Location = new System.Drawing.Point(347, 41);
-            this.btn_raildelete.Name = "btn_raildelete";
-            this.btn_raildelete.Size = new System.Drawing.Size(104, 31);
-            this.btn_raildelete.TabIndex = 5;
-            this.btn_raildelete.Text = "Delete";
-            this.btn_raildelete.UseVisualStyleBackColor = true;
-            this.btn_raildelete.Click += new System.EventHandler(this.btn_raildelete_Click);
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.railname_col});
+            this.listView2.Location = new System.Drawing.Point(4, 4);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(298, 128);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
             // 
-            // btn_railadd
+            // railname_col
             // 
-            this.btn_railadd.Location = new System.Drawing.Point(347, 4);
-            this.btn_railadd.Name = "btn_railadd";
-            this.btn_railadd.Size = new System.Drawing.Size(104, 31);
-            this.btn_railadd.TabIndex = 4;
-            this.btn_railadd.Text = "Add";
-            this.btn_railadd.UseVisualStyleBackColor = true;
-            this.btn_railadd.Click += new System.EventHandler(this.btn_railadd_Click);
-            // 
-            // raillistview
-            // 
-            this.raillistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.raillistview.FullRowSelect = true;
-            this.raillistview.Location = new System.Drawing.Point(3, 3);
-            this.raillistview.MultiSelect = false;
-            this.raillistview.Name = "raillistview";
-            this.raillistview.Size = new System.Drawing.Size(337, 143);
-            this.raillistview.TabIndex = 3;
-            this.raillistview.UseCompatibleStateImageBehavior = false;
-            this.raillistview.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "File name";
+            this.railname_col.Text = "Name";
             // 
             // frmtabpage
             // 
@@ -670,7 +511,7 @@
             this.frmtabpage.Controls.Add(this.formlistview);
             this.frmtabpage.Location = new System.Drawing.Point(4, 22);
             this.frmtabpage.Name = "frmtabpage";
-            this.frmtabpage.Size = new System.Drawing.Size(454, 292);
+            this.frmtabpage.Size = new System.Drawing.Size(454, 283);
             this.frmtabpage.TabIndex = 4;
             this.frmtabpage.Tag = "Platforms are divided into four types: CL, CR, L and R. CL and CR are stretchable" +
     " center left and right parts, L and R are non-stretchable edges.";
@@ -712,6 +553,7 @@
             this.btn_formchooseleft.TabIndex = 3;
             this.btn_formchooseleft.Text = "Choose left";
             this.btn_formchooseleft.UseVisualStyleBackColor = true;
+            this.btn_formchooseleft.Click += new System.EventHandler(this.btn_formchooseleft_Click);
             // 
             // btn_formdelete
             // 
@@ -783,7 +625,7 @@
             this.roftabpage.Controls.Add(this.rooflistview);
             this.roftabpage.Location = new System.Drawing.Point(4, 22);
             this.roftabpage.Name = "roftabpage";
-            this.roftabpage.Size = new System.Drawing.Size(454, 292);
+            this.roftabpage.Size = new System.Drawing.Size(454, 283);
             this.roftabpage.TabIndex = 5;
             this.roftabpage.Text = "Roofs";
             this.roftabpage.UseVisualStyleBackColor = true;
@@ -892,7 +734,7 @@
             this.crktabpage.Controls.Add(this.cracklistview);
             this.crktabpage.Location = new System.Drawing.Point(4, 22);
             this.crktabpage.Name = "crktabpage";
-            this.crktabpage.Size = new System.Drawing.Size(454, 292);
+            this.crktabpage.Size = new System.Drawing.Size(454, 283);
             this.crktabpage.TabIndex = 6;
             this.crktabpage.Text = "Cracks";
             this.crktabpage.UseVisualStyleBackColor = true;
@@ -973,7 +815,7 @@
             this.fretabpage.Controls.Add(this.freeobjlistview);
             this.fretabpage.Location = new System.Drawing.Point(4, 22);
             this.fretabpage.Name = "fretabpage";
-            this.fretabpage.Size = new System.Drawing.Size(454, 292);
+            this.fretabpage.Size = new System.Drawing.Size(454, 283);
             this.fretabpage.TabIndex = 7;
             this.fretabpage.Text = "Free objects";
             this.fretabpage.UseVisualStyleBackColor = true;
@@ -1027,7 +869,7 @@
             this.bectabpage.Controls.Add(this.beaconlistview);
             this.bectabpage.Location = new System.Drawing.Point(4, 22);
             this.bectabpage.Name = "bectabpage";
-            this.bectabpage.Size = new System.Drawing.Size(454, 292);
+            this.bectabpage.Size = new System.Drawing.Size(454, 283);
             this.bectabpage.TabIndex = 8;
             this.bectabpage.Text = "Beacons";
             this.bectabpage.UseVisualStyleBackColor = true;
@@ -1055,8 +897,8 @@
             // beaconlistview
             // 
             this.beaconlistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.beaconid_col,
-            this.beaconname_col});
+            this.columnHeader1,
+            this.columnHeader2});
             this.beaconlistview.FullRowSelect = true;
             this.beaconlistview.Location = new System.Drawing.Point(3, 3);
             this.beaconlistview.MultiSelect = false;
@@ -1066,13 +908,13 @@
             this.beaconlistview.UseCompatibleStateImageBehavior = false;
             this.beaconlistview.View = System.Windows.Forms.View.Details;
             // 
-            // beaconid_col
+            // columnHeader1
             // 
-            this.beaconid_col.Text = "ID";
+            this.columnHeader1.Text = "ID";
             // 
-            // beaconname_col
+            // columnHeader2
             // 
-            this.beaconname_col.Text = "File name";
+            this.columnHeader2.Text = "File name";
             // 
             // poltabpage
             // 
@@ -1083,7 +925,7 @@
             this.poltabpage.Controls.Add(this.polelistview);
             this.poltabpage.Location = new System.Drawing.Point(4, 22);
             this.poltabpage.Name = "poltabpage";
-            this.poltabpage.Size = new System.Drawing.Size(454, 292);
+            this.poltabpage.Size = new System.Drawing.Size(454, 283);
             this.poltabpage.TabIndex = 9;
             this.poltabpage.Text = "Poles";
             this.poltabpage.UseVisualStyleBackColor = true;
@@ -1164,7 +1006,6 @@
             // GroundOpenFileDialog
             // 
             this.GroundOpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
-            this.GroundOpenFileDialog.Title = "Choose ground object file";
             this.GroundOpenFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // WallL_OpenFileDialog
@@ -1187,9 +1028,7 @@
             this.libraryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newLibraryToolStripMenuItem,
             this.openLibraryToolStripMenuItem,
-            this.saveLibraryToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.libraryOptionsToolStripMenuItem});
+            this.saveLibraryToolStripMenuItem});
             this.libraryToolStripMenuItem.Name = "libraryToolStripMenuItem";
             this.libraryToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.libraryToolStripMenuItem.Text = "Library";
@@ -1197,23 +1036,21 @@
             // newLibraryToolStripMenuItem
             // 
             this.newLibraryToolStripMenuItem.Name = "newLibraryToolStripMenuItem";
-            this.newLibraryToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.newLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.newLibraryToolStripMenuItem.Text = "New Library";
             this.newLibraryToolStripMenuItem.Click += new System.EventHandler(this.newLibraryToolStripMenuItem_Click);
             // 
             // openLibraryToolStripMenuItem
             // 
             this.openLibraryToolStripMenuItem.Name = "openLibraryToolStripMenuItem";
-            this.openLibraryToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.openLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.openLibraryToolStripMenuItem.Text = "Open Library";
-            this.openLibraryToolStripMenuItem.Click += new System.EventHandler(this.openLibraryToolStripMenuItem_Click);
             // 
             // saveLibraryToolStripMenuItem
             // 
             this.saveLibraryToolStripMenuItem.Name = "saveLibraryToolStripMenuItem";
-            this.saveLibraryToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.saveLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.saveLibraryToolStripMenuItem.Text = "Save Library";
-            this.saveLibraryToolStripMenuItem.Click += new System.EventHandler(this.saveLibraryToolStripMenuItem_Click);
             // 
             // WallR_OpenFileDialog
             // 
@@ -1234,21 +1071,65 @@
             this.FreeObj_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
             this.FreeObj_OpenFileDialog.Title = "Choose free object file";
             // 
-            // toolStripSeparator1
+            // DikeL_OpenFileDialog
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            this.DikeL_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
+            this.DikeL_OpenFileDialog.Title = "Choose left object file";
             // 
-            // libraryOptionsToolStripMenuItem
+            // DikeR_OpenFileDialog
             // 
-            this.libraryOptionsToolStripMenuItem.Name = "libraryOptionsToolStripMenuItem";
-            this.libraryOptionsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.libraryOptionsToolStripMenuItem.Text = "Library Options";
+            this.DikeR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
+            this.DikeR_OpenFileDialog.Title = "Choose right object file";
             // 
-            // RailOpenFileDialog
+            // FormCL_OpenFileDialog
             // 
-            this.RailOpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
-            this.RailOpenFileDialog.Title = "Choose rail object file";
+            this.FormCL_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
+            this.FormCL_OpenFileDialog.Title = "Choose center left object file";
+            // 
+            // FormCR_OpenFileDialog
+            // 
+            this.FormCR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
+            this.FormCR_OpenFileDialog.Title = "Choose center right object file";
+            // 
+            // FormL_OpenFileDialog
+            // 
+            this.FormL_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
+            this.FormL_OpenFileDialog.Title = "Choose left object file";
+            // 
+            // FormR_OpenFileDialog
+            // 
+            this.FormR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
+            this.FormR_OpenFileDialog.Title = "Choose right object file";
+            // 
+            // RoofCL_OpenFileDialog
+            // 
+            this.RoofCL_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
+            this.RoofCL_OpenFileDialog.Title = "Choose center left object file";
+            // 
+            // RoofCR_OpenFileDialog
+            // 
+            this.RoofCR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
+            this.RoofCR_OpenFileDialog.Title = "Choose center right object file";
+            // 
+            // RoofL_OpenFileDialog
+            // 
+            this.RoofL_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
+            this.RoofL_OpenFileDialog.Title = "Choose left object file";
+            // 
+            // RoofR_OpenFileDialog
+            // 
+            this.RoofR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
+            this.RoofR_OpenFileDialog.Title = "Choose right object file";
+            // 
+            // CrackL_OpenFileDialog
+            // 
+            this.CrackL_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
+            this.CrackL_OpenFileDialog.Title = "Choose left object file";
+            // 
+            // CrackR_OpenFileDialog
+            // 
+            this.CrackR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
+            this.CrackR_OpenFileDialog.Title = "Choose right object file";
             // 
             // Object_Library_Form
             // 
@@ -1273,8 +1154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).EndInit();
             this.gndtabpage.ResumeLayout(false);
             this.gndtabpage.PerformLayout();
-            this.ccltabpage.ResumeLayout(false);
-            this.ccltabpage.PerformLayout();
             this.waltabpage.ResumeLayout(false);
             this.diktabpage.ResumeLayout(false);
             this.raitabpage.ResumeLayout(false);
@@ -1314,6 +1193,8 @@
         private System.Windows.Forms.ColumnHeader formcl_col;
         private System.Windows.Forms.ColumnHeader formcr_col;
         private System.Windows.Forms.ColumnHeader formr_col;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader railname_col;
         private System.Windows.Forms.TabPage bcktabpage;
         private System.Windows.Forms.PictureBox bckpreviewpicbox;
         private System.Windows.Forms.ListBox listBox1;
@@ -1386,8 +1267,8 @@
         private System.Windows.Forms.Button btn_beacondelete;
         private System.Windows.Forms.Button btn_beaconadd;
         private System.Windows.Forms.ListView beaconlistview;
-        private System.Windows.Forms.ColumnHeader beaconid_col;
-        private System.Windows.Forms.ColumnHeader beaconname_col;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button btn_gnddelete;
         private System.Windows.Forms.Button btn_gndadd;
         private System.Windows.Forms.ListView gndlistview;
@@ -1396,25 +1277,17 @@
         private System.Windows.Forms.ColumnHeader gndcycleid_col;
         private System.Windows.Forms.Label lab_ground_note;
         private System.Windows.Forms.TabPage ccltabpage;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button btn_cycle_deleteground;
-        private System.Windows.Forms.Button btn_cycle_addground;
-        private System.Windows.Forms.ListBox cyclegroundlistbox;
-        private System.Windows.Forms.Label lab_groundobjects;
-        private System.Windows.Forms.Button btn_deletecycle;
-        private System.Windows.Forms.Button btn_cycleadd;
-        private System.Windows.Forms.Label lab_groundsincycle;
-        private System.Windows.Forms.ListBox groundsincycle_listbox;
-        private System.Windows.Forms.ComboBox combobox_choosecycle;
-        private System.Windows.Forms.Label lab_cycle_id;
-        private System.Windows.Forms.Button btn_raildelete;
-        private System.Windows.Forms.Button btn_railadd;
-        private System.Windows.Forms.ListView raillistview;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem libraryOptionsToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog RailOpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog DikeL_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog DikeR_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog FormCL_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog FormCR_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog FormL_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog FormR_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog RoofCL_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog RoofCR_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog RoofL_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog RoofR_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog CrackL_OpenFileDialog;
+        private System.Windows.Forms.OpenFileDialog CrackR_OpenFileDialog;
     }
 }

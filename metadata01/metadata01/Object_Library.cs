@@ -68,8 +68,6 @@ namespace metadata01
 
         public List<Ground> lib_grounds;
 
-        public List<Rail> lib_rails;
-
 
         public List<Background> lib_backgrounds;
 
@@ -125,14 +123,29 @@ namespace metadata01
         {
 
             /// <summary>
-            /// ID's of Grounds that are in cycle
+            /// Grounds that are in cycle
             /// </summary>
-            public List<uint> grounds;
+            public List<Ground> grounds;
 
-
-            public Cycle(List<uint> gr)
+            /// <summary>
+            /// Creates a cycle out of the specific ground list
+            /// </summary>
+            /// <param name="g">A ground list</param>
+            public Cycle(List<Ground> g)
             {
-                this.grounds = gr;
+                this.grounds = g;
+                for (int i = 0; i < this.grounds.Count; i++)
+                {
+                    //If a ground is not considered in cycle?
+                    if (this.grounds[i].in_cycle == false)
+                    {
+                        //Replace the in_cycle with true
+                        Ground gr1 = this.grounds[i];
+                        gr1.in_cycle = true;
+                        this.grounds[i] = gr1;
+                    }
+
+                }
             }
 
 
@@ -168,13 +181,16 @@ namespace metadata01
         /// </summary>
         public struct Ground
         {
-
-            //public uint ID;
-
             /// <summary>
             /// Ground object filename.
             /// </summary>
             public string filename;
+
+
+            /// <summary>
+            /// Is it in cycle?
+            /// </summary>
+            public bool in_cycle;
 
 
             /// <summary>
@@ -184,6 +200,7 @@ namespace metadata01
             public Ground(string fname)
             {
                 this.filename = fname;
+                this.in_cycle = false;
                 
             }
 
@@ -212,17 +229,6 @@ namespace metadata01
             /// Object file name
             /// </summary>
             public string filename;
-
-            public Rail(string fname)
-            {
-                this.filename = fname;
-
-            }
-
-            public string CSVParse(int index)
-            {
-                return ".Rail(" + index + ") " + filename + ", \n";
-            }
 
 
         }
@@ -655,8 +661,6 @@ namespace metadata01
             //Create all lists blank
             this.lib_backgrounds = new List<metadata01.ObjectLibrary.Background>();
             this.lib_grounds = new List<Ground>();
-            this.lib_rails = new List<metadata01.ObjectLibrary.Rail>();
-            this.lib_cycles = new List<Cycle>();
             this.lib_walls = new List<metadata01.ObjectLibrary.Wall>();
             this.lib_dikes = new List<metadata01.ObjectLibrary.Dike>();
             this.lib_platforms = new List<metadata01.ObjectLibrary.Platform>();
@@ -718,7 +722,7 @@ namespace metadata01
         {
             List<string> parsed_interface = new List<string>();
             //Adding header
-            parsed_interface.Add("With Structure");
+            parsed_interface.Add("With Structure\n");
             //Parsing walls
             for (int i = 0; i < lib_walls.Count; i++)
             {

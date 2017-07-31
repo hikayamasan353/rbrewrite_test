@@ -1,0 +1,26 @@
+.Ground(0) , 
+
+.Ground(1) , 
+
+.Ground(2) , 
+
+.Ground(3) , 
+
+.Ground(4) , 
+
+.WallL(0) , 
+.WallR(0) , 
+.WallL(1) , 
+.WallR(1) , 
+.WallL(2) , 
+.WallR(2) , 
+.WallL(3) , 
+.WallR(3) , 
+.DikeL(0) , 
+.DikeR(0) , 
+.DikeL(1) , 
+.DikeR(1) , 
+.DikeL(2) , 
+.DikeR(2) , 
+.DikeL(3) , 
+.DikeR(3) , 

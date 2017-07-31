@@ -82,8 +82,6 @@ namespace metadata01
             objectlibrary = new metadata01.ObjectLibrary();
 
             //Clearing all items list view
-            gndlistview.Items.Clear();
-            combobox_choosecycle.Items.Clear();
             walllistview.Items.Clear();
             dikelistview.Items.Clear();
             formlistview.Items.Clear();
@@ -150,7 +148,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(cracklistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack());
+            objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack("Undefined","Undefined"));
             UpdateIDs();
         }
 
@@ -203,27 +201,8 @@ namespace metadata01
         /// </summary>
         public void UpdateIDs()
         {
-            //Check ground list IDs
-            for (int i = 0; i < gndlistview.Items.Count; i++)
-            {
-                //At grounds tab
-                gndlistview.Items[i].Text = gndlistview.Items.IndexOf(gndlistview.Items[i]).ToString();
-                //At cycles tab
-                cyclegroundlistbox.Items[i] = cyclegroundlistbox.Items.IndexOf(cyclegroundlistbox.Items[i]).ToString();
-                
-            }
-            //Check cycle list IDs
-            for (int i = 0; i < combobox_choosecycle.Items.Count; i++)
-            {
-                combobox_choosecycle.Items[i] = combobox_choosecycle.Items.IndexOf(combobox_choosecycle.Items[i]);
-            }
-
-
-
-
-
             //Check wall list IDs
-            for (int i=0;i<walllistview.Items.Count;i++)
+            for(int i=0;i<walllistview.Items.Count;i++)
             {
                 walllistview.Items[i].Text = walllistview.Items.IndexOf(walllistview.Items[i]).ToString();
             }
@@ -232,6 +211,13 @@ namespace metadata01
             {
                 dikelistview.Items[i].Text = dikelistview.Items.IndexOf(dikelistview.Items[i]).ToString();
             }
+
+            //Check ground list IDs
+            for (int i = 0; i < gndlistview.Items.Count; i++)
+            {
+                gndlistview.Items[i].Text = gndlistview.Items.IndexOf(gndlistview.Items[i]).ToString();
+            }
+
             //Check form list IDs
             for (int i = 0; i < formlistview.Items.Count; i++)
             {
@@ -322,7 +308,7 @@ namespace metadata01
             for (int i = 0; i < rooflistview.SelectedIndices.Count; i++)
             {
                 int index = rooflistview.SelectedIndices[i];
-                objectlibrary.lib_platforms.RemoveAt(index);
+                objectlibrary.lib_roofs.RemoveAt(index);
                 rooflistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -330,18 +316,16 @@ namespace metadata01
 
         private void btn_freeobjadd_Click(object sender, EventArgs e)
         {
-            //Asking to load
-            FreeObj_OpenFileDialog.ShowDialog();
             ListViewItem item = new ListViewItem();
-            string filename = Path.GetFileName(FreeObj_OpenFileDialog.FileName);
+
 
             freeobjlistview.Items.Add(item); //Adding the item
             item.Text = item.Index.ToString(); //Making the item's index as the item's number
-            item.SubItems.Add(filename, Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
+            item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
 
-            //Adding the blank freeobj entry
-            objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj(filename));
+            //Adding the blank roof entry
+            objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj());
             UpdateIDs();
         }
 
@@ -412,26 +396,17 @@ namespace metadata01
 
         private void btn_gndadd_Click(object sender, EventArgs e)
         {
-            //Loading an object path
-            GroundOpenFileDialog.ShowDialog();
-
-
             ListViewItem item = new ListViewItem();
 
-            //Grounds tab adding
+
             gndlistview.Items.Add(item); //Adding the item
             item.Text = item.Index.ToString(); //Making the item's index as the item's number
-            string filename = Path.GetFileName(GroundOpenFileDialog.FileName);
-
-            item.SubItems.Add(filename, Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
+            item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
-            //Cycles tab adding
-            cyclegroundlistbox.Items.Add(item.Text);
 
             //Adding the blank roof entry
-            objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(filename));
-
+            objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground());
             UpdateIDs();
         }
 
@@ -439,119 +414,58 @@ namespace metadata01
         {
             for (int i = 0; i < gndlistview.SelectedIndices.Count; i++)
             {
-                
                 int index = gndlistview.SelectedIndices[i];
-                //At cycles tab
-                cyclegroundlistbox.Items.RemoveAt(index);
-
-                //At grounds tab
                 objectlibrary.lib_grounds.RemoveAt(index);
                 gndlistview.Items.RemoveAt(index);
-
-
-
             }
             UpdateIDs();
         }
 
-        private void btn_cycleadd_Click(object sender, EventArgs e)
-        {
-            //Adding new cycle entry
-            ObjectLibrary.Cycle newcycle = new ObjectLibrary.Cycle();
-            newcycle.grounds = new List<uint>();
-
-            objectlibrary.lib_cycles.Add(newcycle);
-
-            combobox_choosecycle.Items.Add(objectlibrary.lib_cycles.Count - 1);
-            combobox_choosecycle.SelectedItem = combobox_choosecycle.Items[objectlibrary.lib_cycles.Count - 1];
-            UpdateIDs();
-
-        }
-
-        private void btn_deletecycle_Click(object sender, EventArgs e)
-        {
-            objectlibrary.lib_cycles.RemoveAt(combobox_choosecycle.SelectedIndex);
-            combobox_choosecycle.Items.RemoveAt(combobox_choosecycle.SelectedIndex);
-            UpdateIDs();
-        }
-
-        private void cyclegroundlistbox_SelectedIndexChanged(object sender, EventArgs e)
+        private void btn_formchooseleft_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btn_cycle_addground_Click(object sender, EventArgs e)
-        {
-            
-            groundsincycle_listbox.Items.Add(cyclegroundlistbox.SelectedItem);
-            //objectlibrary.lib_cycles[combobox_choosecycle.SelectedIndex].grounds.Add(objectlibrary.lib_grounds[cyclegroundlistbox.SelectedIndex]);
-            objectlibrary.lib_cycles[combobox_choosecycle.SelectedIndex].grounds.Add(Convert.ToUInt32(cyclegroundlistbox.SelectedItem));
-            UpdateIDs();
-        }
 
-        private void combobox_choosecycle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Refresh ground cycle list
-            groundsincycle_listbox.Items.Clear();
-            for(int i=0;i<objectlibrary.lib_cycles[combobox_choosecycle.SelectedIndex].grounds.Count;i++)
-            {
-                groundsincycle_listbox.Items.Add(objectlibrary.lib_cycles[combobox_choosecycle.SelectedIndex].grounds[i]);
-            }
-
-
-
-            
-        }
-
-        private void btn_cycle_deleteground_Click(object sender, EventArgs e)
-        {
-            objectlibrary.lib_cycles[combobox_choosecycle.SelectedIndex].grounds.RemoveAt(groundsincycle_listbox.SelectedIndex);
-            groundsincycle_listbox.Items.RemoveAt(groundsincycle_listbox.SelectedIndex);
-            UpdateIDs();
-        }
-
-        private void btn_railadd_Click(object sender, EventArgs e)
-        {
-
-            RailOpenFileDialog.ShowDialog();
-            ListViewItem item = new ListViewItem();
-            string filename = Path.GetFileName(RailOpenFileDialog.FileName);
-
-            raillistview.Items.Add(item); //Adding the item
-            item.Text = item.Index.ToString(); //Making the item's index as the item's number
-            item.SubItems.Add(filename, Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
-
-
-            //Adding the blank rail entry
-            objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail());
-            UpdateIDs();
-        }
-
-        private void btn_raildelete_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < raillistview.SelectedIndices.Count; i++)
-            {
-                int index = raillistview.SelectedIndices[i];
-                objectlibrary.lib_rails.RemoveAt(index);
-                raillistview.Items.RemoveAt(index);
-            }
-            UpdateIDs();
-        }
-
+        //
+        //Temporary code: Export the object library.
         private void button3_Click(object sender, EventArgs e)
         {
+            //String list for exporting
+            List<string> exportinterface = new List<string>();
 
-        }
+            //Adding grounds
+            for (int i = 0; i < objectlibrary.lib_grounds.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_grounds[i].CSVParsed(i));
+            }
+            //Adding walls and dikes
+            for (int i = 0; i < objectlibrary.lib_walls.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_walls[i].CSVParsed(i));
+            }
+            for (int i = 0; i < objectlibrary.lib_dikes.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_dikes[i].CSVParsed(i));
+            }
+            for (int i = 0; i < objectlibrary.lib_platforms.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_platforms[i].CSVParsed(i));
+            }
+            for (int i = 0; i < objectlibrary.lib_roofs.Count; i++)
+            {
+                exportinterface.Add(objectlibrary.lib_roofs[i].CSVParsed(i));
+            }
 
-        private void saveLibraryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Saving an object library
+            StreamWriter exportstream = new StreamWriter(Application.StartupPath + "\\dna.txt");
+            for (int i = 0; i < exportinterface.Count; i++)
+            {
+                exportstream.WriteLine(exportinterface[i]);
+            }
+            exportstream.Close();
 
-        }
 
-        private void openLibraryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Opening an object library
+
         }
     }
 }

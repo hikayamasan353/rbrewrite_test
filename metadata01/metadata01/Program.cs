@@ -28,8 +28,17 @@ namespace metadata01
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            
 
 
+            //If there are no options,
+
+            //We configure it for the first time.
+            //By opening the BVE Directory dialog.
+            //And then record them in the options.ini file.
+
+            //Else,
+            //We open already existing options.ini file.
 
 
 
