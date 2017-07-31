@@ -106,7 +106,7 @@ namespace metadata01
             item.Selected = true;
 
             //Adding the blank wall entry
-            objectlibrary.lib_walls.Insert(item.Index, new ObjectLibrary.Wall());
+            objectlibrary.lib_walls.Insert(item.Index, new ObjectLibrary.Wall("Undefined", "Undefined"));
 
             UpdateIDs();
         }
@@ -148,7 +148,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(cracklistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack("Undefined","Undefined"));
+            objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack("Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -163,7 +163,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(dikelistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            objectlibrary.lib_dikes.Insert(item.Index, new ObjectLibrary.Dike());
+            objectlibrary.lib_dikes.Insert(item.Index, new ObjectLibrary.Dike("Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -192,7 +192,7 @@ namespace metadata01
 
 
             //Adding the blank platform entry
-            objectlibrary.lib_platforms.Insert(item.Index, new ObjectLibrary.Platform());
+            objectlibrary.lib_platforms.Insert(item.Index, new ObjectLibrary.Platform("Undefined", "Undefined", "Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -288,7 +288,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_roofs.Insert(item.Index, new ObjectLibrary.Roof());
+            objectlibrary.lib_roofs.Insert(item.Index, new ObjectLibrary.Roof("Undefined", "Undefined", "Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -325,7 +325,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj());
+            objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj("Undefined"));
             UpdateIDs();
         }
 
@@ -349,10 +349,11 @@ namespace metadata01
             polelistview.Items.Add(item); //Adding the item
             item.Text = item.Index.ToString(); //Making the item's index as the item's number
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
+            item.SubItems.Add(numericUpDown1.Value.ToString(), Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_poles.Insert(item.Index, new ObjectLibrary.Pole());
+            objectlibrary.lib_poles.Insert(item.Index, new ObjectLibrary.Pole("Undefined", (int)numericUpDown1.Value));
             UpdateIDs();
 
         }
@@ -379,7 +380,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_beacons.Insert(item.Index, new ObjectLibrary.Beacon());
+            objectlibrary.lib_beacons.Insert(item.Index, new ObjectLibrary.Beacon("Undefined"));
             UpdateIDs();
         }
 
@@ -406,7 +407,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground());
+            objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
             UpdateIDs();
         }
 
@@ -448,6 +449,7 @@ namespace metadata01
             {
                 exportinterface.Add(objectlibrary.lib_dikes[i].CSVParsed(i));
             }
+            //Adding roofs
             for (int i = 0; i < objectlibrary.lib_platforms.Count; i++)
             {
                 exportinterface.Add(objectlibrary.lib_platforms[i].CSVParsed(i));
