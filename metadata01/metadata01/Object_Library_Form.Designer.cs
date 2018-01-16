@@ -49,24 +49,24 @@
             this.ccltabpage = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_GroundCycles = new System.Windows.Forms.TabPage();
-            this.btn_CycleDeleteGround_Right = new System.Windows.Forms.Button();
-            this.btn_CycleAddGround_Left = new System.Windows.Forms.Button();
+            this.btn_GndCycleDeleteGround_Right = new System.Windows.Forms.Button();
+            this.btn_GndCycleAddGround_Left = new System.Windows.Forms.Button();
             this.gndlistview2 = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btn_CycleDelete = new System.Windows.Forms.Button();
-            this.btn_CycleAdd = new System.Windows.Forms.Button();
+            this.btn_GndCycleDelete = new System.Windows.Forms.Button();
+            this.btn_GndCycleAdd = new System.Windows.Forms.Button();
             this.GndCycleListView = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage_RailCycles = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_RailCycleDeleteRail_Right = new System.Windows.Forms.Button();
+            this.btn_RailCycleAddRail_Left = new System.Windows.Forms.Button();
             this.raillistview2 = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_RailCycleDelete = new System.Windows.Forms.Button();
+            this.btn_RailCycleAdd = new System.Windows.Forms.Button();
             this.RailCycleListView = new System.Windows.Forms.ListView();
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -89,6 +89,7 @@
             this.dikel_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.diker_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.raitabpage = new System.Windows.Forms.TabPage();
+            this.lab_rail_note = new System.Windows.Forms.Label();
             this.btn_RailDelete = new System.Windows.Forms.Button();
             this.btn_RailAdd = new System.Windows.Forms.Button();
             this.raillistview = new System.Windows.Forms.ListView();
@@ -173,7 +174,6 @@
             this.RoofR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.lab_rail_note = new System.Windows.Forms.Label();
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
@@ -356,11 +356,11 @@
             // 
             // tabPage_GroundCycles
             // 
-            this.tabPage_GroundCycles.Controls.Add(this.btn_CycleDeleteGround_Right);
-            this.tabPage_GroundCycles.Controls.Add(this.btn_CycleAddGround_Left);
+            this.tabPage_GroundCycles.Controls.Add(this.btn_GndCycleDeleteGround_Right);
+            this.tabPage_GroundCycles.Controls.Add(this.btn_GndCycleAddGround_Left);
             this.tabPage_GroundCycles.Controls.Add(this.gndlistview2);
-            this.tabPage_GroundCycles.Controls.Add(this.btn_CycleDelete);
-            this.tabPage_GroundCycles.Controls.Add(this.btn_CycleAdd);
+            this.tabPage_GroundCycles.Controls.Add(this.btn_GndCycleDelete);
+            this.tabPage_GroundCycles.Controls.Add(this.btn_GndCycleAdd);
             this.tabPage_GroundCycles.Controls.Add(this.GndCycleListView);
             this.tabPage_GroundCycles.Location = new System.Drawing.Point(4, 22);
             this.tabPage_GroundCycles.Name = "tabPage_GroundCycles";
@@ -370,23 +370,24 @@
             this.tabPage_GroundCycles.Text = "Ground";
             this.tabPage_GroundCycles.UseVisualStyleBackColor = true;
             // 
-            // btn_CycleDeleteGround_Right
+            // btn_GndCycleDeleteGround_Right
             // 
-            this.btn_CycleDeleteGround_Right.Location = new System.Drawing.Point(320, 102);
-            this.btn_CycleDeleteGround_Right.Name = "btn_CycleDeleteGround_Right";
-            this.btn_CycleDeleteGround_Right.Size = new System.Drawing.Size(113, 27);
-            this.btn_CycleDeleteGround_Right.TabIndex = 19;
-            this.btn_CycleDeleteGround_Right.Text = ">>>";
-            this.btn_CycleDeleteGround_Right.UseVisualStyleBackColor = true;
+            this.btn_GndCycleDeleteGround_Right.Location = new System.Drawing.Point(320, 102);
+            this.btn_GndCycleDeleteGround_Right.Name = "btn_GndCycleDeleteGround_Right";
+            this.btn_GndCycleDeleteGround_Right.Size = new System.Drawing.Size(113, 27);
+            this.btn_GndCycleDeleteGround_Right.TabIndex = 19;
+            this.btn_GndCycleDeleteGround_Right.Text = ">>>";
+            this.btn_GndCycleDeleteGround_Right.UseVisualStyleBackColor = true;
             // 
-            // btn_CycleAddGround_Left
+            // btn_GndCycleAddGround_Left
             // 
-            this.btn_CycleAddGround_Left.Location = new System.Drawing.Point(320, 69);
-            this.btn_CycleAddGround_Left.Name = "btn_CycleAddGround_Left";
-            this.btn_CycleAddGround_Left.Size = new System.Drawing.Size(113, 27);
-            this.btn_CycleAddGround_Left.TabIndex = 18;
-            this.btn_CycleAddGround_Left.Text = "<<<";
-            this.btn_CycleAddGround_Left.UseVisualStyleBackColor = true;
+            this.btn_GndCycleAddGround_Left.Location = new System.Drawing.Point(320, 69);
+            this.btn_GndCycleAddGround_Left.Name = "btn_GndCycleAddGround_Left";
+            this.btn_GndCycleAddGround_Left.Size = new System.Drawing.Size(113, 27);
+            this.btn_GndCycleAddGround_Left.TabIndex = 18;
+            this.btn_GndCycleAddGround_Left.Text = "<<<";
+            this.btn_GndCycleAddGround_Left.UseVisualStyleBackColor = true;
+            this.btn_GndCycleAddGround_Left.Click += new System.EventHandler(this.btn_GndCycleAddGround_Left_Click);
             // 
             // gndlistview2
             // 
@@ -394,6 +395,7 @@
             this.columnHeader6,
             this.columnHeader8});
             this.gndlistview2.FullRowSelect = true;
+            this.gndlistview2.HideSelection = false;
             this.gndlistview2.Location = new System.Drawing.Point(181, 3);
             this.gndlistview2.Name = "gndlistview2";
             this.gndlistview2.Size = new System.Drawing.Size(133, 173);
@@ -409,23 +411,24 @@
             // 
             this.columnHeader8.Text = "Filename";
             // 
-            // btn_CycleDelete
+            // btn_GndCycleDelete
             // 
-            this.btn_CycleDelete.Location = new System.Drawing.Point(320, 36);
-            this.btn_CycleDelete.Name = "btn_CycleDelete";
-            this.btn_CycleDelete.Size = new System.Drawing.Size(113, 27);
-            this.btn_CycleDelete.TabIndex = 16;
-            this.btn_CycleDelete.Text = "Delete";
-            this.btn_CycleDelete.UseVisualStyleBackColor = true;
+            this.btn_GndCycleDelete.Location = new System.Drawing.Point(320, 36);
+            this.btn_GndCycleDelete.Name = "btn_GndCycleDelete";
+            this.btn_GndCycleDelete.Size = new System.Drawing.Size(113, 27);
+            this.btn_GndCycleDelete.TabIndex = 16;
+            this.btn_GndCycleDelete.Text = "Delete";
+            this.btn_GndCycleDelete.UseVisualStyleBackColor = true;
             // 
-            // btn_CycleAdd
+            // btn_GndCycleAdd
             // 
-            this.btn_CycleAdd.Location = new System.Drawing.Point(320, 3);
-            this.btn_CycleAdd.Name = "btn_CycleAdd";
-            this.btn_CycleAdd.Size = new System.Drawing.Size(113, 27);
-            this.btn_CycleAdd.TabIndex = 15;
-            this.btn_CycleAdd.Text = "Add";
-            this.btn_CycleAdd.UseVisualStyleBackColor = true;
+            this.btn_GndCycleAdd.Location = new System.Drawing.Point(320, 3);
+            this.btn_GndCycleAdd.Name = "btn_GndCycleAdd";
+            this.btn_GndCycleAdd.Size = new System.Drawing.Size(113, 27);
+            this.btn_GndCycleAdd.TabIndex = 15;
+            this.btn_GndCycleAdd.Text = "Add";
+            this.btn_GndCycleAdd.UseVisualStyleBackColor = true;
+            this.btn_GndCycleAdd.Click += new System.EventHandler(this.btn_GndCycleAdd_Click);
             // 
             // GndCycleListView
             // 
@@ -433,6 +436,7 @@
             this.columnHeader5,
             this.columnHeader7});
             this.GndCycleListView.FullRowSelect = true;
+            this.GndCycleListView.HideSelection = false;
             this.GndCycleListView.Location = new System.Drawing.Point(6, 3);
             this.GndCycleListView.Name = "GndCycleListView";
             this.GndCycleListView.Size = new System.Drawing.Size(169, 173);
@@ -450,11 +454,11 @@
             // 
             // tabPage_RailCycles
             // 
-            this.tabPage_RailCycles.Controls.Add(this.button2);
-            this.tabPage_RailCycles.Controls.Add(this.button4);
+            this.tabPage_RailCycles.Controls.Add(this.btn_RailCycleDeleteRail_Right);
+            this.tabPage_RailCycles.Controls.Add(this.btn_RailCycleAddRail_Left);
             this.tabPage_RailCycles.Controls.Add(this.raillistview2);
-            this.tabPage_RailCycles.Controls.Add(this.button5);
-            this.tabPage_RailCycles.Controls.Add(this.button6);
+            this.tabPage_RailCycles.Controls.Add(this.btn_RailCycleDelete);
+            this.tabPage_RailCycles.Controls.Add(this.btn_RailCycleAdd);
             this.tabPage_RailCycles.Controls.Add(this.RailCycleListView);
             this.tabPage_RailCycles.Location = new System.Drawing.Point(4, 22);
             this.tabPage_RailCycles.Name = "tabPage_RailCycles";
@@ -464,23 +468,23 @@
             this.tabPage_RailCycles.Text = "Rails";
             this.tabPage_RailCycles.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_RailCycleDeleteRail_Right
             // 
-            this.button2.Location = new System.Drawing.Point(320, 105);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 27);
-            this.button2.TabIndex = 25;
-            this.button2.Text = ">>>";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_RailCycleDeleteRail_Right.Location = new System.Drawing.Point(320, 105);
+            this.btn_RailCycleDeleteRail_Right.Name = "btn_RailCycleDeleteRail_Right";
+            this.btn_RailCycleDeleteRail_Right.Size = new System.Drawing.Size(113, 27);
+            this.btn_RailCycleDeleteRail_Right.TabIndex = 25;
+            this.btn_RailCycleDeleteRail_Right.Text = ">>>";
+            this.btn_RailCycleDeleteRail_Right.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_RailCycleAddRail_Left
             // 
-            this.button4.Location = new System.Drawing.Point(320, 72);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 27);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "<<<";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_RailCycleAddRail_Left.Location = new System.Drawing.Point(320, 72);
+            this.btn_RailCycleAddRail_Left.Name = "btn_RailCycleAddRail_Left";
+            this.btn_RailCycleAddRail_Left.Size = new System.Drawing.Size(113, 27);
+            this.btn_RailCycleAddRail_Left.TabIndex = 24;
+            this.btn_RailCycleAddRail_Left.Text = "<<<";
+            this.btn_RailCycleAddRail_Left.UseVisualStyleBackColor = true;
             // 
             // raillistview2
             // 
@@ -488,6 +492,7 @@
             this.columnHeader9,
             this.columnHeader10});
             this.raillistview2.FullRowSelect = true;
+            this.raillistview2.HideSelection = false;
             this.raillistview2.Location = new System.Drawing.Point(181, 6);
             this.raillistview2.Name = "raillistview2";
             this.raillistview2.Size = new System.Drawing.Size(133, 173);
@@ -503,24 +508,24 @@
             // 
             this.columnHeader10.Text = "Filename";
             // 
-            // button5
+            // btn_RailCycleDelete
             // 
-            this.button5.Location = new System.Drawing.Point(320, 39);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(113, 27);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_RailCycleDelete.Location = new System.Drawing.Point(320, 39);
+            this.btn_RailCycleDelete.Name = "btn_RailCycleDelete";
+            this.btn_RailCycleDelete.Size = new System.Drawing.Size(113, 27);
+            this.btn_RailCycleDelete.TabIndex = 22;
+            this.btn_RailCycleDelete.Text = "Delete";
+            this.btn_RailCycleDelete.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btn_RailCycleAdd
             // 
-            this.button6.Location = new System.Drawing.Point(320, 6);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(113, 27);
-            this.button6.TabIndex = 21;
-            this.button6.Text = "Add";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btn_RailCycleAdd.Location = new System.Drawing.Point(320, 6);
+            this.btn_RailCycleAdd.Name = "btn_RailCycleAdd";
+            this.btn_RailCycleAdd.Size = new System.Drawing.Size(113, 27);
+            this.btn_RailCycleAdd.TabIndex = 21;
+            this.btn_RailCycleAdd.Text = "Add";
+            this.btn_RailCycleAdd.UseVisualStyleBackColor = true;
+            this.btn_RailCycleAdd.Click += new System.EventHandler(this.btn_RailCycleAdd_Click);
             // 
             // RailCycleListView
             // 
@@ -528,6 +533,7 @@
             this.columnHeader11,
             this.columnHeader12});
             this.RailCycleListView.FullRowSelect = true;
+            this.RailCycleListView.HideSelection = false;
             this.RailCycleListView.Location = new System.Drawing.Point(6, 6);
             this.RailCycleListView.Name = "RailCycleListView";
             this.RailCycleListView.Size = new System.Drawing.Size(169, 173);
@@ -541,7 +547,7 @@
             // 
             // columnHeader12
             // 
-            this.columnHeader12.Text = "Grounds";
+            this.columnHeader12.Text = "Rails";
             // 
             // waltabpage
             // 
@@ -718,6 +724,15 @@
             this.raitabpage.TabIndex = 3;
             this.raitabpage.Text = "Rails";
             this.raitabpage.UseVisualStyleBackColor = true;
+            // 
+            // lab_rail_note
+            // 
+            this.lab_rail_note.AutoSize = true;
+            this.lab_rail_note.Location = new System.Drawing.Point(3, 149);
+            this.lab_rail_note.Name = "lab_rail_note";
+            this.lab_rail_note.Size = new System.Drawing.Size(208, 13);
+            this.lab_rail_note.TabIndex = 6;
+            this.lab_rail_note.Text = "Note: The rail\'s ID overrides the cycle\'s ID!";
             // 
             // btn_RailDelete
             // 
@@ -1392,15 +1407,6 @@
             this.CrackR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
             this.CrackR_OpenFileDialog.Title = "Choose right object file";
             // 
-            // lab_rail_note
-            // 
-            this.lab_rail_note.AutoSize = true;
-            this.lab_rail_note.Location = new System.Drawing.Point(3, 149);
-            this.lab_rail_note.Name = "lab_rail_note";
-            this.lab_rail_note.Size = new System.Drawing.Size(208, 13);
-            this.lab_rail_note.TabIndex = 6;
-            this.lab_rail_note.Text = "Note: The rail\'s ID overrides the cycle\'s ID!";
-            // 
             // Object_Library_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1569,24 +1575,24 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_GroundCycles;
-        private System.Windows.Forms.Button btn_CycleDeleteGround_Right;
-        private System.Windows.Forms.Button btn_CycleAddGround_Left;
+        private System.Windows.Forms.Button btn_GndCycleDeleteGround_Right;
+        private System.Windows.Forms.Button btn_GndCycleAddGround_Left;
         private System.Windows.Forms.ListView gndlistview2;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.Button btn_CycleDelete;
-        private System.Windows.Forms.Button btn_CycleAdd;
+        private System.Windows.Forms.Button btn_GndCycleDelete;
+        private System.Windows.Forms.Button btn_GndCycleAdd;
         private System.Windows.Forms.ListView GndCycleListView;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.TabPage tabPage_RailCycles;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_RailCycleDeleteRail_Right;
+        private System.Windows.Forms.Button btn_RailCycleAddRail_Left;
         private System.Windows.Forms.ListView raillistview2;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_RailCycleDelete;
+        private System.Windows.Forms.Button btn_RailCycleAdd;
         private System.Windows.Forms.ListView RailCycleListView;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;

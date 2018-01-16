@@ -215,7 +215,12 @@ namespace metadata01
             //Check ground list IDs
             for (int i = 0; i < gndlistview.Items.Count; i++)
             {
-                gndlistview.Items[i].Text = gndlistview.Items.IndexOf(gndlistview.Items[i]).ToString();
+                int pid = gndlistview.Items.IndexOf(gndlistview.Items[i]);
+                ObjectLibrary.Ground pground = objectlibrary.lib_grounds[i];
+                gndlistview.Items[i].Text = pid.ToString();
+                pground.id = (uint)pid;
+                objectlibrary.lib_grounds[i] = pground;
+                
                 
             }
             for(int i=0;i<gndlistview2.Items.Count;i++)
@@ -227,7 +232,13 @@ namespace metadata01
             //Check rail list IDs
             for (int i = 0; i < raillistview.Items.Count; i++)
             {
-                raillistview.Items[i].Text = raillistview.Items.IndexOf(raillistview.Items[i]).ToString();
+                int pid = raillistview.Items.IndexOf(raillistview.Items[i]);
+                ObjectLibrary.Rail prail = objectlibrary.lib_rails[i];
+                raillistview.Items[i].Text = pid.ToString();
+                prail.id = (uint)pid;
+                objectlibrary.lib_rails[i] = prail;
+
+                
             }
             for (int i = 0; i < raillistview2.Items.Count; i++)
             {
@@ -520,17 +531,41 @@ namespace metadata01
 
         }
 
-        private void btn_CycleAdd_Click(object sender, EventArgs e)
+
+
+        private void btn_GndCycleAdd_Click(object sender, EventArgs e)
         {
             ListViewItem item = new ListViewItem();
             GndCycleListView.Items.Add(item);
+            item.Text = item.Index.ToString();
+
+            objectlibrary.lib_cyclegrounds.Insert(item.Index, new ObjectLibrary.CycleGround(new List<metadata01.ObjectLibrary.Ground>()));
+            item.SubItems.Add(objectlibrary.lib_cyclegrounds[item.Index].CycledGrounds);
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btn_RailCycleAdd_Click(object sender, EventArgs e)
         {
+            ListViewItem item = new ListViewItem();
+            RailCycleListView.Items.Add(item);
+            item.Text = item.Index.ToString();
+
+            objectlibrary.lib_cyclerails.Insert(item.Index, new ObjectLibrary.CycleRail(new List<metadata01.ObjectLibrary.Rail>()));
+            item.SubItems.Add(objectlibrary.lib_cyclerails[item.Index].CycledRails);
 
         }
 
+        private void btn_GndCycleAddGround_Left_Click(object sender, EventArgs e)
+        {
+            for(int i=0;i<GndCycleListView.SelectedItems.Count;i++)
+            {
+                for(int j=0;j<gndlistview2.SelectedItems.Count;j++)
+                {
+                    objectlibrary.lib_cyclegrounds[i].grounds.Add(objectlibrary.lib_grounds[j]);
+                    GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
+
+                }
+            }
+        }
     }
 }

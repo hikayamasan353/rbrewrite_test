@@ -96,7 +96,7 @@ namespace metadata01
         public List<Pole> lib_poles;
 
         public List<Rail> lib_rails;
-        public List<Rail> lib_cyclerails;
+        public List<CycleRail> lib_cyclerails;
 
 
 
@@ -165,7 +165,24 @@ namespace metadata01
                 
             }
 
+            /// <summary>
+            /// CSV parsed values of grounds in cycle
+            /// i.e. 0;1;2;3
+            /// </summary>
+            public string CycledGrounds
+            {
+                get
+                {
+                    string s1 = "";
+                    for (int i1 = 0; i1 < this.grounds.Count; i1++)
+                    {
 
+
+                        s1 += grounds[i1].id.ToString() + ";";
+                    }
+                    return s1;
+                }
+            }
 
             /// <summary>
             /// CSV parsed declaration of a cycle
@@ -176,14 +193,7 @@ namespace metadata01
             {
                 //CSV parsed values of grounds in cycle
                 //i.e.: .Ground(0) 0;1;2;3,
-                string s1 = "";
-                for (int i1 = 0; i1 < this.grounds.Count; i1++)
-                {
-                    
-
-                    s1 += i1.ToString() + ";";
-                }
-                return ".Ground(" + index.ToString() + ") " + s1 + ", \n";
+                return ".Ground(" + index.ToString() + ") " + CycledGrounds + ", \n";
             }
 
 
@@ -202,6 +212,23 @@ namespace metadata01
             }
 
             /// <summary>
+            /// CSV parsed values of rails in cycle
+            /// i.e. 0;1;2;3
+            /// </summary>
+            public string CycledRails
+            {
+                get
+                {
+                    string s1 = "";
+                    for (int i1 = 0; i1 < this.rails.Count; i1++)
+                    {
+                        s1 += rails[i1].id.ToString() + ";";
+                    }
+                    return s1;
+                }
+            }
+
+            /// <summary>
             /// CSV parsed declaration of a cycle
             /// </summary>
             /// <param name="index">Index in .Ground(index)</param>
@@ -210,12 +237,7 @@ namespace metadata01
             {
                 //CSV parsed values of rails in cycle
                 //i.e.: .Rail(0) 0;1;2;3,
-                string s1 = "";
-                for (int i1 = 0; i1 < this.rails.Count; i1++)
-                {
-                    s1 += i1.ToString() + ";";
-                }
-                return ".Rail(" + index.ToString() + ") " + s1 + ", \n";
+                return ".Rail(" + index.ToString() + ") " + CycledRails + ", \n";
             }
 
 
@@ -750,6 +772,8 @@ namespace metadata01
             this.lib_freeobjs = new List<metadata01.ObjectLibrary.FreeObj>();
             this.lib_poles = new List<Pole>();
             this.lib_beacons = new List<Beacon>();
+            this.lib_cyclegrounds = new List<metadata01.ObjectLibrary.CycleGround>();
+            this.lib_cyclerails = new List<metadata01.ObjectLibrary.CycleRail>();
 
         }
 
