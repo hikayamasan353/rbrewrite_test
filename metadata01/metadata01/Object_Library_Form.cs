@@ -228,6 +228,12 @@ namespace metadata01
                 gndlistview2.Items[i].Text = gndlistview2.Items.IndexOf(gndlistview2.Items[i]).ToString();
 
             }
+            //Check ground cycle list IDs
+            for(int i=0;i<GndCycleListView.Items.Count;i++)
+            {
+                GndCycleListView.Items[i].Text = GndCycleListView.Items.IndexOf(GndCycleListView.Items[i]).ToString();
+
+            }
 
             //Check rail list IDs
             for (int i = 0; i < raillistview.Items.Count; i++)
@@ -557,15 +563,40 @@ namespace metadata01
 
         private void btn_GndCycleAddGround_Left_Click(object sender, EventArgs e)
         {
-            for(int i=0;i<GndCycleListView.SelectedItems.Count;i++)
-            {
-                for(int j=0;j<gndlistview2.SelectedItems.Count;j++)
-                {
-                    objectlibrary.lib_cyclegrounds[i].grounds.Add(objectlibrary.lib_grounds[j]);
-                    GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
 
-                }
+            //objectlibrary.lib_cyclegrounds[GndCycleListView.SelectedItems.IndexOf(GndCycleListView.SelectedItems[i])].grounds.Add(objectlibrary.lib_grounds[gndlistview2.SelectedItems.IndexOf(gndlistview2.SelectedItems[i])]);
+
+
+            //GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
+
+            int i = Convert.ToInt32(GndCycleListView.SelectedItems[0].Text);
+            int j = Convert.ToInt32(gndlistview2.SelectedItems[0].Text);
+            objectlibrary.lib_cyclegrounds[i].grounds.Add(objectlibrary.lib_grounds[j]);
+            GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
+
+
+
+
+        }
+
+        private void btn_GndCycleDeleteGround_Right_Click(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(GndCycleListView.SelectedItems[0].Text);
+            objectlibrary.lib_cyclegrounds[i].grounds.RemoveAt(objectlibrary.lib_cyclegrounds[i].grounds.Count - 1);
+            GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
+
+
+        }
+
+        private void btn_GndCycleDelete_Click(object sender, EventArgs e)
+        {
+            for(int i=0;i<GndCycleListView.SelectedIndices.Count;i++)
+            {
+                int index = GndCycleListView.SelectedIndices[i];
+                objectlibrary.lib_cyclegrounds.RemoveAt(index);
+                GndCycleListView.Items.RemoveAt(index);
             }
+            UpdateIDs();
         }
     }
 }

@@ -378,6 +378,7 @@
             this.btn_GndCycleDeleteGround_Right.TabIndex = 19;
             this.btn_GndCycleDeleteGround_Right.Text = ">>>";
             this.btn_GndCycleDeleteGround_Right.UseVisualStyleBackColor = true;
+            this.btn_GndCycleDeleteGround_Right.Click += new System.EventHandler(this.btn_GndCycleDeleteGround_Right_Click);
             // 
             // btn_GndCycleAddGround_Left
             // 
@@ -397,6 +398,7 @@
             this.gndlistview2.FullRowSelect = true;
             this.gndlistview2.HideSelection = false;
             this.gndlistview2.Location = new System.Drawing.Point(181, 3);
+            this.gndlistview2.MultiSelect = false;
             this.gndlistview2.Name = "gndlistview2";
             this.gndlistview2.Size = new System.Drawing.Size(133, 173);
             this.gndlistview2.TabIndex = 17;
@@ -419,6 +421,7 @@
             this.btn_GndCycleDelete.TabIndex = 16;
             this.btn_GndCycleDelete.Text = "Delete";
             this.btn_GndCycleDelete.UseVisualStyleBackColor = true;
+            this.btn_GndCycleDelete.Click += new System.EventHandler(this.btn_GndCycleDelete_Click);
             // 
             // btn_GndCycleAdd
             // 
@@ -438,6 +441,7 @@
             this.GndCycleListView.FullRowSelect = true;
             this.GndCycleListView.HideSelection = false;
             this.GndCycleListView.Location = new System.Drawing.Point(6, 3);
+            this.GndCycleListView.MultiSelect = false;
             this.GndCycleListView.Name = "GndCycleListView";
             this.GndCycleListView.Size = new System.Drawing.Size(169, 173);
             this.GndCycleListView.TabIndex = 14;
