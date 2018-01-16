@@ -976,6 +976,16 @@ namespace metadata01
                 parsed_interface.Add(lib_backgrounds[i].CSVParsed(i));
             }
 
+            parsed_interface.Add("With Cycle\n");
+            for (int i = 0; i < lib_cyclegrounds.Count; i++)
+            {
+                parsed_interface.Add(lib_cyclegrounds[i].CSVParsed(i));
+            }
+            for (int i = 0; i < lib_cyclerails.Count; i++)
+            {
+                parsed_interface.Add(lib_cyclerails[i].CSVParsed(i));
+            }
+
 
 
 

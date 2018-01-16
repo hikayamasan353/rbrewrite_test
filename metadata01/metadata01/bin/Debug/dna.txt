@@ -17,6 +17,7 @@ With Structure
 .Rail(2) Undefined, 
 .Rail(3) Undefined, 
 .Rail(4) Undefined, 
+.Rail(5) Undefined, 
 .WallL(0) Undefined, 
 .WallR(0) Undefined, 
 .WallL(1) Undefined, 
@@ -25,6 +26,10 @@ With Structure
 .WallR(2) Undefined, 
 .WallL(3) Undefined, 
 .WallR(3) Undefined, 
+.WallL(4) Undefined, 
+.WallR(4) Undefined, 
+.WallL(5) Undefined, 
+.WallR(5) Undefined, 
 .DikeL(0) Undefined, 
 .DikeR(0) Undefined, 
 .DikeL(1) Undefined, 
@@ -33,6 +38,12 @@ With Structure
 .DikeR(2) Undefined, 
 .DikeL(3) Undefined, 
 .DikeR(3) Undefined, 
+.DikeL(4) Undefined, 
+.DikeR(4) Undefined, 
+.DikeL(5) Undefined, 
+.DikeR(5) Undefined, 
+.DikeL(6) Undefined, 
+.DikeR(6) Undefined, 
 .FormCL(0) Undefined, 
 .FormCR(0) Undefined, 
 .FormL(0) Undefined, 
@@ -53,6 +64,10 @@ With Structure
 .FormCR(4) Undefined, 
 .FormL(4) Undefined, 
 .FormR(4) Undefined,
+.FormCL(5) Undefined, 
+.FormCR(5) Undefined, 
+.FormL(5) Undefined, 
+.FormR(5) Undefined,
 .RoofCL(0) Undefined, 
 .RoofCR(0) Undefined, 
 .RoofL(0) Undefined, 
@@ -69,6 +84,14 @@ With Structure
 .RoofCR(3) Undefined, 
 .RoofL(3) Undefined, 
 .RoofR(3) Undefined,
+.RoofCL(4) Undefined, 
+.RoofCR(4) Undefined, 
+.RoofL(4) Undefined, 
+.RoofR(4) Undefined,
+.RoofCL(5) Undefined, 
+.RoofCR(5) Undefined, 
+.RoofL(5) Undefined, 
+.RoofR(5) Undefined,
 .Pole(0; 0) Undefined, 
 
 .Pole(0; 1) Undefined, 
@@ -77,11 +100,9 @@ With Structure
 
 .Pole(2; 3) Undefined, 
 
-.Pole(3; 4) Undefined, 
+.Pole(4; 4) Undefined, 
 
-.Pole(3; 5) Undefined, 
-
-.Pole(3; 6) Undefined, 
+.Pole(4; 5) Undefined, 
 
 .CrackL(0) Undefined, 
 .CrackR(0) Undefined,
@@ -91,6 +112,8 @@ With Structure
 .CrackR(2) Undefined,
 .CrackL(3) Undefined, 
 .CrackR(3) Undefined,
+.CrackL(4) Undefined, 
+.CrackR(4) Undefined,
 .FreeObj(0) Undefined, 
 .FreeObj(1) Undefined, 
 .FreeObj(2) Undefined, 
@@ -101,6 +124,15 @@ With Structure
 .Beacon(2) Undefined, 
 .Beacon(3) Undefined, 
 .Beacon(4) Undefined, 
-.Beacon(5) Undefined, 
 With Texture
+
+With Cycle
+
+.Ground(0) 3;4;, 
+
+.Ground(1) 1;2;3;, 
+
+.Rail(0) 1;2;3;, 
+
+.Rail(1) 3;4;5;, 
 

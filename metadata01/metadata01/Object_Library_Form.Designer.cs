@@ -480,6 +480,7 @@
             this.btn_RailCycleDeleteRail_Right.TabIndex = 25;
             this.btn_RailCycleDeleteRail_Right.Text = ">>>";
             this.btn_RailCycleDeleteRail_Right.UseVisualStyleBackColor = true;
+            this.btn_RailCycleDeleteRail_Right.Click += new System.EventHandler(this.btn_RailCycleDeleteRail_Right_Click);
             // 
             // btn_RailCycleAddRail_Left
             // 
@@ -489,6 +490,7 @@
             this.btn_RailCycleAddRail_Left.TabIndex = 24;
             this.btn_RailCycleAddRail_Left.Text = "<<<";
             this.btn_RailCycleAddRail_Left.UseVisualStyleBackColor = true;
+            this.btn_RailCycleAddRail_Left.Click += new System.EventHandler(this.btn_RailCycleAddRail_Left_Click);
             // 
             // raillistview2
             // 
@@ -520,6 +522,7 @@
             this.btn_RailCycleDelete.TabIndex = 22;
             this.btn_RailCycleDelete.Text = "Delete";
             this.btn_RailCycleDelete.UseVisualStyleBackColor = true;
+            this.btn_RailCycleDelete.Click += new System.EventHandler(this.btn_RailCycleDelete_Click);
             // 
             // btn_RailCycleAdd
             // 

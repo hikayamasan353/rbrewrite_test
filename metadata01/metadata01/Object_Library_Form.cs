@@ -250,6 +250,11 @@ namespace metadata01
             {
                 raillistview2.Items[i].Text = raillistview2.Items.IndexOf(raillistview2.Items[i]).ToString();
             }
+            //Check rail cycle list IDs
+            for (int i = 0; i < RailCycleListView.Items.Count; i++)
+            {
+                RailCycleListView.Items[i].Text = RailCycleListView.Items.IndexOf(RailCycleListView.Items[i]).ToString();
+            }
 
             //Check form list IDs
             for (int i = 0; i < formlistview.Items.Count; i++)
@@ -597,6 +602,32 @@ namespace metadata01
                 GndCycleListView.Items.RemoveAt(index);
             }
             UpdateIDs();
+        }
+
+        private void btn_RailCycleDelete_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < RailCycleListView.SelectedIndices.Count; i++)
+            {
+                int index = RailCycleListView.SelectedIndices[i];
+                objectlibrary.lib_cyclerails.RemoveAt(index);
+                RailCycleListView.Items.RemoveAt(index);
+            }
+            UpdateIDs();
+        }
+
+        private void btn_RailCycleAddRail_Left_Click(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(RailCycleListView.SelectedItems[0].Text);
+            int j = Convert.ToInt32(raillistview2.SelectedItems[0].Text);
+            objectlibrary.lib_cyclerails[i].rails.Add(objectlibrary.lib_rails[j]);
+            RailCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclerails[i].CycledRails;
+        }
+
+        private void btn_RailCycleDeleteRail_Right_Click(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(RailCycleListView.SelectedItems[0].Text);
+            objectlibrary.lib_cyclerails[i].rails.RemoveAt(objectlibrary.lib_cyclerails[i].rails.Count - 1);
+            RailCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclerails[i].CycledRails;
         }
     }
 }
