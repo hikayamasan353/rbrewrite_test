@@ -217,11 +217,20 @@ namespace metadata01
             {
                 gndlistview.Items[i].Text = gndlistview.Items.IndexOf(gndlistview.Items[i]).ToString();
             }
+            for(int i=0;i<gndlistview2.Items.Count;i++)
+            {
+                gndlistview2.Items[i].Text = gndlistview2.Items.IndexOf(gndlistview2.Items[i]).ToString();
+
+            }
 
             //Check rail list IDs
             for (int i = 0; i < raillistview.Items.Count; i++)
             {
                 raillistview.Items[i].Text = raillistview.Items.IndexOf(raillistview.Items[i]).ToString();
+            }
+            for (int i = 0; i < raillistview2.Items.Count; i++)
+            {
+                raillistview2.Items[i].Text = raillistview2.Items.IndexOf(raillistview2.Items[i]).ToString();
             }
 
             //Check form list IDs
@@ -404,16 +413,35 @@ namespace metadata01
         private void btn_gndadd_Click(object sender, EventArgs e)
         {
             ListViewItem item = new ListViewItem();
+            ListViewItem item2 = new ListViewItem();
 
 
+            //Updating the grounds list on Grounds tab
             gndlistview.Items.Add(item); //Adding the item
             item.Text = item.Index.ToString(); //Making the item's index as the item's number
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
+            //Updating the grounds list on Cycles tab
+            gndlistview2.Items.Add(item2);
+            item2.Text = item2.Index.ToString();
+            item2.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
-            //Adding the blank roof entry
-            objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
+            //Prompting the user to choose the file name
+            string gnd_fname = GroundOpenFileDialog.FileName;
+            if (gnd_fname != null)
+            {
+                //Adding the ground entry with the file name specified
+                objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(gnd_fname,(uint)item.Index));
+                item.SubItems[0].Text = gnd_fname;
+                item2.SubItems[0].Text = gnd_fname;
+
+            }
+            else
+            {
+                //Adding the blank ground entry
+                objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
+            }
             UpdateIDs();
         }
 
@@ -424,7 +452,9 @@ namespace metadata01
                 int index = gndlistview.SelectedIndices[i];
                 objectlibrary.lib_grounds.RemoveAt(index);
                 gndlistview.Items.RemoveAt(index);
+                gndlistview2.Items.RemoveAt(index);
             }
+
             UpdateIDs();
         }
 
@@ -504,11 +534,20 @@ namespace metadata01
         private void btn_RailAdd_Click(object sender, EventArgs e)
         {
             ListViewItem item = new ListViewItem();
+            ListViewItem item2 = new ListViewItem();
             raillistview.Items.Add(item);
             item.Text = item.Index.ToString();
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
-            objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined"));
+            raillistview2.Items.Add(item2);
+            item2.Text = item.Index.ToString();
+            item2.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
+
+
+
+
+
+            objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined",(uint)item.Index));
             UpdateIDs();
 
 
@@ -522,9 +561,23 @@ namespace metadata01
                 int index = raillistview.SelectedIndices[i];
                 objectlibrary.lib_rails.RemoveAt(index);
                 raillistview.Items.RemoveAt(index);
+                raillistview2.Items.RemoveAt(index);
             }
             UpdateIDs();
 
         }
+
+        private void btn_CycleAdd_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem();
+            GndCycleListView.Items.Add(item);
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

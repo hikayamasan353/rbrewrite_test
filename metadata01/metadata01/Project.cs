@@ -65,6 +65,12 @@ namespace metadata01
 
 
 
+        /// <summary>
+        /// List of exportable modules. Similar to RouteBuilder's Route Definitions.
+        /// </summary>
+        public List<Module> modules;
+
+
         public Project()
         {
             //by default, set the most popular settings:

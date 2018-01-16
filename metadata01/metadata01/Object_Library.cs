@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//Object libraries will be saved in XML format
+using System.Xml;
+using System.Xml.Linq;
 
 
 using IniParser;
@@ -43,6 +46,9 @@ namespace metadata01
          * .Beacon(0) routename\beacon.b3d
          * With Texture
          * .Background(0) routename\background.bmp
+         * With Cycle
+         * .Ground(0) 0;1;2;
+         * .Rail(0) 0;1;2;
          * ---------------------------------------------------------------
          * Usually while manually coding, writing all these fields and referencing
          * them is very straining and confusing. Unfortunately, Uwe Post's original RouteBuilder
@@ -61,12 +67,13 @@ namespace metadata01
         /// With Cycle
         /// .Ground(0) 0;1;2,
         /// </summary>
-        public List<Cycle> lib_cycles;
+        //public List<Cycle> lib_cycles;
         //======================================================================
 
         public List<Beacon> lib_beacons;
 
         public List<Ground> lib_grounds;
+        public List<CycleGround> lib_cyclegrounds;
 
 
         public List<Background> lib_backgrounds;
@@ -89,6 +96,7 @@ namespace metadata01
         public List<Pole> lib_poles;
 
         public List<Rail> lib_rails;
+        public List<Rail> lib_cyclerails;
 
 
 
@@ -105,9 +113,25 @@ namespace metadata01
                 this.filename = filename;
             }
 
+            /// <summary>
+            /// CSV parsed code for route export
+            /// </summary>
+            /// <param name="index">Background ID</param>
+            /// <returns></returns>
             public string CSVParsed(int index)
             {
                 return ".Background(" + index.ToString() + ") " + this.filename + ", \n";
+            }
+
+            /// <summary>
+            /// XML parsed code for object library files
+            /// </summary>
+            /// <param name="index"></param>
+            /// <returns></returns>
+            public XElement XMLParsed(int index)
+            {
+                return new XElement("background", new XAttribute("id", index)
+                    );
             }
 
         }
@@ -121,7 +145,7 @@ namespace metadata01
         /// .Ground (0) 0;1;2,
         /// --------------------------------------------------------------------------
         /// </summary>
-        public struct Cycle
+        public struct CycleGround
         {
 
             /// <summary>
@@ -129,25 +153,16 @@ namespace metadata01
             /// </summary>
             public List<Ground> grounds;
 
+
+
             /// <summary>
-            /// Creates a cycle out of the specific ground list
+            /// Creates a cycle out of the specific ground and rail list
             /// </summary>
             /// <param name="g">A ground list</param>
-            public Cycle(List<Ground> g)
+            public CycleGround(List<Ground> g)
             {
                 this.grounds = g;
-                for (int i = 0; i < this.grounds.Count; i++)
-                {
-                    //If a ground is not considered in cycle?
-                    if (this.grounds[i].in_cycle == false)
-                    {
-                        //Replace the in_cycle with true
-                        Ground gr1 = this.grounds[i];
-                        gr1.in_cycle = true;
-                        this.grounds[i] = gr1;
-                    }
-
-                }
+                
             }
 
 
@@ -164,9 +179,43 @@ namespace metadata01
                 string s1 = "";
                 for (int i1 = 0; i1 < this.grounds.Count; i1++)
                 {
+                    
+
                     s1 += i1.ToString() + ";";
                 }
                 return ".Ground(" + index.ToString() + ") " + s1 + ", \n";
+            }
+
+
+        }
+
+        public struct CycleRail
+        {
+            /// <summary>
+            /// Rails that are in cycle
+            /// </summary>
+            public List<Rail> rails;
+
+            public CycleRail(List<Rail>r)
+            {
+                rails = r;
+            }
+
+            /// <summary>
+            /// CSV parsed declaration of a cycle
+            /// </summary>
+            /// <param name="index">Index in .Ground(index)</param>
+            /// <returns>CSV parsed string value, i.e. .Ground(0) 0;1;2;3,</returns>
+            public string CSVParsed(int index)
+            {
+                //CSV parsed values of rails in cycle
+                //i.e.: .Rail(0) 0;1;2;3,
+                string s1 = "";
+                for (int i1 = 0; i1 < this.rails.Count; i1++)
+                {
+                    s1 += i1.ToString() + ";";
+                }
+                return ".Rail(" + index.ToString() + ") " + s1 + ", \n";
             }
 
 
@@ -188,12 +237,10 @@ namespace metadata01
             /// </summary>
             public string filename;
 
-
             /// <summary>
-            /// Is it in cycle?
+            /// ID of ground in cycle
             /// </summary>
-            public bool in_cycle;
-
+            public uint id;
 
             /// <summary>
             /// Creates a new ground object
@@ -202,9 +249,16 @@ namespace metadata01
             public Ground(string fname)
             {
                 this.filename = fname;
-                this.in_cycle = false;
-                
+                this.id = 0;
             }
+
+            public Ground(string fname,uint id)
+            {
+                filename = fname;
+                this.id = id;
+            }
+
+
 
             public string CSVParsed(int index)
             {
@@ -212,6 +266,8 @@ namespace metadata01
             }
 
         }
+
+
 
 
 
@@ -232,10 +288,22 @@ namespace metadata01
             /// </summary>
             public string filename;
 
+            /// <summary>
+            /// Rail ID to be used in cycle
+            /// </summary>
+            public uint id;
+
             public Rail(string fname)
             {
                 this.filename = fname;
+                id = 0;
             }
+            public Rail(string fname, uint id)
+            {
+                filename = fname;
+                this.id = id;
+            }
+
 
             public string CSVParsed(int index)
             {
@@ -693,6 +761,9 @@ namespace metadata01
         /// <param name="filename"></param>
         public void LoadFromFile(string filename)
         {
+
+            XmlReader reader=XmlReader.Create("");
+
             
 
 
@@ -712,11 +783,99 @@ namespace metadata01
         /// <param name="filename"></param>
         public void SaveToFile(string filename)
         {
-            
+            //Create an XML document for object libraries
+            XDocument library = new XDocument();
 
-            //Save grounds
+            //Create an XML master node
+            XElement master = new XElement("ObjectLibrary");
+            library.Add(master);
 
-            //Save walls and dikes
+            //Todo: Object library information.
+
+            //Create XML nodes for every type of objects in the object library
+            XElement backgrounds = new XElement("Backgrounds");
+            master.Add(backgrounds);
+            XElement rails = new XElement("Rails");
+            master.Add(rails);
+            XElement walls = new XElement("Walls");
+            master.Add(walls);
+            XElement dikes = new XElement("Dikes");
+            master.Add(dikes);
+            XElement platforms = new XElement("Platforms");
+            master.Add(platforms);
+            XElement roofs = new XElement("Roofs");
+            master.Add(roofs);
+            XElement poles = new XElement("Poles");
+            master.Add(poles);
+            XElement cracks = new XElement("Cracks");
+            master.Add(cracks);
+            XElement freeobjs = new XElement("FreeObjects");
+            master.Add(freeobjs);
+            XElement beacons = new XElement("Beacons");
+            master.Add(beacons);
+
+
+            //Add objects as XML elements to every element they belong to
+            for(int i=0;i<lib_backgrounds.Count;i++)
+            {
+                backgrounds.Add(new XElement("background", new XAttribute("id", i), new XAttribute("filename", lib_backgrounds[i].filename)));
+            }
+
+
+            for (int i = 0; i < lib_rails.Count; i++)
+            {
+                rails.Add(new XElement("rail", new XAttribute("id", i), new XAttribute("filename", lib_rails[i].filename)));
+            }
+            for (int i = 0; i < lib_walls.Count; i++)
+            {
+                walls.Add(new XElement("wall", new XAttribute("id", i), new XAttribute("filename_L", lib_walls[i].filename_L), new XAttribute("filename_R", lib_walls[i].filename_R)));
+            }
+            for (int i = 0; i < lib_dikes.Count; i++)
+            {
+                dikes.Add(new XElement("dike", new XAttribute("id", i), new XAttribute("filename_L", lib_dikes[i].filename_L), new XAttribute("filename_R", lib_dikes[i].filename_R)));
+            }
+            for (int i = 0; i < lib_platforms.Count; i++)
+            {
+                platforms.Add(new XElement("platform", new XAttribute("id", i), new XAttribute("filename_L", lib_platforms[i].filenameL), new XAttribute("filename_CL", lib_platforms[i].filenameCL), new XAttribute("filename_CR", lib_platforms[i].filenameCR), new XAttribute("filename_R", lib_platforms[i].filenameR)));
+            }
+            for (int i = 0; i < lib_roofs.Count; i++)
+            {
+                roofs.Add(new XElement("roof", new XAttribute("id", i), new XAttribute("filename_L", lib_roofs[i].filenameL), new XAttribute("filename_CL", lib_roofs[i].filenameCL), new XAttribute("filename_CR", lib_roofs[i].filenameCR), new XAttribute("filename_R", lib_roofs[i].filenameR)));
+            }
+            for (int i = 0; i < lib_poles.Count; i++)
+            {
+                poles.Add(new XElement("pole", new XAttribute("id", i), new XAttribute("filename", lib_poles[i].filename), new XAttribute("covers", lib_poles[i].additional_rail_number)));
+            }
+            for (int i = 0; i < lib_cracks.Count; i++)
+            {
+                cracks.Add(new XElement("crack", new XAttribute("id", i), new XAttribute("filename_L", lib_cracks[i].filename_L), new XAttribute("filename_R", lib_cracks[i].filename_R)));
+            }
+            for (int i = 0; i < lib_freeobjs.Count; i++)
+            {
+                freeobjs.Add(new XElement("freeobj", new XAttribute("id", i), new XAttribute("filename", lib_freeobjs[i].filename)));
+            }
+            for(int i=0;i<lib_beacons.Count;i++)
+            {
+                beacons.Add(new XElement("beacon", new XAttribute("id", i), new XAttribute("filename", lib_beacons[i].filename)));
+            }
+
+            //Write it to file
+            XmlWriter writer=XmlWriter.Create("dna.xml");
+            writer.WriteStartDocument();
+
+
+
+            writer.WriteEndDocument();
+
+
+
+
+
+
+
+
+
+
 
 
         }
