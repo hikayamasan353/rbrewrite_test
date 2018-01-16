@@ -216,6 +216,7 @@ namespace metadata01
             for (int i = 0; i < gndlistview.Items.Count; i++)
             {
                 gndlistview.Items[i].Text = gndlistview.Items.IndexOf(gndlistview.Items[i]).ToString();
+                
             }
             for(int i=0;i<gndlistview2.Items.Count;i++)
             {
@@ -470,55 +471,7 @@ namespace metadata01
         {
             //String list for exporting
             List<string> exportinterface = new List<string>();
-
-            //Adding grounds
-            for (int i = 0; i < objectlibrary.lib_grounds.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_grounds[i].CSVParsed(i));
-            }
-            //Adding rails
-            for (int i = 0; i < objectlibrary.lib_rails.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_rails[i].CSVParsed(i));
-            }
-            //Adding walls and dikes
-            for (int i = 0; i < objectlibrary.lib_walls.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_walls[i].CSVParsed(i));
-            }
-            for (int i = 0; i < objectlibrary.lib_dikes.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_dikes[i].CSVParsed(i));
-            }
-            //Adding roofs
-            for (int i = 0; i < objectlibrary.lib_platforms.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_platforms[i].CSVParsed(i));
-            }
-            for (int i = 0; i < objectlibrary.lib_roofs.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_roofs[i].CSVParsed(i));
-            }
-            //Adding poles
-            for(int i=0;i<objectlibrary.lib_poles.Count;i++)
-            {
-                exportinterface.Add(objectlibrary.lib_poles[i].CSVParsed(i));
-            }
-            //Adding cracks
-            for(int i=0;i<objectlibrary.lib_cracks.Count;i++)
-            {
-                exportinterface.Add(objectlibrary.lib_cracks[i].CSVParsed(i));
-            }
-            //Adding freeobjs
-            for(int i=0;i<objectlibrary.lib_freeobjs.Count;i++)
-            {
-                exportinterface.Add(objectlibrary.lib_freeobjs[i].CSVParsed(i));
-            }
-            //Adding beacons
-            for (int i = 0; i < objectlibrary.lib_beacons.Count; i++)
-            {
-                exportinterface.Add(objectlibrary.lib_beacons[i].CSVParsed(i));
-            }
+            exportinterface = objectlibrary.CSVParsed();
 
             StreamWriter exportstream = new StreamWriter(Application.StartupPath + "\\dna.txt");
             for (int i = 0; i < exportinterface.Count; i++)

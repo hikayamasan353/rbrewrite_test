@@ -37,7 +37,7 @@
             this.bckdelbutton = new System.Windows.Forms.Button();
             this.bckaddbutton = new System.Windows.Forms.Button();
             this.bckpreviewpicbox = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.BckListBox = new System.Windows.Forms.ListBox();
             this.gndtabpage = new System.Windows.Forms.TabPage();
             this.btn_gnddelete = new System.Windows.Forms.Button();
             this.btn_gndadd = new System.Windows.Forms.Button();
@@ -220,7 +220,7 @@
             this.bcktabpage.Controls.Add(this.bckdelbutton);
             this.bcktabpage.Controls.Add(this.bckaddbutton);
             this.bcktabpage.Controls.Add(this.bckpreviewpicbox);
-            this.bcktabpage.Controls.Add(this.listBox1);
+            this.bcktabpage.Controls.Add(this.BckListBox);
             this.bcktabpage.Location = new System.Drawing.Point(4, 22);
             this.bcktabpage.Name = "bcktabpage";
             this.bcktabpage.Size = new System.Drawing.Size(454, 283);
@@ -256,14 +256,14 @@
             this.bckpreviewpicbox.TabIndex = 1;
             this.bckpreviewpicbox.TabStop = false;
             // 
-            // listBox1
+            // BckListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(4, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 121);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.BckListBox.FormattingEnabled = true;
+            this.BckListBox.Location = new System.Drawing.Point(4, 4);
+            this.BckListBox.Name = "BckListBox";
+            this.BckListBox.Size = new System.Drawing.Size(194, 121);
+            this.BckListBox.TabIndex = 0;
+            this.BckListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // gndtabpage
             // 
@@ -1470,7 +1470,7 @@
         private System.Windows.Forms.ColumnHeader formr_col;
         private System.Windows.Forms.TabPage bcktabpage;
         private System.Windows.Forms.PictureBox bckpreviewpicbox;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox BckListBox;
         private System.Windows.Forms.Button bckdelbutton;
         private System.Windows.Forms.Button bckaddbutton;
         private System.Windows.Forms.OpenFileDialog WallL_OpenFileDialog;

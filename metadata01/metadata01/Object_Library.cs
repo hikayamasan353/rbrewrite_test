@@ -895,6 +895,16 @@ namespace metadata01
             List<string> parsed_interface = new List<string>();
             //Adding header
             parsed_interface.Add("With Structure\n");
+            //Parsing grounds
+            for(int i=0;i<lib_grounds.Count;i++)
+            {
+                parsed_interface.Add(lib_grounds[i].CSVParsed(i));
+            }
+            //Parsing rails
+            for(int i=0;i<lib_rails.Count;i++)
+            {
+                parsed_interface.Add(lib_rails[i].CSVParsed(i));
+            }
             //Parsing walls
             for (int i = 0; i < lib_walls.Count; i++)
             {
@@ -915,6 +925,11 @@ namespace metadata01
             {
                 parsed_interface.Add(lib_roofs[i].CSVParsed(i));
             }
+            //Parsing poles
+            for(int i=0;i<lib_poles.Count;i++)
+            {
+                parsed_interface.Add(lib_poles[i].CSVParsed(i));
+            }
             //Parsing cracks
             for(int i=0;i<lib_cracks.Count;i++)
             {
@@ -924,6 +939,11 @@ namespace metadata01
             for (int i = 0; i < lib_freeobjs.Count; i++)
             {
                 parsed_interface.Add(lib_freeobjs[i].CSVParsed(i));
+            }
+            //Parsing beacons
+            for(int i=0;i<lib_beacons.Count;i++)
+            {
+                parsed_interface.Add(lib_beacons[i].CSVParsed(i));
             }
 
             parsed_interface.Add("With Texture\n");
