@@ -785,10 +785,50 @@ namespace metadata01
         /// <param name="filename"></param>
         public void LoadFromFile(string filename)
         {
+            //Prepare to load documents
+            XmlDocument library = new XmlDocument();
+            library.Load(filename);
 
-            XmlReader reader=XmlReader.Create("");
 
-            
+            //Clear lists to replace the library
+            lib_backgrounds.Clear();
+            lib_grounds.Clear();
+            lib_rails.Clear();
+            lib_walls.Clear();
+            lib_dikes.Clear();
+            lib_platforms.Clear();
+            lib_roofs.Clear();
+            lib_cracks.Clear();
+            lib_poles.Clear();
+            lib_freeobjs.Clear();
+            lib_beacons.Clear();
+
+
+            XmlElement master = library["ObjectLibrary"];
+
+            XmlElement backgrounds = master["Backgrounds"];
+            for(int i=0;i<backgrounds.ChildNodes.Count;i++)
+            {
+
+            }
+
+            XmlElement grounds = master["Grounds"];
+            for(int i=0;i<grounds.ChildNodes.Count;i++)
+            {
+
+            }
+
+            XmlElement rails = master["Rails"];
+            XmlElement walls = master["Walls"];
+            XmlElement dikes = master["Dikes"];
+            XmlElement platforms = master["Platforms"];
+            XmlElement roofs = master["Roofs"];
+            XmlElement poles = master["Poles"];
+            XmlElement cracks = master["Cracks"];
+            XmlElement freeobjs = master["FreeObjects"];
+            XmlElement beacons = master["Beacons"];
+
+
 
 
 
@@ -819,6 +859,8 @@ namespace metadata01
             //Create XML nodes for every type of objects in the object library
             XElement backgrounds = new XElement("Backgrounds");
             master.Add(backgrounds);
+            XElement grounds = new XElement("Grounds");
+            master.Add(grounds);
             XElement rails = new XElement("Rails");
             master.Add(rails);
             XElement walls = new XElement("Walls");
@@ -845,6 +887,10 @@ namespace metadata01
                 backgrounds.Add(new XElement("background", new XAttribute("id", i), new XAttribute("filename", lib_backgrounds[i].filename)));
             }
 
+            for(int i=0;i<lib_grounds.Count;i++)
+            {
+                grounds.Add(new XElement("ground", new XAttribute("id", i), new XAttribute("filename", lib_grounds[i].filename)));
+            }
 
             for (int i = 0; i < lib_rails.Count; i++)
             {
@@ -890,6 +936,7 @@ namespace metadata01
 
 
             writer.WriteEndDocument();
+            writer.Close();
 
 
 
