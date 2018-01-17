@@ -579,6 +579,7 @@
             this.btn_wallchooseright.TabIndex = 4;
             this.btn_wallchooseright.Text = "Choose right";
             this.btn_wallchooseright.UseVisualStyleBackColor = true;
+            this.btn_wallchooseright.Click += new System.EventHandler(this.btn_wallchooseright_Click);
             // 
             // btn_wallchooseleft
             // 
@@ -588,6 +589,7 @@
             this.btn_wallchooseleft.TabIndex = 3;
             this.btn_wallchooseleft.Text = "Choose left";
             this.btn_wallchooseleft.UseVisualStyleBackColor = true;
+            this.btn_wallchooseleft.Click += new System.EventHandler(this.btn_wallchooseleft_Click);
             // 
             // btn_deletewall
             // 
@@ -660,6 +662,7 @@
             this.btn_dikechooseright.TabIndex = 9;
             this.btn_dikechooseright.Text = "Choose right";
             this.btn_dikechooseright.UseVisualStyleBackColor = true;
+            this.btn_dikechooseright.Click += new System.EventHandler(this.btn_dikechooseright_Click);
             // 
             // btn_dikechooseleft
             // 
@@ -669,6 +672,7 @@
             this.btn_dikechooseleft.TabIndex = 8;
             this.btn_dikechooseleft.Text = "Choose left";
             this.btn_dikechooseleft.UseVisualStyleBackColor = true;
+            this.btn_dikechooseleft.Click += new System.EventHandler(this.btn_dikechooseleft_Click);
             // 
             // btn_deletedike
             // 
@@ -809,6 +813,7 @@
             this.btn_formchooseright.TabIndex = 6;
             this.btn_formchooseright.Text = "Choose right";
             this.btn_formchooseright.UseVisualStyleBackColor = true;
+            this.btn_formchooseright.Click += new System.EventHandler(this.btn_formchooseright_Click);
             // 
             // btn_formchoosecright
             // 
@@ -818,6 +823,7 @@
             this.btn_formchoosecright.TabIndex = 5;
             this.btn_formchoosecright.Text = "Choose center right";
             this.btn_formchoosecright.UseVisualStyleBackColor = true;
+            this.btn_formchoosecright.Click += new System.EventHandler(this.btn_formchoosecright_Click);
             // 
             // btn_formchoosecleft
             // 
@@ -827,6 +833,7 @@
             this.btn_formchoosecleft.TabIndex = 4;
             this.btn_formchoosecleft.Text = "Choose center left";
             this.btn_formchoosecleft.UseVisualStyleBackColor = true;
+            this.btn_formchoosecleft.Click += new System.EventHandler(this.btn_formchoosecleft_Click);
             // 
             // btn_formchooseleft
             // 
@@ -921,6 +928,7 @@
             this.btn_roofchooseright.TabIndex = 13;
             this.btn_roofchooseright.Text = "Choose right";
             this.btn_roofchooseright.UseVisualStyleBackColor = true;
+            this.btn_roofchooseright.Click += new System.EventHandler(this.btn_roofchooseright_Click);
             // 
             // btn_roofchoosecright
             // 
@@ -930,6 +938,7 @@
             this.btn_roofchoosecright.TabIndex = 12;
             this.btn_roofchoosecright.Text = "Choose center right";
             this.btn_roofchoosecright.UseVisualStyleBackColor = true;
+            this.btn_roofchoosecright.Click += new System.EventHandler(this.btn_roofchoosecright_Click);
             // 
             // btn_roofchoosecleft
             // 
@@ -939,6 +948,7 @@
             this.btn_roofchoosecleft.TabIndex = 11;
             this.btn_roofchoosecleft.Text = "Choose center left";
             this.btn_roofchoosecleft.UseVisualStyleBackColor = true;
+            this.btn_roofchoosecleft.Click += new System.EventHandler(this.btn_roofchoosecleft_Click);
             // 
             // btn_roofchooseleft
             // 
@@ -948,6 +958,7 @@
             this.btn_roofchooseleft.TabIndex = 10;
             this.btn_roofchooseleft.Text = "Choose left";
             this.btn_roofchooseleft.UseVisualStyleBackColor = true;
+            this.btn_roofchooseleft.Click += new System.EventHandler(this.btn_roofchooseleft_Click);
             // 
             // btn_roofdelete
             // 
@@ -1030,6 +1041,7 @@
             this.btn_crackchooseright.TabIndex = 9;
             this.btn_crackchooseright.Text = "Choose right";
             this.btn_crackchooseright.UseVisualStyleBackColor = true;
+            this.btn_crackchooseright.Click += new System.EventHandler(this.btn_crackchooseright_Click);
             // 
             // btn_crackchooseleft
             // 
@@ -1039,6 +1051,7 @@
             this.btn_crackchooseleft.TabIndex = 8;
             this.btn_crackchooseleft.Text = "Choose left";
             this.btn_crackchooseleft.UseVisualStyleBackColor = true;
+            this.btn_crackchooseleft.Click += new System.EventHandler(this.btn_crackchooseleft_Click);
             // 
             // btn_deletecrack
             // 

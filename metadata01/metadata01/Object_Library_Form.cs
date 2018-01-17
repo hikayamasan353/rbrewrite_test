@@ -483,7 +483,11 @@ namespace metadata01
 
         private void btn_formchooseleft_Click(object sender, EventArgs e)
         {
-
+            FormL_OpenFileDialog.ShowDialog();
+            int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            pform.filenameL = FormL_OpenFileDialog.FileName;
+            objectlibrary.lib_platforms[index] = pform;
         }
 
 
@@ -628,6 +632,123 @@ namespace metadata01
             int i = Convert.ToInt32(RailCycleListView.SelectedItems[0].Text);
             objectlibrary.lib_cyclerails[i].rails.RemoveAt(objectlibrary.lib_cyclerails[i].rails.Count - 1);
             RailCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclerails[i].CycledRails;
+        }
+
+        private void btn_wallchooseleft_Click(object sender, EventArgs e)
+        {
+            WallL_OpenFileDialog.ShowDialog();
+            int index = walllistview.Items.IndexOf(walllistview.SelectedItems[0]);
+            ObjectLibrary.Wall pwall = objectlibrary.lib_walls[index];
+            pwall.filename_L = WallL_OpenFileDialog.FileName;
+            objectlibrary.lib_walls[index] = pwall;
+        }
+
+        private void btn_wallchooseright_Click(object sender, EventArgs e)
+        {
+            WallR_OpenFileDialog.ShowDialog();
+            int index = walllistview.Items.IndexOf(walllistview.SelectedItems[0]);
+            ObjectLibrary.Wall pwall = objectlibrary.lib_walls[index];
+            pwall.filename_R = WallR_OpenFileDialog.FileName;
+            objectlibrary.lib_walls[index] = pwall;
+        }
+
+        private void btn_dikechooseleft_Click(object sender, EventArgs e)
+        {
+            DikeL_OpenFileDialog.ShowDialog();
+            int index = dikelistview.Items.IndexOf(dikelistview.SelectedItems[0]);
+            ObjectLibrary.Dike pdike = objectlibrary.lib_dikes[index];
+            pdike.filename_L = DikeL_OpenFileDialog.FileName;
+            objectlibrary.lib_dikes[index] = pdike;
+        }
+
+        private void btn_dikechooseright_Click(object sender, EventArgs e)
+        {
+            DikeR_OpenFileDialog.ShowDialog();
+            int index = dikelistview.Items.IndexOf(dikelistview.SelectedItems[0]);
+            ObjectLibrary.Dike pdike = objectlibrary.lib_dikes[index];
+            pdike.filename_R = DikeR_OpenFileDialog.FileName;
+            objectlibrary.lib_dikes[index] = pdike;
+        }
+
+        private void btn_crackchooseleft_Click(object sender, EventArgs e)
+        {
+            CrackL_OpenFileDialog.ShowDialog();
+            int index = cracklistview.Items.IndexOf(cracklistview.SelectedItems[0]);
+            ObjectLibrary.Crack pcrack = objectlibrary.lib_cracks[index];
+            pcrack.filename_L = CrackL_OpenFileDialog.FileName;
+            objectlibrary.lib_cracks[index] = pcrack;
+        }
+
+        private void btn_crackchooseright_Click(object sender, EventArgs e)
+        {
+            CrackR_OpenFileDialog.ShowDialog();
+            int index = cracklistview.Items.IndexOf(cracklistview.SelectedItems[0]);
+            ObjectLibrary.Crack pcrack = objectlibrary.lib_cracks[index];
+            pcrack.filename_R = CrackR_OpenFileDialog.FileName;
+            objectlibrary.lib_cracks[index] = pcrack;
+        }
+
+        private void btn_formchoosecleft_Click(object sender, EventArgs e)
+        {
+            FormCL_OpenFileDialog.ShowDialog();
+            int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            pform.filenameCL = FormCL_OpenFileDialog.FileName;
+            objectlibrary.lib_platforms[index] = pform;
+        }
+
+        private void btn_formchoosecright_Click(object sender, EventArgs e)
+        {
+            FormCR_OpenFileDialog.ShowDialog();
+            int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            pform.filenameCR = FormCR_OpenFileDialog.FileName;
+            objectlibrary.lib_platforms[index] = pform;
+        }
+
+        private void btn_formchooseright_Click(object sender, EventArgs e)
+        {
+            FormR_OpenFileDialog.ShowDialog();
+            int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            pform.filenameR = FormR_OpenFileDialog.FileName;
+            objectlibrary.lib_platforms[index] = pform;
+        }
+
+        private void btn_roofchooseleft_Click(object sender, EventArgs e)
+        {
+            RoofL_OpenFileDialog.ShowDialog();
+            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            proof.filenameL = RoofL_OpenFileDialog.FileName;
+            objectlibrary.lib_roofs[index] = proof;
+        }
+
+        private void btn_roofchoosecleft_Click(object sender, EventArgs e)
+        {
+            RoofCL_OpenFileDialog.ShowDialog();
+            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            proof.filenameCL = RoofCL_OpenFileDialog.FileName;
+            objectlibrary.lib_roofs[index] = proof;
+        }
+
+        private void btn_roofchoosecright_Click(object sender, EventArgs e)
+        {
+            RoofCR_OpenFileDialog.ShowDialog();
+            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            proof.filenameCR = RoofCR_OpenFileDialog.FileName;
+            objectlibrary.lib_roofs[index] = proof;
+        }
+
+        private void btn_roofchooseright_Click(object sender, EventArgs e)
+        {
+            RoofR_OpenFileDialog.ShowDialog();
+            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            proof.filenameR = RoofR_OpenFileDialog.FileName;
+            objectlibrary.lib_roofs[index] = proof;
         }
     }
 }
