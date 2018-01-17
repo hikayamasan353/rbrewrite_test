@@ -113,12 +113,15 @@ namespace metadata01
 
         private void bckaddbutton_Click(object sender, EventArgs e)
         {
-
+            BackgroundOpenFileDialog.ShowDialog();
+            objectlibrary.lib_backgrounds.Add(new ObjectLibrary.Background(BackgroundOpenFileDialog.FileName));
+            BckListBox.Items.Add(BackgroundOpenFileDialog.FileName);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int index = BckListBox.SelectedIndex;
+            bckpreviewpicbox.ImageLocation = objectlibrary.lib_backgrounds[index].filename;
         }
 
         private void btn_deletewall_Click(object sender, EventArgs e)
@@ -749,6 +752,13 @@ namespace metadata01
             ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
             proof.filenameR = RoofR_OpenFileDialog.FileName;
             objectlibrary.lib_roofs[index] = proof;
+        }
+
+        private void bckdelbutton_Click(object sender, EventArgs e)
+        {
+            int index = BckListBox.SelectedIndex;
+            BckListBox.Items.RemoveAt(index);
+            objectlibrary.lib_backgrounds.RemoveAt(index);
         }
     }
 }

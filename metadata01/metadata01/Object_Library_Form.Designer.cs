@@ -174,6 +174,7 @@
             this.RoofR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.BackgroundOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
@@ -237,6 +238,7 @@
             this.bckdelbutton.TabIndex = 3;
             this.bckdelbutton.Text = "Delete";
             this.bckdelbutton.UseVisualStyleBackColor = true;
+            this.bckdelbutton.Click += new System.EventHandler(this.bckdelbutton_Click);
             // 
             // bckaddbutton
             // 
@@ -1427,6 +1429,10 @@
             this.CrackR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x";
             this.CrackR_OpenFileDialog.Title = "Choose right object file";
             // 
+            // BackgroundOpenFileDialog
+            // 
+            this.BackgroundOpenFileDialog.Filter = "BMP|*.bmp|JPG|*.jpg|PNG|*.png";
+            // 
             // Object_Library_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1617,5 +1623,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Label lab_rail_note;
+        private System.Windows.Forms.OpenFileDialog BackgroundOpenFileDialog;
     }
 }
