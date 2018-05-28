@@ -769,7 +769,8 @@ namespace metadata01
 
         private void openLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ObjLibrary_OpenFileDialog.ShowDialog();
+            objectlibrary.LoadFromFile(ObjLibrary_OpenFileDialog.FileName);
         }
     }
 }
