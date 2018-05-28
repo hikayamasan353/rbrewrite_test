@@ -828,6 +828,8 @@ namespace metadata01
             XmlElement freeobjs = master["FreeObjects"];
             XmlElement beacons = master["Beacons"];
 
+            //Create a reader stream
+            XmlReader reader = XmlReader.Create(filename);
 
 
 
@@ -839,102 +841,320 @@ namespace metadata01
             //Load walls and dikes
 
 
+            //Close the stream
+            reader.Close();
+
         }
 
         /// <summary>
         /// Saves a library to file
         /// </summary>
-        /// <param name="filename"></param>
+        /// <param name="filename">File name</param>
         public void SaveToFile(string filename)
         {
             //Create an XML document for object libraries
             XDocument library = new XDocument();
 
-            //Create an XML master node
+            //Create a stream, Write it to file
+            XmlWriter writer = XmlWriter.Create(filename);
+            
+
+
+            //Create an XML master element and commence the writer
             XElement master = new XElement("ObjectLibrary");
             library.Add(master);
+            writer.WriteStartDocument();
+            writer.WriteStartElement(master.Name.ToString());
 
             //Todo: Object library information.
 
             //Create XML nodes for every type of objects in the object library
+            //////////////////////////////////////////////////////////////////
+            //Backgrounds
             XElement backgrounds = new XElement("Backgrounds");
             master.Add(backgrounds);
+            writer.WriteStartElement(backgrounds.Name.ToString());
+            for (int i = 0; i < lib_backgrounds.Count; i++)
+            {
+                XElement background_node = new XElement("background", new XAttribute("id", i), new XAttribute("filename", lib_backgrounds[i].filename));
+                backgrounds.Add(background_node);
+                writer.WriteStartElement(background_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename");
+                writer.WriteValue(lib_backgrounds[i].filename);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+            ////////////////////////////////////////////////////////////////////////////
+            //Grounds
             XElement grounds = new XElement("Grounds");
             master.Add(grounds);
+            writer.WriteStartElement(grounds.Name.ToString());
+            for (int i = 0; i < lib_grounds.Count; i++)
+            {
+                XElement ground_node = new XElement("ground", new XAttribute("id", i), new XAttribute("filename", lib_grounds[i].filename));
+                grounds.Add(ground_node);
+                writer.WriteStartElement(ground_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename");
+                writer.WriteValue(lib_grounds[i].filename);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+            ////////////////////////////////////////////////////////////////////////////////////
+            //Rails
             XElement rails = new XElement("Rails");
             master.Add(rails);
-            XElement walls = new XElement("Walls");
-            master.Add(walls);
-            XElement dikes = new XElement("Dikes");
-            master.Add(dikes);
-            XElement platforms = new XElement("Platforms");
-            master.Add(platforms);
-            XElement roofs = new XElement("Roofs");
-            master.Add(roofs);
-            XElement poles = new XElement("Poles");
-            master.Add(poles);
-            XElement cracks = new XElement("Cracks");
-            master.Add(cracks);
-            XElement freeobjs = new XElement("FreeObjects");
-            master.Add(freeobjs);
-            XElement beacons = new XElement("Beacons");
-            master.Add(beacons);
-
-
-            //Add objects as XML elements to every element they belong to
-            for(int i=0;i<lib_backgrounds.Count;i++)
-            {
-                backgrounds.Add(new XElement("background", new XAttribute("id", i), new XAttribute("filename", lib_backgrounds[i].filename)));
-            }
-
-            for(int i=0;i<lib_grounds.Count;i++)
-            {
-                grounds.Add(new XElement("ground", new XAttribute("id", i), new XAttribute("filename", lib_grounds[i].filename)));
-            }
-
+            writer.WriteStartElement(rails.Name.ToString());
             for (int i = 0; i < lib_rails.Count; i++)
             {
-                rails.Add(new XElement("rail", new XAttribute("id", i), new XAttribute("filename", lib_rails[i].filename)));
+                XElement rail_node = new XElement("rail", new XAttribute("id", i), new XAttribute("filename", lib_rails[i].filename));
+                rails.Add(rail_node);
+                writer.WriteStartElement(rail_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename");
+                writer.WriteValue(lib_rails[i].filename);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+            /////////////////////////////////////////////////////////////////////////////////////
+            //Walls
+            XElement walls = new XElement("Walls");
+            master.Add(walls);
+            writer.WriteStartElement(walls.Name.ToString());
             for (int i = 0; i < lib_walls.Count; i++)
             {
-                walls.Add(new XElement("wall", new XAttribute("id", i), new XAttribute("filename_L", lib_walls[i].filename_L), new XAttribute("filename_R", lib_walls[i].filename_R)));
+                XElement wall_node = new XElement("wall", new XAttribute("id", i), new XAttribute("filename_L", lib_walls[i].filename_L), new XAttribute("filename_R", lib_walls[i].filename_R));
+                walls.Add(wall_node);
+                writer.WriteStartElement(wall_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_L");
+                writer.WriteValue(lib_walls[i].filename_L);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_R");
+                writer.WriteValue(lib_walls[i].filename_R);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+            /////////////////////////////////////////////////////////////////////////////////////////
+            //Dikes
+            XElement dikes = new XElement("Dikes");
+            master.Add(dikes);
+            writer.WriteStartElement(dikes.Name.ToString());
             for (int i = 0; i < lib_dikes.Count; i++)
             {
-                dikes.Add(new XElement("dike", new XAttribute("id", i), new XAttribute("filename_L", lib_dikes[i].filename_L), new XAttribute("filename_R", lib_dikes[i].filename_R)));
+                XElement dike_node = new XElement("dike", new XAttribute("id", i), new XAttribute("filename_L", lib_dikes[i].filename_L), new XAttribute("filename_R", lib_dikes[i].filename_R));
+                writer.WriteStartElement(dike_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_L");
+                writer.WriteValue(lib_dikes[i].filename_L);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_R");
+                writer.WriteValue(lib_dikes[i].filename_R);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+            //////////////////////////////////////////////////////////////////////////////////////////
+            //Platforms
+            XElement platforms = new XElement("Platforms");
+            master.Add(platforms);
+            writer.WriteStartElement(platforms.Name.ToString());
             for (int i = 0; i < lib_platforms.Count; i++)
             {
-                platforms.Add(new XElement("platform", new XAttribute("id", i), new XAttribute("filename_L", lib_platforms[i].filenameL), new XAttribute("filename_CL", lib_platforms[i].filenameCL), new XAttribute("filename_CR", lib_platforms[i].filenameCR), new XAttribute("filename_R", lib_platforms[i].filenameR)));
+                XElement form_node = new XElement("platform", new XAttribute("id", i), new XAttribute("filename_L", lib_platforms[i].filenameL), new XAttribute("filename_CL", lib_platforms[i].filenameCL), new XAttribute("filename_CR", lib_platforms[i].filenameCR), new XAttribute("filename_R", lib_platforms[i].filenameR));
+                platforms.Add(form_node);
+                writer.WriteStartElement(form_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_L");
+                writer.WriteValue(lib_platforms[i].filenameL);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_CL");
+                writer.WriteValue(lib_platforms[i].filenameCL);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_CR");
+                writer.WriteValue(lib_platforms[i].filenameCR);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_R");
+                writer.WriteValue(lib_platforms[i].filenameR);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+            //////////////////////////////////////////////////////////////////////
+            //Roofs
+            XElement roofs = new XElement("Roofs");
+            master.Add(roofs);
+            writer.WriteStartElement(roofs.Name.ToString());
             for (int i = 0; i < lib_roofs.Count; i++)
             {
-                roofs.Add(new XElement("roof", new XAttribute("id", i), new XAttribute("filename_L", lib_roofs[i].filenameL), new XAttribute("filename_CL", lib_roofs[i].filenameCL), new XAttribute("filename_CR", lib_roofs[i].filenameCR), new XAttribute("filename_R", lib_roofs[i].filenameR)));
+                XElement roof_node = new XElement("roof", new XAttribute("id", i), new XAttribute("filename_L", lib_roofs[i].filenameL), new XAttribute("filename_CL", lib_roofs[i].filenameCL), new XAttribute("filename_CR", lib_roofs[i].filenameCR), new XAttribute("filename_R", lib_roofs[i].filenameR));
+                roofs.Add(roof_node);
+                writer.WriteStartElement(roof_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_L");
+                writer.WriteValue(lib_roofs[i].filenameL);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_CL");
+                writer.WriteValue(lib_roofs[i].filenameCL);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_CR");
+                writer.WriteValue(lib_roofs[i].filenameCR);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_R");
+                writer.WriteValue(lib_roofs[i].filenameR);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+            //////////////////////////////////////////////////////////////////////
+            //Poles
+            XElement poles = new XElement("Poles");
+            master.Add(poles);
+            writer.WriteStartElement(poles.Name.ToString());
             for (int i = 0; i < lib_poles.Count; i++)
             {
-                poles.Add(new XElement("pole", new XAttribute("id", i), new XAttribute("filename", lib_poles[i].filename), new XAttribute("covers", lib_poles[i].additional_rail_number)));
+                XElement poles_node = new XElement("pole", new XAttribute("id", i), new XAttribute("filename", lib_poles[i].filename), new XAttribute("covers", lib_poles[i].additional_rail_number));
+                poles.Add(poles_node);
+                writer.WriteStartElement(poles_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename");
+                writer.WriteValue(lib_poles[i].filename);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("covers");
+                writer.WriteValue(lib_poles[i].additional_rail_number);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+
+            //Cracks
+            XElement cracks = new XElement("Cracks");
+            master.Add(cracks);
+            writer.WriteStartElement(cracks.Name.ToString());
             for (int i = 0; i < lib_cracks.Count; i++)
             {
-                cracks.Add(new XElement("crack", new XAttribute("id", i), new XAttribute("filename_L", lib_cracks[i].filename_L), new XAttribute("filename_R", lib_cracks[i].filename_R)));
+                XElement cracks_node = new XElement("crack", new XAttribute("id", i), new XAttribute("filename_L", lib_cracks[i].filename_L), new XAttribute("filename_R", lib_cracks[i].filename_R));
+                cracks.Add(cracks_node);
+
+                writer.WriteStartElement(cracks_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_L");
+                writer.WriteValue(lib_cracks[i].filename_L);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename_R");
+                writer.WriteValue(lib_cracks[i].filename_R);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
+
+            //Freeobjs
+            XElement freeobjs = new XElement("FreeObjects");
+            master.Add(freeobjs);
+            writer.WriteStartElement(freeobjs.Name.ToString());
             for (int i = 0; i < lib_freeobjs.Count; i++)
             {
-                freeobjs.Add(new XElement("freeobj", new XAttribute("id", i), new XAttribute("filename", lib_freeobjs[i].filename)));
+                XElement freeobj_node = new XElement("freeobj", new XAttribute("id", i), new XAttribute("filename", lib_freeobjs[i].filename));
+                freeobjs.Add(freeobj_node);
+                writer.WriteStartElement(freeobj_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename");
+                writer.WriteValue(lib_freeobjs[i].filename);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
-            for(int i=0;i<lib_beacons.Count;i++)
+            writer.WriteEndElement();
+
+            //Beacons
+            XElement beacons = new XElement("Beacons");
+            master.Add(beacons);
+            writer.WriteStartElement(beacons.Name.ToString());
+            for (int i = 0; i < lib_beacons.Count; i++)
             {
-                beacons.Add(new XElement("beacon", new XAttribute("id", i), new XAttribute("filename", lib_beacons[i].filename)));
+                XElement beacon_node = new XElement("beacon", new XAttribute("id", i), new XAttribute("filename", lib_beacons[i].filename));
+                beacons.Add(beacon_node);
+                writer.WriteStartElement(beacon_node.Name.ToString());
+
+                writer.WriteStartAttribute("id");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                writer.WriteStartAttribute("filename");
+                writer.WriteValue(lib_beacons[i].filename);
+                writer.WriteEndAttribute();
+
+                writer.WriteEndElement();
             }
-
-            //Write it to file
-            XmlWriter writer=XmlWriter.Create("dna.xml");
-            writer.WriteStartDocument();
+            writer.WriteEndElement();
 
 
-
+            //End writing XML file
+            writer.WriteEndElement();
             writer.WriteEndDocument();
             writer.Close();
 

@@ -760,5 +760,16 @@ namespace metadata01
             BckListBox.Items.RemoveAt(index);
             objectlibrary.lib_backgrounds.RemoveAt(index);
         }
+
+        private void saveLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ObjLibrary_SaveFileDialog.ShowDialog();
+            objectlibrary.SaveToFile(ObjLibrary_SaveFileDialog.FileName);
+        }
+
+        private void openLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

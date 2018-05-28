@@ -175,6 +175,8 @@
             this.CrackL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.CrackR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.BackgroundOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ObjLibrary_SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ObjLibrary_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
@@ -1334,21 +1336,23 @@
             // newLibraryToolStripMenuItem
             // 
             this.newLibraryToolStripMenuItem.Name = "newLibraryToolStripMenuItem";
-            this.newLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.newLibraryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newLibraryToolStripMenuItem.Text = "New Library";
             this.newLibraryToolStripMenuItem.Click += new System.EventHandler(this.newLibraryToolStripMenuItem_Click);
             // 
             // openLibraryToolStripMenuItem
             // 
             this.openLibraryToolStripMenuItem.Name = "openLibraryToolStripMenuItem";
-            this.openLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.openLibraryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openLibraryToolStripMenuItem.Text = "Open Library";
+            this.openLibraryToolStripMenuItem.Click += new System.EventHandler(this.openLibraryToolStripMenuItem_Click);
             // 
             // saveLibraryToolStripMenuItem
             // 
             this.saveLibraryToolStripMenuItem.Name = "saveLibraryToolStripMenuItem";
-            this.saveLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.saveLibraryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveLibraryToolStripMenuItem.Text = "Save Library";
+            this.saveLibraryToolStripMenuItem.Click += new System.EventHandler(this.saveLibraryToolStripMenuItem_Click);
             // 
             // WallR_OpenFileDialog
             // 
@@ -1624,5 +1628,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Label lab_rail_note;
         private System.Windows.Forms.OpenFileDialog BackgroundOpenFileDialog;
+        private System.Windows.Forms.SaveFileDialog ObjLibrary_SaveFileDialog;
+        private System.Windows.Forms.OpenFileDialog ObjLibrary_OpenFileDialog;
     }
 }
