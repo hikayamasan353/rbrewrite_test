@@ -64,8 +64,9 @@ namespace metadata01
 
         private void Object_Library_Form_Load(object sender, EventArgs e)
         {
-            //Create a new library
-            active_objectlibrary = new ObjectLibrary();
+
+            //Fetch the object library of the active project
+            active_objectlibrary = MainForm.active_project.library;
 
 
             //Clearing all items list view
@@ -74,12 +75,15 @@ namespace metadata01
             formlistview.Items.Clear();
             rooflistview.Items.Clear();
             cracklistview.Items.Clear();
+
+            //Todo: Add the menu items which correspond with the project's worked object library items
+
         }
 
         private void newLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Creating a new library
-            active_objectlibrary = new metadata01.ObjectLibrary();
+            active_objectlibrary = new ObjectLibrary();
 
             //Clearing all items list view
             walllistview.Items.Clear();

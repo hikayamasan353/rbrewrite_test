@@ -65,6 +65,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.ButtonOK = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -393,6 +395,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.ldir2);
             this.groupBox4.Controls.Add(this.ldir1);
             this.groupBox4.Controls.Add(this.label9);
@@ -407,6 +411,11 @@
             // ldir2
             // 
             this.ldir2.Location = new System.Drawing.Point(45, 41);
+            this.ldir2.Maximum = new decimal(new int[] {
+            359,
+            0,
+            0,
+            0});
             this.ldir2.Name = "ldir2";
             this.ldir2.Size = new System.Drawing.Size(64, 20);
             this.ldir2.TabIndex = 3;
@@ -414,6 +423,11 @@
             // ldir1
             // 
             this.ldir1.Location = new System.Drawing.Point(45, 15);
+            this.ldir1.Maximum = new decimal(new int[] {
+            359,
+            0,
+            0,
+            0});
             this.ldir1.Name = "ldir1";
             this.ldir1.Size = new System.Drawing.Size(64, 20);
             this.ldir1.TabIndex = 2;
@@ -477,6 +491,24 @@
             this.ButtonOK.Text = "OK";
             this.ButtonOK.UseVisualStyleBackColor = true;
             this.ButtonOK.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(114, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(25, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "deg";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(114, 43);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(25, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "deg";
             // 
             // Metadata_Form
             // 
@@ -558,6 +590,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.Button ButtonOK;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }
 

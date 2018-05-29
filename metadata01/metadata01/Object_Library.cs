@@ -66,6 +66,9 @@ namespace metadata01
 
         public List<Beacon> lib_beacons;
 
+        /// <summary>
+        /// List of grounds
+        /// </summary>
         public List<Ground> lib_grounds;
         public List<CycleGround> lib_cyclegrounds;
 
@@ -1249,6 +1252,61 @@ namespace metadata01
                 writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
+
+            
+            //Cycles
+            XElement cycles = new XElement("Cycles");
+            master.Add(cycles);
+            writer.WriteStartElement(cycles.Name.ToString());
+
+            //Cycle grounds
+            for(int i=0;i<lib_cyclegrounds.Count;i++)
+            {
+                XElement cycleground_node = new XElement("ground", new XAttribute("cycleid", i));
+                cycles.Add(cycleground_node);
+                writer.WriteStartElement(cycleground_node.Name.ToString());
+
+                writer.WriteStartAttribute("cycleid");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                for(int i2=0;i2<lib_cyclegrounds[i].grounds.Count;i2++)
+                {
+                    XElement cycle_ground_id = new XElement("id");
+                    cycleground_node.Add(cycle_ground_id);
+                    writer.WriteStartElement(cycle_ground_id.Name.ToString());
+                    writer.WriteValue(lib_cyclegrounds[i].grounds[i2].id);
+                    writer.WriteEndElement();
+                }
+
+                writer.WriteFullEndElement();
+
+            }
+            //Cycle rails
+            for(int i=0;i<lib_cyclerails.Count;i++)
+            {
+                XElement cyclerail_node = new XElement("rail", new XAttribute("cycleid", i));
+                cycles.Add(cyclerail_node);
+                writer.WriteStartElement(cyclerail_node.Name.ToString());
+
+                writer.WriteStartAttribute("cycleid");
+                writer.WriteValue(i);
+                writer.WriteEndAttribute();
+
+                for (int i2 = 0; i2 < lib_cyclerails[i].rails.Count; i2++)
+                {
+                    XElement cycle_rail_id = new XElement("id");
+                    cyclerail_node.Add(cycle_rail_id);
+                    writer.WriteStartElement(cycle_rail_id.Name.ToString());
+                    writer.WriteValue(lib_cyclerails[i].rails[i2].id);
+                    writer.WriteEndElement();
+                }
+
+                writer.WriteEndElement();
+            }
+
+            writer.WriteEndElement();
+
 
 
             //End writing XML file
