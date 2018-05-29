@@ -473,6 +473,7 @@ namespace metadata01
                 active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
             }
             UpdateIDs();
+            active_objectlibrary.UpdateIDs();
         }
 
         private void btn_gnddelete_Click(object sender, EventArgs e)
@@ -486,6 +487,7 @@ namespace metadata01
             }
 
             UpdateIDs();
+            active_objectlibrary.UpdateIDs();
         }
 
         private void btn_formchooseleft_Click(object sender, EventArgs e)
@@ -535,6 +537,7 @@ namespace metadata01
 
             active_objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined",(uint)item.Index));
             UpdateIDs();
+            active_objectlibrary.UpdateIDs();
 
 
 

@@ -744,6 +744,26 @@ namespace metadata01
             }
 
         }
+
+        /// <summary>
+        /// Update IDs of the grounds and rails
+        /// </summary>
+        public void UpdateIDs()
+        {
+            for (int i = 0; i < lib_grounds.Count; i++)
+            {
+                Ground pgnd = lib_grounds[i];
+                pgnd.id = (uint)i;
+                lib_grounds[i] = pgnd;
+            }
+            for(int i=0;i<lib_rails.Count;i++)
+            {
+                Rail prail = lib_rails[i];
+                prail.id = (uint)i;
+                lib_rails[i] = prail;
+            }
+        }
+
         /// <summary>
         /// Creates a blank new object library
         /// </summary>
@@ -753,6 +773,7 @@ namespace metadata01
             this.lib_backgrounds = new List<metadata01.ObjectLibrary.Background>();
             this.lib_grounds = new List<Ground>();
             this.lib_rails = new List<Rail>();
+            UpdateIDs();
             this.lib_walls = new List<metadata01.ObjectLibrary.Wall>();
             this.lib_dikes = new List<metadata01.ObjectLibrary.Dike>();
             this.lib_platforms = new List<metadata01.ObjectLibrary.Platform>();
@@ -786,6 +807,8 @@ namespace metadata01
             lib_poles.Clear();
             lib_freeobjs.Clear();
             lib_beacons.Clear();
+            lib_cyclegrounds.Clear();
+            lib_cyclerails.Clear();
             //Prepare to load documents
             XmlDocument library = new XmlDocument();
             library.Load(filename);
@@ -807,7 +830,7 @@ namespace metadata01
 
 
                 reader.ReadStartElement(backgrounds.ChildNodes[i].Name);
-                string pfilename = reader.ReadElementContentAsString();
+                string pfilename = reader.ReadContentAsString();
                 Background background = new Background(pfilename); ;
                 lib_backgrounds.Add(background);
                 reader.ReadEndElement();
@@ -820,7 +843,7 @@ namespace metadata01
             for (int i = 0; i < grounds.ChildNodes.Count; i++)
             {
                 reader.ReadStartElement(grounds.ChildNodes[i].Name);
-                string pfilename = reader.ReadElementContentAsString();
+                string pfilename = reader.ReadContentAsString();
                 Ground ground = new Ground(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
                 lib_grounds.Add(ground);
                 reader.ReadEndElement();
@@ -833,12 +856,13 @@ namespace metadata01
             for (int i = 0; i < rails.ChildNodes.Count; i++)
             {
                 reader.ReadStartElement(rails.ChildNodes[i].Name);
-                string pfilename = reader.ReadElementContentAsString();
+                string pfilename = reader.ReadContentAsString();
                 Rail rail = new Rail(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
                 lib_rails.Add(rail);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
+            UpdateIDs();
             ////////////////////////////////////////////////////////////////////
             //Walls
             XmlElement walls = master["Walls"];
@@ -932,6 +956,59 @@ namespace metadata01
                 reader.ReadStartElement(beacons.ChildNodes[i].Name);
                 Beacon beacon = new Beacon(reader.GetAttribute("filename"));
                 lib_beacons.Add(beacon);
+                reader.ReadEndElement();
+            }
+            reader.ReadEndElement();
+
+            ///////////////////////////////////////////////////////////////////////////////////////
+            //Cycles
+            XmlElement cycles = master["Cycles"];
+            reader.ReadStartElement(cycles.Name);
+            for(int i=0;i<cycles.ChildNodes.Count;i++)
+            {
+                XmlNode pcycle = cycles.ChildNodes[i];
+                reader.ReadStartElement(pcycle.Name);
+                switch(pcycle.Name)
+                {
+                    case "ground":
+                        {
+                            CycleGround pcycleground = new CycleGround();
+                            pcycleground.grounds = new List<Ground>();
+                            for (int i1 = 0; i1 < pcycle.ChildNodes.Count; i1++)
+                            {
+                                XmlElement gnd_id = pcycle["id"];
+                                reader.ReadStartElement(gnd_id.Name);
+                                int pid = reader.ReadContentAsInt();
+                                Ground pgnd = lib_grounds[pid];
+                                pgnd.id = (uint)pid;
+                                pcycleground.grounds.Add(pgnd);
+                                reader.ReadEndElement();
+
+                            }
+                            lib_cyclegrounds.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcycleground);
+                            break;
+                        }
+                    case "rail":
+                        {
+                            CycleRail pcyclerail = new CycleRail();
+                            pcyclerail.rails = new List<Rail>();
+                            for (int i1 = 0; i1 < pcycle.ChildNodes.Count; i1++)
+                            {
+                                XmlElement rail_id = pcycle["id"];
+                                reader.ReadStartElement(rail_id.Name);
+                                int pid = reader.ReadContentAsInt();
+                                Rail prail = lib_rails[pid];
+                                prail.id = (uint)pid;
+                                pcyclerail.rails.Add(prail);
+                                reader.ReadEndElement();
+
+                            }
+                            lib_cyclerails.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcyclerail);
+
+                            break;
+                        }
+                }
+
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
