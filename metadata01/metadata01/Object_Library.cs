@@ -787,20 +787,23 @@ namespace metadata01
             XmlDocument library = new XmlDocument();
             library.Load(filename);
             //Commencing reader
-            XmlReader reader = XmlReader.Create(filename);
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+            
+
+            XmlReader reader = XmlReader.Create(filename, settings);
             //Reading master node
             XmlElement master = library["ObjectLibrary"];
-            reader.ReadStartElement("ObjectLibrary");
+            reader.ReadStartElement(master.Name);
             /////////////////////////////////////////////////////////////
             //Backgrounds
             XmlElement backgrounds = master["Backgrounds"];
             for (int i = 0; i < backgrounds.ChildNodes.Count; i++)
             {
                 reader.ReadStartElement();
-
-                Background background = new Background(reader.GetAttribute("filename"));
+                string pfilename = reader.ReadElementContentAsString();
+                Background background = new Background(pfilename); ;
                 lib_backgrounds.Add(background);
-
                 reader.ReadEndElement();
             }
             /////////////////////////////////////////////////////////////////
@@ -809,7 +812,8 @@ namespace metadata01
             for (int i = 0; i < grounds.ChildNodes.Count; i++)
             {
                 reader.ReadStartElement();
-                Ground ground = new Ground(reader.GetAttribute("filename"), Convert.ToUInt32(reader.GetAttribute("id")));
+                string pfilename = reader.ReadElementContentAsString();
+                Ground ground = new Ground(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
                 lib_grounds.Add(ground);
                 reader.ReadEndElement();
             }
@@ -819,7 +823,8 @@ namespace metadata01
             for(int i=0;i<rails.ChildNodes.Count;i++)
             {
                 reader.ReadStartElement();
-                Rail rail = new Rail(reader.GetAttribute("filename"), Convert.ToUInt32(reader.GetAttribute("id")));
+                string pfilename = reader.ReadElementContentAsString();
+                Rail rail = new Rail(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
                 lib_rails.Add(rail);
                 reader.ReadEndElement();
             }
@@ -831,7 +836,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Wall wall = new Wall(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
                 lib_walls.Add(wall);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             ///////////////////////////////////////////////////////////////////////
             //Dikes
@@ -841,7 +846,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Dike dike = new Dike(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
                 lib_dikes.Add(dike);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             ////////////////////////////////////////////////////////////////////////
             //Platforms
@@ -851,7 +856,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Platform form = new Platform(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
                 lib_platforms.Add(form);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             //////////////////////////////////////////////////////////////////////////
             //Roofs
@@ -861,7 +866,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Roof roof = new Roof(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
                 lib_roofs.Add(roof);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             ////////////////////////////////////////////////////////////////////////////
             //Poles
@@ -871,7 +876,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Pole pole = new Pole(reader.GetAttribute("filename"), Convert.ToInt32(reader.GetAttribute("covers")));
                 lib_poles.Add(pole);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             //////////////////////////////////////////////////////////////////////////////
             //Cracks
@@ -881,7 +886,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Crack crack = new Crack(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
                 lib_cracks.Add(crack);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             ////////////////////////////////////////////////////////////////////////////////
             //FreeObjs
@@ -891,7 +896,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 FreeObj freeobj = new FreeObj(reader.GetAttribute("filename"));
                 lib_freeobjs.Add(freeobj);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             /////////////////////////////////////////////////////////////////////////////////
             //Beacons
@@ -901,7 +906,7 @@ namespace metadata01
                 reader.ReadStartElement();
                 Beacon beacon = new Beacon(reader.GetAttribute("filename"));
                 lib_beacons.Add(beacon);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
             //Close the stream
             reader.ReadEndElement();
@@ -919,9 +924,15 @@ namespace metadata01
             XDocument library = new XDocument();
 
             //Create a stream, Write it to file
-            XmlWriter writer = XmlWriter.Create(filename);
-            
 
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "\t";
+
+            XmlWriter writer = XmlWriter.Create(filename,settings);
+
+            
+            
 
             //Create an XML master element and commence the writer
             XElement master = new XElement("ObjectLibrary");
@@ -939,7 +950,7 @@ namespace metadata01
             writer.WriteStartElement(backgrounds.Name.ToString());
             for (int i = 0; i < lib_backgrounds.Count; i++)
             {
-                XElement background_node = new XElement("background", new XAttribute("id", i), new XAttribute("filename", lib_backgrounds[i].filename));
+                XElement background_node = new XElement("background", new XAttribute("id", i));
                 backgrounds.Add(background_node);
                 writer.WriteStartElement(background_node.Name.ToString());
 
@@ -947,11 +958,9 @@ namespace metadata01
                 writer.WriteValue(i);
                 writer.WriteEndAttribute();
 
-                writer.WriteStartAttribute("filename");
-                writer.WriteValue(lib_backgrounds[i].filename);
-                writer.WriteEndAttribute();
+                writer.WriteString(lib_backgrounds[i].filename);
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             ////////////////////////////////////////////////////////////////////////////
@@ -961,7 +970,7 @@ namespace metadata01
             writer.WriteStartElement(grounds.Name.ToString());
             for (int i = 0; i < lib_grounds.Count; i++)
             {
-                XElement ground_node = new XElement("ground", new XAttribute("id", i), new XAttribute("filename", lib_grounds[i].filename));
+                XElement ground_node = new XElement("ground", new XAttribute("id", i));
                 grounds.Add(ground_node);
                 writer.WriteStartElement(ground_node.Name.ToString());
 
@@ -969,11 +978,13 @@ namespace metadata01
                 writer.WriteValue(i);
                 writer.WriteEndAttribute();
 
-                writer.WriteStartAttribute("filename");
-                writer.WriteValue(lib_grounds[i].filename);
-                writer.WriteEndAttribute();
+                //writer.WriteStartAttribute("filename");
+                //writer.WriteValue(lib_grounds[i].filename);
+                //writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteString(lib_grounds[i].filename);
+
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             ////////////////////////////////////////////////////////////////////////////////////
@@ -983,7 +994,7 @@ namespace metadata01
             writer.WriteStartElement(rails.Name.ToString());
             for (int i = 0; i < lib_rails.Count; i++)
             {
-                XElement rail_node = new XElement("rail", new XAttribute("id", i), new XAttribute("filename", lib_rails[i].filename));
+                XElement rail_node = new XElement("rail", new XAttribute("id", i));
                 rails.Add(rail_node);
                 writer.WriteStartElement(rail_node.Name.ToString());
 
@@ -991,11 +1002,9 @@ namespace metadata01
                 writer.WriteValue(i);
                 writer.WriteEndAttribute();
 
-                writer.WriteStartAttribute("filename");
-                writer.WriteValue(lib_rails[i].filename);
-                writer.WriteEndAttribute();
+                writer.WriteString(lib_rails[i].filename);
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             /////////////////////////////////////////////////////////////////////////////////////
@@ -1021,7 +1030,7 @@ namespace metadata01
                 writer.WriteValue(lib_walls[i].filename_R);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             /////////////////////////////////////////////////////////////////////////////////////////
@@ -1046,7 +1055,7 @@ namespace metadata01
                 writer.WriteValue(lib_dikes[i].filename_R);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             //////////////////////////////////////////////////////////////////////////////////////////
@@ -1080,7 +1089,7 @@ namespace metadata01
                 writer.WriteValue(lib_platforms[i].filenameR);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             //////////////////////////////////////////////////////////////////////
@@ -1114,7 +1123,7 @@ namespace metadata01
                 writer.WriteValue(lib_roofs[i].filenameR);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
             //////////////////////////////////////////////////////////////////////
@@ -1140,7 +1149,7 @@ namespace metadata01
                 writer.WriteValue(lib_poles[i].additional_rail_number);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
 
@@ -1167,7 +1176,7 @@ namespace metadata01
                 writer.WriteValue(lib_cracks[i].filename_R);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
 
@@ -1189,7 +1198,7 @@ namespace metadata01
                 writer.WriteValue(lib_freeobjs[i].filename);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
 
@@ -1211,7 +1220,7 @@ namespace metadata01
                 writer.WriteValue(lib_beacons[i].filename);
                 writer.WriteEndAttribute();
 
-                writer.WriteEndElement();
+                writer.WriteFullEndElement();
             }
             writer.WriteEndElement();
 
