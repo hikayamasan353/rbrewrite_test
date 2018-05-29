@@ -121,6 +121,9 @@ namespace metadata01
         }
 
 
+        /// <summary>
+        /// Creates a new project with default settings
+        /// </summary>
         public Project()
         {
             //by default, set the most popular settings:
@@ -145,6 +148,10 @@ namespace metadata01
             //by default, let's set all values to 0
             lightdir_pitch = 0;
             lightdir_yaw = 0;
+
+            //Create new default empty object library
+            library = new ObjectLibrary();
+
 
         }
 
