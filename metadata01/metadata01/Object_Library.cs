@@ -795,23 +795,27 @@ namespace metadata01
         /// <param name="filename"></param>
         public void LoadFromFile(string filename)
         {
+
+
+            ObjectLibrary p_active_library = MainForm.active_project.library;
+
             //Clear lists to replace the library
-            lib_backgrounds.Clear();
-            lib_grounds.Clear();
-            lib_rails.Clear();
-            lib_walls.Clear();
-            lib_dikes.Clear();
-            lib_platforms.Clear();
-            lib_roofs.Clear();
-            lib_cracks.Clear();
-            lib_poles.Clear();
-            lib_freeobjs.Clear();
-            lib_beacons.Clear();
-            lib_cyclegrounds.Clear();
-            lib_cyclerails.Clear();
+            p_active_library.lib_backgrounds.Clear();
+            p_active_library.lib_grounds.Clear();
+            p_active_library.lib_rails.Clear();
+            p_active_library.lib_walls.Clear();
+            p_active_library.lib_dikes.Clear();
+            p_active_library.lib_platforms.Clear();
+            p_active_library.lib_roofs.Clear();
+            p_active_library.lib_cracks.Clear();
+            p_active_library.lib_poles.Clear();
+            p_active_library.lib_freeobjs.Clear();
+            p_active_library.lib_beacons.Clear();
+            p_active_library.lib_cyclegrounds.Clear();
+            p_active_library.lib_cyclerails.Clear();
             //Prepare to load documents
-            XmlDocument library = new XmlDocument();
-            library.Load(filename);
+            XmlDocument library_xml = new XmlDocument();
+            library_xml.Load(filename);
             //Commencing reader
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;
@@ -819,7 +823,7 @@ namespace metadata01
 
             XmlReader reader = XmlReader.Create(filename, settings);
             //Reading master node
-            XmlElement master = library["ObjectLibrary"];
+            XmlElement master = library_xml["ObjectLibrary"];
             reader.ReadStartElement(master.Name);
             /////////////////////////////////////////////////////////////
             //Backgrounds
@@ -832,7 +836,7 @@ namespace metadata01
                 reader.ReadStartElement(backgrounds.ChildNodes[i].Name);
                 string pfilename = reader.ReadContentAsString();
                 Background background = new Background(pfilename); ;
-                lib_backgrounds.Add(background);
+                p_active_library.lib_backgrounds.Add(background);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -845,7 +849,7 @@ namespace metadata01
                 reader.ReadStartElement(grounds.ChildNodes[i].Name);
                 string pfilename = reader.ReadContentAsString();
                 Ground ground = new Ground(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
-                lib_grounds.Add(ground);
+                p_active_library.lib_grounds.Add(ground);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -858,7 +862,7 @@ namespace metadata01
                 reader.ReadStartElement(rails.ChildNodes[i].Name);
                 string pfilename = reader.ReadContentAsString();
                 Rail rail = new Rail(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
-                lib_rails.Add(rail);
+                p_active_library.lib_rails.Add(rail);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -871,7 +875,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(walls.ChildNodes[i].Name);
                 Wall wall = new Wall(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                lib_walls.Add(wall);
+                p_active_library.lib_walls.Add(wall);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -883,7 +887,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(dikes.ChildNodes[i].Name);
                 Dike dike = new Dike(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                lib_dikes.Add(dike);
+                p_active_library.lib_dikes.Add(dike);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -895,7 +899,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(platforms.ChildNodes[i].Name);
                 Platform form = new Platform(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                lib_platforms.Add(form);
+                p_active_library.lib_platforms.Add(form);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -907,7 +911,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(roofs.ChildNodes[i].Name);
                 Roof roof = new Roof(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                lib_roofs.Add(roof);
+                p_active_library.lib_roofs.Add(roof);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -919,7 +923,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(poles.ChildNodes[i].Name);
                 Pole pole = new Pole(reader.GetAttribute("filename"), Convert.ToInt32(reader.GetAttribute("covers")));
-                lib_poles.Add(pole);
+                p_active_library.lib_poles.Add(pole);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -931,7 +935,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(cracks.ChildNodes[i].Name);
                 Crack crack = new Crack(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                lib_cracks.Add(crack);
+                p_active_library.lib_cracks.Add(crack);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -943,7 +947,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(freeobjs.ChildNodes[i].Name);
                 FreeObj freeobj = new FreeObj(reader.GetAttribute("filename"));
-                lib_freeobjs.Add(freeobj);
+                p_active_library.lib_freeobjs.Add(freeobj);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -955,7 +959,7 @@ namespace metadata01
             {
                 reader.ReadStartElement(beacons.ChildNodes[i].Name);
                 Beacon beacon = new Beacon(reader.GetAttribute("filename"));
-                lib_beacons.Add(beacon);
+                p_active_library.lib_beacons.Add(beacon);
                 reader.ReadEndElement();
             }
             reader.ReadEndElement();
@@ -985,7 +989,7 @@ namespace metadata01
                                 reader.ReadEndElement();
 
                             }
-                            lib_cyclegrounds.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcycleground);
+                            p_active_library.lib_cyclegrounds.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcycleground);
                             break;
                         }
                     case "rail":
@@ -1003,7 +1007,7 @@ namespace metadata01
                                 reader.ReadEndElement();
 
                             }
-                            lib_cyclerails.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcyclerail);
+                            p_active_library.lib_cyclerails.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcyclerail);
 
                             break;
                         }
@@ -1017,6 +1021,9 @@ namespace metadata01
             //Close the stream
             reader.ReadEndElement();
             reader.Close();
+
+            MainForm.active_project.library = p_active_library;
+
 
         }
 

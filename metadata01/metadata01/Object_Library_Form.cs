@@ -37,6 +37,22 @@ namespace metadata01
         public Object_Library_Form()
         {
             InitializeComponent();
+
+            active_objectlibrary = MainForm.active_project.library;
+
+            //Fetch items according to the active project's data
+
+            //Backgrounds
+            for(int i=0;i<active_objectlibrary.lib_backgrounds.Count;i++)
+            {
+                BckListBox.Items.Add(active_objectlibrary.lib_backgrounds[i].filename);
+            }
+
+
+
+
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
