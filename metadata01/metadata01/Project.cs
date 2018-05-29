@@ -71,6 +71,56 @@ namespace metadata01
         public List<Module> modules;
 
 
+        /// <summary>
+        /// Parsed CSV code of a project, which would be your BVE route!
+        /// </summary>
+        /// <returns>Whole route project's CSV parsed code - to be ran in BVE!!!</returns>
+        public List<string>CSVParsed()
+        {
+            List<string> parsed_interface = new List<string>();
+            
+            //Commencing parsing route data
+            //Header
+            parsed_interface.Add("With Route");
+
+            //Comment with processed string
+            parsed_interface.Add(".Comment " + Common.ProcessString(this.description));
+            //Change
+            parsed_interface.Add(".Change " + this.change.ToString());
+            //Gauge
+            parsed_interface.Add(".Gauge " + this.gauge.ToString());
+
+            //Image
+            if ((this.image != "") || (this.image != null))
+            {
+                parsed_interface.Add(".Image " + this.image);
+            }
+
+            //Run intervals
+            string runinterval = "";
+            for (int i = 0; i < this.intervals.Count; i++)
+            {
+                runinterval += this.intervals[i].ToString() + ";";
+            }
+            parsed_interface.Add(".RunInterval " + runinterval);
+            //Height
+            parsed_interface.Add(".Height " + this.height.ToString());
+            //LightDirection
+            parsed_interface.Add(".LightDirection " + this.lightdir_pitch.ToString() + ";" + this.lightdir_yaw.ToString());
+
+
+            //Parsing object library
+            for (int i = 0; i < library.CSVParsed().Count; i++)
+            {
+                parsed_interface.Add(library.CSVParsed()[i]);
+            }
+
+
+
+            return parsed_interface;
+        }
+
+
         public Project()
         {
             //by default, set the most popular settings:

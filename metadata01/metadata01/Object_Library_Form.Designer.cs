@@ -160,7 +160,6 @@
             this.openLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WallR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
             this.FreeObj_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.DikeL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.DikeR_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -177,6 +176,8 @@
             this.BackgroundOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ObjLibrary_SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.ObjLibrary_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btn_ApplyLibrary = new System.Windows.Forms.Button();
+            this.btn_CancelLibrary = new System.Windows.Forms.Button();
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
@@ -254,6 +255,7 @@
             // 
             // bckpreviewpicbox
             // 
+            this.bckpreviewpicbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bckpreviewpicbox.Location = new System.Drawing.Point(205, 4);
             this.bckpreviewpicbox.Name = "bckpreviewpicbox";
             this.bckpreviewpicbox.Size = new System.Drawing.Size(199, 121);
@@ -1295,9 +1297,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(480, 34);
+            this.button3.Location = new System.Drawing.Point(480, 27);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 26);
+            this.button3.Size = new System.Drawing.Size(74, 184);
             this.button3.TabIndex = 1;
             this.button3.Text = "TWEAK LIBR";
             this.button3.UseVisualStyleBackColor = true;
@@ -1319,7 +1321,7 @@
             this.libraryToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(666, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(563, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1336,21 +1338,21 @@
             // newLibraryToolStripMenuItem
             // 
             this.newLibraryToolStripMenuItem.Name = "newLibraryToolStripMenuItem";
-            this.newLibraryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.newLibraryToolStripMenuItem.Text = "New Library";
             this.newLibraryToolStripMenuItem.Click += new System.EventHandler(this.newLibraryToolStripMenuItem_Click);
             // 
             // openLibraryToolStripMenuItem
             // 
             this.openLibraryToolStripMenuItem.Name = "openLibraryToolStripMenuItem";
-            this.openLibraryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.openLibraryToolStripMenuItem.Text = "Open Library";
             this.openLibraryToolStripMenuItem.Click += new System.EventHandler(this.openLibraryToolStripMenuItem_Click);
             // 
             // saveLibraryToolStripMenuItem
             // 
             this.saveLibraryToolStripMenuItem.Name = "saveLibraryToolStripMenuItem";
-            this.saveLibraryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveLibraryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.saveLibraryToolStripMenuItem.Text = "Save Library";
             this.saveLibraryToolStripMenuItem.Click += new System.EventHandler(this.saveLibraryToolStripMenuItem_Click);
             // 
@@ -1358,15 +1360,6 @@
             // 
             this.WallR_OpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
             this.WallR_OpenFileDialog.Title = "Choose right object file";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(480, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 66);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // FreeObj_OpenFileDialog
             // 
@@ -1437,12 +1430,33 @@
             // 
             this.BackgroundOpenFileDialog.Filter = "BMP|*.bmp|JPG|*.jpg|PNG|*.png";
             // 
+            // btn_ApplyLibrary
+            // 
+            this.btn_ApplyLibrary.Location = new System.Drawing.Point(12, 338);
+            this.btn_ApplyLibrary.Name = "btn_ApplyLibrary";
+            this.btn_ApplyLibrary.Size = new System.Drawing.Size(106, 26);
+            this.btn_ApplyLibrary.TabIndex = 4;
+            this.btn_ApplyLibrary.Text = "Apply";
+            this.btn_ApplyLibrary.UseVisualStyleBackColor = true;
+            this.btn_ApplyLibrary.Click += new System.EventHandler(this.btn_ApplyLibrary_Click);
+            // 
+            // btn_CancelLibrary
+            // 
+            this.btn_CancelLibrary.Location = new System.Drawing.Point(124, 338);
+            this.btn_CancelLibrary.Name = "btn_CancelLibrary";
+            this.btn_CancelLibrary.Size = new System.Drawing.Size(106, 26);
+            this.btn_CancelLibrary.TabIndex = 5;
+            this.btn_CancelLibrary.Text = "Cancel";
+            this.btn_CancelLibrary.UseVisualStyleBackColor = true;
+            this.btn_CancelLibrary.Click += new System.EventHandler(this.btn_CancelLibrary_Click);
+            // 
             // Object_Library_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 397);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(563, 375);
+            this.Controls.Add(this.btn_CancelLibrary);
+            this.Controls.Add(this.btn_ApplyLibrary);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.objlib_tabcontrol);
             this.Controls.Add(this.menuStrip1);
@@ -1558,7 +1572,6 @@
         private System.Windows.Forms.ColumnHeader formid_col;
         private System.Windows.Forms.ColumnHeader roofid_col;
         private System.Windows.Forms.ColumnHeader crackid_col;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_freeobjdelete;
         private System.Windows.Forms.Button btn_freeobjadd;
         private System.Windows.Forms.ListView freeobjlistview;
@@ -1630,5 +1643,7 @@
         private System.Windows.Forms.OpenFileDialog BackgroundOpenFileDialog;
         private System.Windows.Forms.SaveFileDialog ObjLibrary_SaveFileDialog;
         private System.Windows.Forms.OpenFileDialog ObjLibrary_OpenFileDialog;
+        private System.Windows.Forms.Button btn_ApplyLibrary;
+        private System.Windows.Forms.Button btn_CancelLibrary;
     }
 }

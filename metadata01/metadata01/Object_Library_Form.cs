@@ -31,7 +31,7 @@ namespace metadata01
         /// <summary>
         /// Object library that is being processed
         /// </summary>
-        public ObjectLibrary objectlibrary;
+        public ObjectLibrary active_objectlibrary;
 
 
         public Object_Library_Form()
@@ -65,7 +65,7 @@ namespace metadata01
         private void Object_Library_Form_Load(object sender, EventArgs e)
         {
             //Create a new library
-            objectlibrary = new ObjectLibrary();
+            active_objectlibrary = new ObjectLibrary();
 
 
             //Clearing all items list view
@@ -79,7 +79,7 @@ namespace metadata01
         private void newLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Creating a new library
-            objectlibrary = new metadata01.ObjectLibrary();
+            active_objectlibrary = new metadata01.ObjectLibrary();
 
             //Clearing all items list view
             walllistview.Items.Clear();
@@ -106,7 +106,7 @@ namespace metadata01
             item.Selected = true;
 
             //Adding the blank wall entry
-            objectlibrary.lib_walls.Insert(item.Index, new ObjectLibrary.Wall("Undefined", "Undefined"));
+            active_objectlibrary.lib_walls.Insert(item.Index, new ObjectLibrary.Wall("Undefined", "Undefined"));
 
             UpdateIDs();
         }
@@ -114,14 +114,14 @@ namespace metadata01
         private void bckaddbutton_Click(object sender, EventArgs e)
         {
             BackgroundOpenFileDialog.ShowDialog();
-            objectlibrary.lib_backgrounds.Add(new ObjectLibrary.Background(BackgroundOpenFileDialog.FileName));
+            active_objectlibrary.lib_backgrounds.Add(new ObjectLibrary.Background(BackgroundOpenFileDialog.FileName));
             BckListBox.Items.Add(BackgroundOpenFileDialog.FileName);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = BckListBox.SelectedIndex;
-            bckpreviewpicbox.ImageLocation = objectlibrary.lib_backgrounds[index].filename;
+            bckpreviewpicbox.ImageLocation = active_objectlibrary.lib_backgrounds[index].filename;
         }
 
         private void btn_deletewall_Click(object sender, EventArgs e)
@@ -132,7 +132,7 @@ namespace metadata01
             {
                 
                 int index = walllistview.SelectedIndices[i];
-                objectlibrary.lib_walls.RemoveAt(index);
+                active_objectlibrary.lib_walls.RemoveAt(index);
                 walllistview.Items.RemoveAt(index);
 
 
@@ -151,7 +151,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(cracklistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack("Undefined", "Undefined"));
+            active_objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack("Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -166,7 +166,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(dikelistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            objectlibrary.lib_dikes.Insert(item.Index, new ObjectLibrary.Dike("Undefined", "Undefined"));
+            active_objectlibrary.lib_dikes.Insert(item.Index, new ObjectLibrary.Dike("Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -175,7 +175,7 @@ namespace metadata01
             for (int i = 0; i < dikelistview.SelectedIndices.Count; i++)
             {
                 int index = dikelistview.SelectedIndices[i];
-                objectlibrary.lib_dikes.RemoveAt(index);
+                active_objectlibrary.lib_dikes.RemoveAt(index);
                 dikelistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -195,7 +195,7 @@ namespace metadata01
 
 
             //Adding the blank platform entry
-            objectlibrary.lib_platforms.Insert(item.Index, new ObjectLibrary.Platform("Undefined", "Undefined", "Undefined", "Undefined"));
+            active_objectlibrary.lib_platforms.Insert(item.Index, new ObjectLibrary.Platform("Undefined", "Undefined", "Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -219,10 +219,10 @@ namespace metadata01
             for (int i = 0; i < gndlistview.Items.Count; i++)
             {
                 int pid = gndlistview.Items.IndexOf(gndlistview.Items[i]);
-                ObjectLibrary.Ground pground = objectlibrary.lib_grounds[i];
+                ObjectLibrary.Ground pground = active_objectlibrary.lib_grounds[i];
                 gndlistview.Items[i].Text = pid.ToString();
                 pground.id = (uint)pid;
-                objectlibrary.lib_grounds[i] = pground;
+                active_objectlibrary.lib_grounds[i] = pground;
                 
                 
             }
@@ -242,10 +242,10 @@ namespace metadata01
             for (int i = 0; i < raillistview.Items.Count; i++)
             {
                 int pid = raillistview.Items.IndexOf(raillistview.Items[i]);
-                ObjectLibrary.Rail prail = objectlibrary.lib_rails[i];
+                ObjectLibrary.Rail prail = active_objectlibrary.lib_rails[i];
                 raillistview.Items[i].Text = pid.ToString();
                 prail.id = (uint)pid;
-                objectlibrary.lib_rails[i] = prail;
+                active_objectlibrary.lib_rails[i] = prail;
 
                 
             }
@@ -309,7 +309,7 @@ namespace metadata01
             for (int i = 0; i < cracklistview.SelectedIndices.Count; i++)
             {
                 int index = cracklistview.SelectedIndices[i];
-                objectlibrary.lib_cracks.RemoveAt(index);
+                active_objectlibrary.lib_cracks.RemoveAt(index);
                 cracklistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -329,7 +329,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_roofs.Insert(item.Index, new ObjectLibrary.Roof("Undefined", "Undefined", "Undefined", "Undefined"));
+            active_objectlibrary.lib_roofs.Insert(item.Index, new ObjectLibrary.Roof("Undefined", "Undefined", "Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -338,7 +338,7 @@ namespace metadata01
             for (int i = 0; i < formlistview.SelectedIndices.Count; i++)
             {
                 int index = formlistview.SelectedIndices[i];
-                objectlibrary.lib_platforms.RemoveAt(index);
+                active_objectlibrary.lib_platforms.RemoveAt(index);
                 formlistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -349,7 +349,7 @@ namespace metadata01
             for (int i = 0; i < rooflistview.SelectedIndices.Count; i++)
             {
                 int index = rooflistview.SelectedIndices[i];
-                objectlibrary.lib_roofs.RemoveAt(index);
+                active_objectlibrary.lib_roofs.RemoveAt(index);
                 rooflistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -366,7 +366,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj("Undefined"));
+            active_objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj("Undefined"));
             UpdateIDs();
         }
 
@@ -375,7 +375,7 @@ namespace metadata01
             for (int i = 0; i < freeobjlistview.SelectedIndices.Count; i++)
             {
                 int index = freeobjlistview.SelectedIndices[i];
-                objectlibrary.lib_freeobjs.RemoveAt(index);
+                active_objectlibrary.lib_freeobjs.RemoveAt(index);
                 freeobjlistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -394,7 +394,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_poles.Insert(item.Index, new ObjectLibrary.Pole("Undefined", (int)numericUpDown1.Value));
+            active_objectlibrary.lib_poles.Insert(item.Index, new ObjectLibrary.Pole("Undefined", (int)numericUpDown1.Value));
             UpdateIDs();
 
         }
@@ -404,7 +404,7 @@ namespace metadata01
             for (int i = 0; i < polelistview.SelectedIndices.Count; i++)
             {
                 int index = polelistview.SelectedIndices[i];
-                objectlibrary.lib_poles.RemoveAt(index);
+                active_objectlibrary.lib_poles.RemoveAt(index);
                 polelistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -421,7 +421,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            objectlibrary.lib_beacons.Insert(item.Index, new ObjectLibrary.Beacon("Undefined"));
+            active_objectlibrary.lib_beacons.Insert(item.Index, new ObjectLibrary.Beacon("Undefined"));
             UpdateIDs();
         }
 
@@ -430,7 +430,7 @@ namespace metadata01
             for (int i = 0; i < beaconlistview.SelectedIndices.Count; i++)
             {
                 int index = beaconlistview.SelectedIndices[i];
-                objectlibrary.lib_beacons.RemoveAt(index);
+                active_objectlibrary.lib_beacons.RemoveAt(index);
                 beaconlistview.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -458,7 +458,7 @@ namespace metadata01
             if (gnd_fname != null)
             {
                 //Adding the ground entry with the file name specified
-                objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(gnd_fname,(uint)item.Index));
+                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(gnd_fname,(uint)item.Index));
                 item.SubItems[0].Text = gnd_fname;
                 item2.SubItems[0].Text = gnd_fname;
 
@@ -466,7 +466,7 @@ namespace metadata01
             else
             {
                 //Adding the blank ground entry
-                objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
+                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
             }
             UpdateIDs();
         }
@@ -476,7 +476,7 @@ namespace metadata01
             for (int i = 0; i < gndlistview.SelectedIndices.Count; i++)
             {
                 int index = gndlistview.SelectedIndices[i];
-                objectlibrary.lib_grounds.RemoveAt(index);
+                active_objectlibrary.lib_grounds.RemoveAt(index);
                 gndlistview.Items.RemoveAt(index);
                 gndlistview2.Items.RemoveAt(index);
             }
@@ -488,9 +488,9 @@ namespace metadata01
         {
             FormL_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameL = FormL_OpenFileDialog.FileName;
-            objectlibrary.lib_platforms[index] = pform;
+            active_objectlibrary.lib_platforms[index] = pform;
         }
 
 
@@ -500,7 +500,7 @@ namespace metadata01
         {
             //String list for exporting
             List<string> exportinterface = new List<string>();
-            exportinterface = objectlibrary.CSVParsed();
+            exportinterface = active_objectlibrary.CSVParsed();
 
             StreamWriter exportstream = new StreamWriter(Application.StartupPath + "\\dna.txt");
             for (int i = 0; i < exportinterface.Count; i++)
@@ -529,7 +529,7 @@ namespace metadata01
 
 
 
-            objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined",(uint)item.Index));
+            active_objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined",(uint)item.Index));
             UpdateIDs();
 
 
@@ -541,7 +541,7 @@ namespace metadata01
             for (int i = 0; i < raillistview.SelectedIndices.Count; i++)
             {
                 int index = raillistview.SelectedIndices[i];
-                objectlibrary.lib_rails.RemoveAt(index);
+                active_objectlibrary.lib_rails.RemoveAt(index);
                 raillistview.Items.RemoveAt(index);
                 raillistview2.Items.RemoveAt(index);
             }
@@ -557,8 +557,8 @@ namespace metadata01
             GndCycleListView.Items.Add(item);
             item.Text = item.Index.ToString();
 
-            objectlibrary.lib_cyclegrounds.Insert(item.Index, new ObjectLibrary.CycleGround(new List<metadata01.ObjectLibrary.Ground>()));
-            item.SubItems.Add(objectlibrary.lib_cyclegrounds[item.Index].CycledGrounds);
+            active_objectlibrary.lib_cyclegrounds.Insert(item.Index, new ObjectLibrary.CycleGround(new List<metadata01.ObjectLibrary.Ground>()));
+            item.SubItems.Add(active_objectlibrary.lib_cyclegrounds[item.Index].CycledGrounds);
 
         }
 
@@ -568,8 +568,8 @@ namespace metadata01
             RailCycleListView.Items.Add(item);
             item.Text = item.Index.ToString();
 
-            objectlibrary.lib_cyclerails.Insert(item.Index, new ObjectLibrary.CycleRail(new List<metadata01.ObjectLibrary.Rail>()));
-            item.SubItems.Add(objectlibrary.lib_cyclerails[item.Index].CycledRails);
+            active_objectlibrary.lib_cyclerails.Insert(item.Index, new ObjectLibrary.CycleRail(new List<metadata01.ObjectLibrary.Rail>()));
+            item.SubItems.Add(active_objectlibrary.lib_cyclerails[item.Index].CycledRails);
 
         }
 
@@ -583,8 +583,8 @@ namespace metadata01
 
             int i = Convert.ToInt32(GndCycleListView.SelectedItems[0].Text);
             int j = Convert.ToInt32(gndlistview2.SelectedItems[0].Text);
-            objectlibrary.lib_cyclegrounds[i].grounds.Add(objectlibrary.lib_grounds[j]);
-            GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
+            active_objectlibrary.lib_cyclegrounds[i].grounds.Add(active_objectlibrary.lib_grounds[j]);
+            GndCycleListView.Items[i].SubItems[1].Text = active_objectlibrary.lib_cyclegrounds[i].CycledGrounds;
 
 
 
@@ -594,8 +594,8 @@ namespace metadata01
         private void btn_GndCycleDeleteGround_Right_Click(object sender, EventArgs e)
         {
             int i = Convert.ToInt32(GndCycleListView.SelectedItems[0].Text);
-            objectlibrary.lib_cyclegrounds[i].grounds.RemoveAt(objectlibrary.lib_cyclegrounds[i].grounds.Count - 1);
-            GndCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclegrounds[i].CycledGrounds;
+            active_objectlibrary.lib_cyclegrounds[i].grounds.RemoveAt(active_objectlibrary.lib_cyclegrounds[i].grounds.Count - 1);
+            GndCycleListView.Items[i].SubItems[1].Text = active_objectlibrary.lib_cyclegrounds[i].CycledGrounds;
 
 
         }
@@ -605,7 +605,7 @@ namespace metadata01
             for(int i=0;i<GndCycleListView.SelectedIndices.Count;i++)
             {
                 int index = GndCycleListView.SelectedIndices[i];
-                objectlibrary.lib_cyclegrounds.RemoveAt(index);
+                active_objectlibrary.lib_cyclegrounds.RemoveAt(index);
                 GndCycleListView.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -616,7 +616,7 @@ namespace metadata01
             for (int i = 0; i < RailCycleListView.SelectedIndices.Count; i++)
             {
                 int index = RailCycleListView.SelectedIndices[i];
-                objectlibrary.lib_cyclerails.RemoveAt(index);
+                active_objectlibrary.lib_cyclerails.RemoveAt(index);
                 RailCycleListView.Items.RemoveAt(index);
             }
             UpdateIDs();
@@ -626,151 +626,165 @@ namespace metadata01
         {
             int i = Convert.ToInt32(RailCycleListView.SelectedItems[0].Text);
             int j = Convert.ToInt32(raillistview2.SelectedItems[0].Text);
-            objectlibrary.lib_cyclerails[i].rails.Add(objectlibrary.lib_rails[j]);
-            RailCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclerails[i].CycledRails;
+            active_objectlibrary.lib_cyclerails[i].rails.Add(active_objectlibrary.lib_rails[j]);
+            RailCycleListView.Items[i].SubItems[1].Text = active_objectlibrary.lib_cyclerails[i].CycledRails;
         }
 
         private void btn_RailCycleDeleteRail_Right_Click(object sender, EventArgs e)
         {
             int i = Convert.ToInt32(RailCycleListView.SelectedItems[0].Text);
-            objectlibrary.lib_cyclerails[i].rails.RemoveAt(objectlibrary.lib_cyclerails[i].rails.Count - 1);
-            RailCycleListView.Items[i].SubItems[1].Text = objectlibrary.lib_cyclerails[i].CycledRails;
+            active_objectlibrary.lib_cyclerails[i].rails.RemoveAt(active_objectlibrary.lib_cyclerails[i].rails.Count - 1);
+            RailCycleListView.Items[i].SubItems[1].Text = active_objectlibrary.lib_cyclerails[i].CycledRails;
         }
 
         private void btn_wallchooseleft_Click(object sender, EventArgs e)
         {
             WallL_OpenFileDialog.ShowDialog();
             int index = walllistview.Items.IndexOf(walllistview.SelectedItems[0]);
-            ObjectLibrary.Wall pwall = objectlibrary.lib_walls[index];
+            ObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
             pwall.filename_L = WallL_OpenFileDialog.FileName;
-            objectlibrary.lib_walls[index] = pwall;
+            active_objectlibrary.lib_walls[index] = pwall;
         }
 
         private void btn_wallchooseright_Click(object sender, EventArgs e)
         {
             WallR_OpenFileDialog.ShowDialog();
             int index = walllistview.Items.IndexOf(walllistview.SelectedItems[0]);
-            ObjectLibrary.Wall pwall = objectlibrary.lib_walls[index];
+            ObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
             pwall.filename_R = WallR_OpenFileDialog.FileName;
-            objectlibrary.lib_walls[index] = pwall;
+            active_objectlibrary.lib_walls[index] = pwall;
         }
 
         private void btn_dikechooseleft_Click(object sender, EventArgs e)
         {
             DikeL_OpenFileDialog.ShowDialog();
             int index = dikelistview.Items.IndexOf(dikelistview.SelectedItems[0]);
-            ObjectLibrary.Dike pdike = objectlibrary.lib_dikes[index];
+            ObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
             pdike.filename_L = DikeL_OpenFileDialog.FileName;
-            objectlibrary.lib_dikes[index] = pdike;
+            active_objectlibrary.lib_dikes[index] = pdike;
         }
 
         private void btn_dikechooseright_Click(object sender, EventArgs e)
         {
             DikeR_OpenFileDialog.ShowDialog();
             int index = dikelistview.Items.IndexOf(dikelistview.SelectedItems[0]);
-            ObjectLibrary.Dike pdike = objectlibrary.lib_dikes[index];
+            ObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
             pdike.filename_R = DikeR_OpenFileDialog.FileName;
-            objectlibrary.lib_dikes[index] = pdike;
+            active_objectlibrary.lib_dikes[index] = pdike;
         }
 
         private void btn_crackchooseleft_Click(object sender, EventArgs e)
         {
             CrackL_OpenFileDialog.ShowDialog();
             int index = cracklistview.Items.IndexOf(cracklistview.SelectedItems[0]);
-            ObjectLibrary.Crack pcrack = objectlibrary.lib_cracks[index];
+            ObjectLibrary.Crack pcrack = active_objectlibrary.lib_cracks[index];
             pcrack.filename_L = CrackL_OpenFileDialog.FileName;
-            objectlibrary.lib_cracks[index] = pcrack;
+            active_objectlibrary.lib_cracks[index] = pcrack;
         }
 
         private void btn_crackchooseright_Click(object sender, EventArgs e)
         {
             CrackR_OpenFileDialog.ShowDialog();
             int index = cracklistview.Items.IndexOf(cracklistview.SelectedItems[0]);
-            ObjectLibrary.Crack pcrack = objectlibrary.lib_cracks[index];
+            ObjectLibrary.Crack pcrack = active_objectlibrary.lib_cracks[index];
             pcrack.filename_R = CrackR_OpenFileDialog.FileName;
-            objectlibrary.lib_cracks[index] = pcrack;
+            active_objectlibrary.lib_cracks[index] = pcrack;
         }
 
         private void btn_formchoosecleft_Click(object sender, EventArgs e)
         {
             FormCL_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameCL = FormCL_OpenFileDialog.FileName;
-            objectlibrary.lib_platforms[index] = pform;
+            active_objectlibrary.lib_platforms[index] = pform;
         }
 
         private void btn_formchoosecright_Click(object sender, EventArgs e)
         {
             FormCR_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameCR = FormCR_OpenFileDialog.FileName;
-            objectlibrary.lib_platforms[index] = pform;
+            active_objectlibrary.lib_platforms[index] = pform;
         }
 
         private void btn_formchooseright_Click(object sender, EventArgs e)
         {
             FormR_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = objectlibrary.lib_platforms[index];
+            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameR = FormR_OpenFileDialog.FileName;
-            objectlibrary.lib_platforms[index] = pform;
+            active_objectlibrary.lib_platforms[index] = pform;
         }
 
         private void btn_roofchooseleft_Click(object sender, EventArgs e)
         {
             RoofL_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameL = RoofL_OpenFileDialog.FileName;
-            objectlibrary.lib_roofs[index] = proof;
+            active_objectlibrary.lib_roofs[index] = proof;
         }
 
         private void btn_roofchoosecleft_Click(object sender, EventArgs e)
         {
             RoofCL_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameCL = RoofCL_OpenFileDialog.FileName;
-            objectlibrary.lib_roofs[index] = proof;
+            active_objectlibrary.lib_roofs[index] = proof;
         }
 
         private void btn_roofchoosecright_Click(object sender, EventArgs e)
         {
             RoofCR_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameCR = RoofCR_OpenFileDialog.FileName;
-            objectlibrary.lib_roofs[index] = proof;
+            active_objectlibrary.lib_roofs[index] = proof;
         }
 
         private void btn_roofchooseright_Click(object sender, EventArgs e)
         {
             RoofR_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = objectlibrary.lib_roofs[index];
+            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameR = RoofR_OpenFileDialog.FileName;
-            objectlibrary.lib_roofs[index] = proof;
+            active_objectlibrary.lib_roofs[index] = proof;
         }
 
         private void bckdelbutton_Click(object sender, EventArgs e)
         {
             int index = BckListBox.SelectedIndex;
             BckListBox.Items.RemoveAt(index);
-            objectlibrary.lib_backgrounds.RemoveAt(index);
+            active_objectlibrary.lib_backgrounds.RemoveAt(index);
         }
 
         private void saveLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ObjLibrary_SaveFileDialog.ShowDialog();
-            objectlibrary.SaveToFile(ObjLibrary_SaveFileDialog.FileName);
+            active_objectlibrary.SaveToFile(ObjLibrary_SaveFileDialog.FileName);
         }
 
         private void openLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ObjLibrary_OpenFileDialog.ShowDialog();
-            objectlibrary.LoadFromFile(ObjLibrary_OpenFileDialog.FileName);
+            active_objectlibrary.LoadFromFile(ObjLibrary_OpenFileDialog.FileName);
+        }
+
+        private void btn_ApplyLibrary_Click(object sender, EventArgs e)
+        {
+            //Apply object library and close
+
+            MainForm.active_project.library = active_objectlibrary;
+            this.Close();
+        }
+
+        private void btn_CancelLibrary_Click(object sender, EventArgs e)
+        {
+            //Discard and close
+            this.Close();
         }
     }
 }
