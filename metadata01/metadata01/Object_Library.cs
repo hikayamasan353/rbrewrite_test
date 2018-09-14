@@ -813,13 +813,18 @@ namespace metadata01
             p_active_library.lib_beacons.Clear();
             p_active_library.lib_cyclegrounds.Clear();
             p_active_library.lib_cyclerails.Clear();
+
+
             //Prepare to load documents
             XmlDocument library_xml = new XmlDocument();
             library_xml.Load(filename);
+
+
             //Commencing reader
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;
             
+
 
             XmlReader reader = XmlReader.Create(filename, settings);
             //Reading master node
@@ -828,200 +833,263 @@ namespace metadata01
             /////////////////////////////////////////////////////////////
             //Backgrounds
             XmlElement backgrounds = master["Backgrounds"];
-            reader.ReadStartElement(backgrounds.Name);
-            for (int i = 0; i < backgrounds.ChildNodes.Count; i++)
+            if (!backgrounds.IsEmpty)
             {
+                reader.ReadStartElement(backgrounds.Name);
+
+                for (int i = 0; i < backgrounds.ChildNodes.Count; i++)
+                {
 
 
-                reader.ReadStartElement(backgrounds.ChildNodes[i].Name);
-                string pfilename = reader.ReadContentAsString();
-                Background background = new Background(pfilename); ;
-                p_active_library.lib_backgrounds.Add(background);
+                    reader.ReadStartElement(backgrounds.ChildNodes[i].Name);
+                    string pfilename = reader.ReadContentAsString();
+                    Background background = new Background(pfilename); ;
+                    p_active_library.lib_backgrounds.Add(background);
+                    reader.ReadEndElement();
+                }
+
                 reader.ReadEndElement();
+
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             /////////////////////////////////////////////////////////////////
             //Grounds
             XmlElement grounds = master["Grounds"];
-            reader.ReadStartElement(grounds.Name);
-            for (int i = 0; i < grounds.ChildNodes.Count; i++)
+            if (!grounds.IsEmpty)
             {
-                reader.ReadStartElement(grounds.ChildNodes[i].Name);
-                string pfilename = reader.ReadContentAsString();
-                Ground ground = new Ground(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
-                p_active_library.lib_grounds.Add(ground);
+                reader.ReadStartElement(grounds.Name);
+                for (int i = 0; i < grounds.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(grounds.ChildNodes[i].Name);
+                    string pfilename = reader.ReadContentAsString();
+                    Ground ground = new Ground(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
+                    p_active_library.lib_grounds.Add(ground);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             //////////////////////////////////////////////////////////////////
             //Rails
             XmlElement rails = master["Rails"];
-            reader.ReadStartElement(rails.Name);
-            for (int i = 0; i < rails.ChildNodes.Count; i++)
+            if (!rails.IsEmpty)
             {
-                reader.ReadStartElement(rails.ChildNodes[i].Name);
-                string pfilename = reader.ReadContentAsString();
-                Rail rail = new Rail(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
-                p_active_library.lib_rails.Add(rail);
+                reader.ReadStartElement(rails.Name);
+                for (int i = 0; i < rails.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(rails.ChildNodes[i].Name);
+                    string pfilename = reader.ReadContentAsString();
+                    Rail rail = new Rail(pfilename, Convert.ToUInt32(reader.GetAttribute("id")));
+                    p_active_library.lib_rails.Add(rail);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             UpdateIDs();
             ////////////////////////////////////////////////////////////////////
             //Walls
             XmlElement walls = master["Walls"];
-            reader.ReadStartElement(walls.Name);
-            for (int i = 0; i < walls.ChildNodes.Count; i++)
+            if (!walls.IsEmpty)
             {
-                reader.ReadStartElement(walls.ChildNodes[i].Name);
-                Wall wall = new Wall(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                p_active_library.lib_walls.Add(wall);
+                reader.ReadStartElement(walls.Name);
+                for (int i = 0; i < walls.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(walls.ChildNodes[i].Name);
+                    Wall wall = new Wall(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    p_active_library.lib_walls.Add(wall);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             ///////////////////////////////////////////////////////////////////////
             //Dikes
             XmlElement dikes = master["Dikes"];
-            reader.ReadStartElement(dikes.Name);
-            for(int i=0;i<dikes.ChildNodes.Count;i++)
+            if (!dikes.IsEmpty)
             {
-                reader.ReadStartElement(dikes.ChildNodes[i].Name);
-                Dike dike = new Dike(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                p_active_library.lib_dikes.Add(dike);
+                reader.ReadStartElement(dikes.Name);
+                for (int i = 0; i < dikes.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(dikes.ChildNodes[i].Name);
+                    Dike dike = new Dike(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    p_active_library.lib_dikes.Add(dike);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             ////////////////////////////////////////////////////////////////////////
             //Platforms
             XmlElement platforms = master["Platforms"];
-            reader.ReadStartElement(platforms.Name);
-            for(int i=0;i<platforms.ChildNodes.Count;i++)
+            if (!platforms.IsEmpty)
             {
-                reader.ReadStartElement(platforms.ChildNodes[i].Name);
-                Platform form = new Platform(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                p_active_library.lib_platforms.Add(form);
+                reader.ReadStartElement(platforms.Name);
+                for (int i = 0; i < platforms.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(platforms.ChildNodes[i].Name);
+                    Platform form = new Platform(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    p_active_library.lib_platforms.Add(form);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             //////////////////////////////////////////////////////////////////////////
             //Roofs
             XmlElement roofs = master["Roofs"];
-            reader.ReadStartElement(roofs.Name);
-            for(int i=0;i<roofs.ChildNodes.Count;i++)
+            if (!roofs.IsEmpty)
             {
-                reader.ReadStartElement(roofs.ChildNodes[i].Name);
-                Roof roof = new Roof(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                p_active_library.lib_roofs.Add(roof);
+                reader.ReadStartElement(roofs.Name);
+                for (int i = 0; i < roofs.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(roofs.ChildNodes[i].Name);
+                    Roof roof = new Roof(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    p_active_library.lib_roofs.Add(roof);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             ////////////////////////////////////////////////////////////////////////////
             //Poles
             XmlElement poles = master["Poles"];
-            reader.ReadStartElement(poles.Name);
-            for(int i=0;i<poles.ChildNodes.Count;i++)
+            if (!poles.IsEmpty)
             {
-                reader.ReadStartElement(poles.ChildNodes[i].Name);
-                Pole pole = new Pole(reader.GetAttribute("filename"), Convert.ToInt32(reader.GetAttribute("covers")));
-                p_active_library.lib_poles.Add(pole);
+                reader.ReadStartElement(poles.Name);
+                for (int i = 0; i < poles.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(poles.ChildNodes[i].Name);
+                    Pole pole = new Pole(reader.GetAttribute("filename"), Convert.ToInt32(reader.GetAttribute("covers")));
+                    p_active_library.lib_poles.Add(pole);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             //////////////////////////////////////////////////////////////////////////////
             //Cracks
             XmlElement cracks = master["Cracks"];
-            reader.ReadStartElement(cracks.Name);
-            for (int i = 0; i < cracks.ChildNodes.Count; i++)
+            if (cracks.IsEmpty)
             {
-                reader.ReadStartElement(cracks.ChildNodes[i].Name);
-                Crack crack = new Crack(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
-                p_active_library.lib_cracks.Add(crack);
+                reader.ReadStartElement(cracks.Name);
+                for (int i = 0; i < cracks.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(cracks.ChildNodes[i].Name);
+                    Crack crack = new Crack(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    p_active_library.lib_cracks.Add(crack);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             ////////////////////////////////////////////////////////////////////////////////
             //FreeObjs
             XmlElement freeobjs = master["FreeObjects"];
-            reader.ReadStartElement(freeobjs.Name);
-            for(int i=0;i<freeobjs.ChildNodes.Count;i++)
+            if (!freeobjs.IsEmpty)
             {
-                reader.ReadStartElement(freeobjs.ChildNodes[i].Name);
-                FreeObj freeobj = new FreeObj(reader.GetAttribute("filename"));
-                p_active_library.lib_freeobjs.Add(freeobj);
+                reader.ReadStartElement(freeobjs.Name);
+                for (int i = 0; i < freeobjs.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(freeobjs.ChildNodes[i].Name);
+                    FreeObj freeobj = new FreeObj(reader.GetAttribute("filename"));
+                    p_active_library.lib_freeobjs.Add(freeobj);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
             /////////////////////////////////////////////////////////////////////////////////
             //Beacons
             XmlElement beacons = master["Beacons"];
-            reader.ReadStartElement(beacons.Name);
-            for(int i=0;i<beacons.ChildNodes.Count;i++)
+            if (!beacons.IsEmpty)
             {
-                reader.ReadStartElement(beacons.ChildNodes[i].Name);
-                Beacon beacon = new Beacon(reader.GetAttribute("filename"));
-                p_active_library.lib_beacons.Add(beacon);
+                reader.ReadStartElement(beacons.Name);
+                for (int i = 0; i < beacons.ChildNodes.Count; i++)
+                {
+                    reader.ReadStartElement(beacons.ChildNodes[i].Name);
+                    Beacon beacon = new Beacon(reader.GetAttribute("filename"));
+                    p_active_library.lib_beacons.Add(beacon);
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
 
             ///////////////////////////////////////////////////////////////////////////////////////
             //Cycles
             XmlElement cycles = master["Cycles"];
-            reader.ReadStartElement(cycles.Name);
-            for(int i=0;i<cycles.ChildNodes.Count;i++)
+            if (!cycles.IsEmpty)
             {
-                XmlNode pcycle = cycles.ChildNodes[i];
-                reader.ReadStartElement(pcycle.Name);
-                switch(pcycle.Name)
+                reader.ReadStartElement(cycles.Name);
+                for (int i = 0; i < cycles.ChildNodes.Count; i++)
                 {
-                    case "ground":
-                        {
-                            CycleGround pcycleground = new CycleGround();
-                            pcycleground.grounds = new List<Ground>();
-                            for (int i1 = 0; i1 < pcycle.ChildNodes.Count; i1++)
+                    XmlNode pcycle = cycles.ChildNodes[i];
+                    reader.ReadStartElement(pcycle.Name);
+                    switch (pcycle.Name)
+                    {
+                        case "ground":
                             {
-                                XmlElement gnd_id = pcycle["id"];
-                                reader.ReadStartElement(gnd_id.Name);
-                                int pid = reader.ReadContentAsInt();
-                                Ground pgnd = lib_grounds[pid];
-                                pgnd.id = (uint)pid;
-                                pcycleground.grounds.Add(pgnd);
-                                reader.ReadEndElement();
+                                CycleGround pcycleground = new CycleGround();
+                                pcycleground.grounds = new List<Ground>();
+                                for (int i1 = 0; i1 < pcycle.ChildNodes.Count; i1++)
+                                {
+                                    XmlElement gnd_id = pcycle["id"];
+                                    reader.ReadStartElement(gnd_id.Name);
+                                    int pid = reader.ReadContentAsInt();
+                                    Ground pgnd = lib_grounds[pid];
+                                    pgnd.id = (uint)pid;
+                                    pcycleground.grounds.Add(pgnd);
+                                    reader.ReadEndElement();
 
+                                }
+                                p_active_library.lib_cyclegrounds.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcycleground);
+                                break;
                             }
-                            p_active_library.lib_cyclegrounds.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcycleground);
-                            break;
-                        }
-                    case "rail":
-                        {
-                            CycleRail pcyclerail = new CycleRail();
-                            pcyclerail.rails = new List<Rail>();
-                            for (int i1 = 0; i1 < pcycle.ChildNodes.Count; i1++)
+                        case "rail":
                             {
-                                XmlElement rail_id = pcycle["id"];
-                                reader.ReadStartElement(rail_id.Name);
-                                int pid = reader.ReadContentAsInt();
-                                Rail prail = lib_rails[pid];
-                                prail.id = (uint)pid;
-                                pcyclerail.rails.Add(prail);
-                                reader.ReadEndElement();
+                                CycleRail pcyclerail = new CycleRail();
+                                pcyclerail.rails = new List<Rail>();
+                                for (int i1 = 0; i1 < pcycle.ChildNodes.Count; i1++)
+                                {
+                                    XmlElement rail_id = pcycle["id"];
+                                    reader.ReadStartElement(rail_id.Name);
+                                    int pid = reader.ReadContentAsInt();
+                                    Rail prail = lib_rails[pid];
+                                    prail.id = (uint)pid;
+                                    pcyclerail.rails.Add(prail);
+                                    reader.ReadEndElement();
 
+                                }
+                                p_active_library.lib_cyclerails.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcyclerail);
+
+                                break;
                             }
-                            p_active_library.lib_cyclerails.Insert(Convert.ToInt32(reader.GetAttribute("cycleid")), pcyclerail);
+                    }
 
-                            break;
-                        }
+                    reader.ReadEndElement();
                 }
-
                 reader.ReadEndElement();
             }
-            reader.ReadEndElement();
+            else
+                reader.Skip();
 
 
             //Close the stream
             reader.ReadEndElement();
             reader.Close();
-
+            //Load opened project into the form
             MainForm.active_project.library = p_active_library;
 
 
@@ -1041,6 +1109,8 @@ namespace metadata01
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.IndentChars = "\t";
+            settings.OmitXmlDeclaration = true;
+            
 
             XmlWriter writer = XmlWriter.Create(filename,settings);
 
