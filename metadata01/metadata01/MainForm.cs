@@ -25,6 +25,7 @@ namespace metadata01
                                     
                  ////new project
             active_project = new Project();
+            active_project.library = new ObjectLibrary();
 
 
 

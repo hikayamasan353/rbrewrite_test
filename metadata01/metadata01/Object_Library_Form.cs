@@ -86,13 +86,120 @@ namespace metadata01
 
 
             //Clearing all items list view
-            walllistview.Items.Clear();
-            dikelistview.Items.Clear();
-            formlistview.Items.Clear();
-            rooflistview.Items.Clear();
-            cracklistview.Items.Clear();
+            gndlistview.Items.Clear(); //Grounds
+            walllistview.Items.Clear(); //Walls
+            dikelistview.Items.Clear(); //Dikes
+            formlistview.Items.Clear(); //Platforms
+            rooflistview.Items.Clear(); //Roofs
+            cracklistview.Items.Clear(); //Cracks
+            polelistview.Items.Clear(); //Poles
 
             //Todo: Add the menu items which correspond with the project's worked object library items
+
+            //Backgrounds
+            for(int i=0;i<active_objectlibrary.lib_backgrounds.Count;i++)
+            {
+
+            }
+            //Grounds
+            for (int i = 0; i < active_objectlibrary.lib_grounds.Count; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+
+                gndlistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_grounds[i].filename);
+
+            }
+            //Rails
+            for(int i=0;i<active_objectlibrary.lib_rails.Count;i++)
+            {
+
+            }
+            //Walls
+            for(int i=0;i<active_objectlibrary.lib_walls.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+
+                walllistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_walls[i].filename_L);
+                item.SubItems.Add(active_objectlibrary.lib_walls[i].filename_R);
+
+            }
+            //Dikes
+            for(int i=0;i<active_objectlibrary.lib_dikes.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+
+                dikelistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_dikes[i].filename_L);
+                item.SubItems.Add(active_objectlibrary.lib_dikes[i].filename_R);
+
+            }
+            //Platforms
+            for (int i = 0; i < active_objectlibrary.lib_platforms.Count; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                formlistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_platforms[i].filenameL);
+                item.SubItems.Add(active_objectlibrary.lib_platforms[i].filenameCL);
+                item.SubItems.Add(active_objectlibrary.lib_platforms[i].filenameCR);
+                item.SubItems.Add(active_objectlibrary.lib_platforms[i].filenameR);
+
+            }
+            //Roofs
+            for(int i=0;i<active_objectlibrary.lib_roofs.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                rooflistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_roofs[i].filenameL);
+                item.SubItems.Add(active_objectlibrary.lib_roofs[i].filenameCL);
+                item.SubItems.Add(active_objectlibrary.lib_roofs[i].filenameCR);
+                item.SubItems.Add(active_objectlibrary.lib_roofs[i].filenameR);
+                
+            }
+            //Cracks
+            for(int i=0;i<active_objectlibrary.lib_cracks.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                cracklistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_cracks[i].filename_L);
+                item.SubItems.Add(active_objectlibrary.lib_cracks[i].filename_R);
+            }
+            //Freeobjs
+            for(int i=0;i<active_objectlibrary.lib_freeobjs.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                freeobjlistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_freeobjs[i].filename);
+
+            }
+            //Beacons
+            for(int i=0;i<active_objectlibrary.lib_beacons.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                beaconlistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_beacons[i].filename);
+            }
+            //Poles
+            for(int i=0;i<active_objectlibrary.lib_poles.Count;i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                polelistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_poles[i].filename);
+                item.SubItems.Add(active_objectlibrary.lib_poles[i].additional_rail_number.ToString());
+            }
+
+            //Todo: Cycles
+
 
         }
 
@@ -458,32 +565,41 @@ namespace metadata01
 
         private void btn_gndadd_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem();
-            ListViewItem item2 = new ListViewItem();
 
+            //Items to be added
+            ListViewItem item = new ListViewItem(); //For grounds menu
+            ListViewItem item2 = new ListViewItem(); //For cycle grounds menu
+            //Making the item's index as the item's number (for ID)
+            item.Text = item.Index.ToString(); 
+            item2.Text = item2.Index.ToString();
+
+            //Prompting the user to choose the ground file name
+            GroundOpenFileDialog.ShowDialog();
+            string gnd_fname = GroundOpenFileDialog.FileName;
 
             //Updating the grounds list on Grounds tab
             gndlistview.Items.Add(item); //Adding the item
-            item.Text = item.Index.ToString(); //Making the item's index as the item's number
+            
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
             //Updating the grounds list on Cycles tab
             gndlistview2.Items.Add(item2);
-            item2.Text = item2.Index.ToString();
+            
             item2.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
-            //Prompting the user to choose the file name
-            string gnd_fname = GroundOpenFileDialog.FileName;
-            if (gnd_fname != null)
+ 
+
+            //Check if the file name is not empty
+            if ((gnd_fname != null) || (gnd_fname != ""))
             {
                 //Adding the ground entry with the file name specified
-                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(gnd_fname,(uint)item.Index));
+                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(gnd_fname, (uint)item.Index));
                 item.SubItems[0].Text = gnd_fname;
                 item2.SubItems[0].Text = gnd_fname;
 
             }
-            else
+            else //If empty
             {
                 //Adding the blank ground entry
                 active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
@@ -808,6 +924,16 @@ namespace metadata01
         {
             //Discard and close
             this.Close();
+        }
+
+        private void ObjLibrary_OpenFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

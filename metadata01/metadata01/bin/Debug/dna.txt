@@ -1,18 +1,5 @@
 With Structure
 
-.Ground(0) , 
-
-.Ground(1) , 
-
-.Ground(2) , 
-
-.Ground(3) , 
-
-.Ground(4) , 
-
-.Rail(0) Undefined, 
-.Rail(1) Undefined, 
-.Rail(2) Undefined, 
 .WallL(0) Undefined, 
 .WallR(0) Undefined, 
 .WallL(1) Undefined, 
@@ -27,10 +14,6 @@ With Structure
 .DikeR(1) Undefined, 
 .DikeL(2) Undefined, 
 .DikeR(2) Undefined, 
-.DikeL(3) Undefined, 
-.DikeR(3) Undefined, 
-.DikeL(4) Undefined, 
-.DikeR(4) Undefined, 
 .FormCL(0) Undefined, 
 .FormCR(0) Undefined, 
 .FormL(0) Undefined, 
@@ -65,9 +48,11 @@ With Structure
 .RoofR(3) Undefined,
 .Pole(0; 0) Undefined, 
 
-.Pole(2; 1) Undefined, 
+.Pole(0; 1) Undefined, 
 
-.Pole(4; 2) Undefined, 
+.Pole(3; 2) Undefined, 
+
+.Pole(4; 3) Undefined, 
 
 .CrackL(0) Undefined, 
 .CrackR(0) Undefined,
@@ -75,37 +60,14 @@ With Structure
 .CrackR(1) Undefined,
 .CrackL(2) Undefined, 
 .CrackR(2) Undefined,
-.CrackL(3) Undefined, 
-.CrackR(3) Undefined,
 .FreeObj(0) Undefined, 
 .FreeObj(1) Undefined, 
 .FreeObj(2) Undefined, 
 .FreeObj(3) Undefined, 
-.FreeObj(4) Undefined, 
-.FreeObj(5) Undefined, 
-.FreeObj(6) Undefined, 
-.FreeObj(7) Undefined, 
 .Beacon(0) Undefined, 
 .Beacon(1) Undefined, 
 .Beacon(2) Undefined, 
-.Beacon(3) Undefined, 
 With Texture
 
-.Background(0) C:\Users\Hikaru\Pictures\2018-05-19\005.jpg, 
-
-.Background(1) C:\Users\Hikaru\Pictures\2018-05-19\007.jpg, 
-
-.Background(2) C:\Users\Hikaru\Pictures\2018-05-19\006.jpg, 
-
 With Cycle
-
-.Ground(0) 2;3;4;, 
-
-.Ground(1) 1;2;, 
-
-.Ground(2) 0;4;, 
-
-.Rail(0) 0;1;, 
-
-.Rail(1) 2;0;, 
 

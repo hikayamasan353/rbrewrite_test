@@ -978,7 +978,7 @@ namespace metadata01
             //////////////////////////////////////////////////////////////////////////////
             //Cracks
             XmlElement cracks = master["Cracks"];
-            if (cracks.IsEmpty)
+            if (!cracks.IsEmpty)
             {
                 reader.ReadStartElement(cracks.Name);
                 for (int i = 0; i < cracks.ChildNodes.Count; i++)

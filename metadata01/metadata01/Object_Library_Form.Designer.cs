@@ -1324,6 +1324,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(563, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // libraryToolStripMenuItem
             // 
@@ -1429,6 +1430,10 @@
             // BackgroundOpenFileDialog
             // 
             this.BackgroundOpenFileDialog.Filter = "BMP|*.bmp|JPG|*.jpg|PNG|*.png";
+            // 
+            // ObjLibrary_OpenFileDialog
+            // 
+            this.ObjLibrary_OpenFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.ObjLibrary_OpenFileDialog_FileOk);
             // 
             // btn_ApplyLibrary
             // 
