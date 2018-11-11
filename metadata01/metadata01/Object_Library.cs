@@ -898,8 +898,10 @@ namespace metadata01
                 reader.ReadStartElement(walls.Name);
                 for (int i = 0; i < walls.ChildNodes.Count; i++)
                 {
+                    string pfname_L = reader.GetAttribute("filename_L");
+                    string pfname_R = reader.GetAttribute("filename_R");
                     reader.ReadStartElement(walls.ChildNodes[i].Name);
-                    Wall wall = new Wall(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    Wall wall = new Wall(pfname_L, pfname_R);
                     p_active_library.lib_walls.Add(wall);
                     reader.ReadEndElement();
                 }
@@ -915,8 +917,10 @@ namespace metadata01
                 reader.ReadStartElement(dikes.Name);
                 for (int i = 0; i < dikes.ChildNodes.Count; i++)
                 {
+                    string pfname_L = reader.GetAttribute("filename_L");
+                    string pfname_R = reader.GetAttribute("filename_R");
                     reader.ReadStartElement(dikes.ChildNodes[i].Name);
-                    Dike dike = new Dike(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    Dike dike = new Dike(pfname_L, pfname_R);
                     p_active_library.lib_dikes.Add(dike);
                     reader.ReadEndElement();
                 }
@@ -932,8 +936,12 @@ namespace metadata01
                 reader.ReadStartElement(platforms.Name);
                 for (int i = 0; i < platforms.ChildNodes.Count; i++)
                 {
+                    string pfname_CL = reader.GetAttribute("filename_CL");
+                    string pfname_CR = reader.GetAttribute("filename_CR");
+                    string pfname_L = reader.GetAttribute("filename_L");
+                    string pfname_R = reader.GetAttribute("filename_R");
                     reader.ReadStartElement(platforms.ChildNodes[i].Name);
-                    Platform form = new Platform(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    Platform form = new Platform(pfname_CL, pfname_CR, pfname_L, pfname_R);
                     p_active_library.lib_platforms.Add(form);
                     reader.ReadEndElement();
                 }
@@ -949,8 +957,12 @@ namespace metadata01
                 reader.ReadStartElement(roofs.Name);
                 for (int i = 0; i < roofs.ChildNodes.Count; i++)
                 {
+                    string pfname_CL = reader.GetAttribute("filename_CL");
+                    string pfname_CR = reader.GetAttribute("filename_CR");
+                    string pfname_L = reader.GetAttribute("filename_L");
+                    string pfname_R = reader.GetAttribute("filename_R");
                     reader.ReadStartElement(roofs.ChildNodes[i].Name);
-                    Roof roof = new Roof(reader.GetAttribute("filename_CL"), reader.GetAttribute("filename_CR"), reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    Roof roof = new Roof(pfname_CL, pfname_CR, pfname_L, pfname_R);
                     p_active_library.lib_roofs.Add(roof);
                     reader.ReadEndElement();
                 }
@@ -966,8 +978,11 @@ namespace metadata01
                 reader.ReadStartElement(poles.Name);
                 for (int i = 0; i < poles.ChildNodes.Count; i++)
                 {
+                    string pfname = reader.GetAttribute("filename");
+                    int pcovers = Convert.ToInt32(reader.GetAttribute("covers"));
+
                     reader.ReadStartElement(poles.ChildNodes[i].Name);
-                    Pole pole = new Pole(reader.GetAttribute("filename"), Convert.ToInt32(reader.GetAttribute("covers")));
+                    Pole pole = new Pole(pfname, pcovers);
                     p_active_library.lib_poles.Add(pole);
                     reader.ReadEndElement();
                 }
@@ -983,8 +998,11 @@ namespace metadata01
                 reader.ReadStartElement(cracks.Name);
                 for (int i = 0; i < cracks.ChildNodes.Count; i++)
                 {
+                    string pfname_L = reader.GetAttribute("filename_L");
+                    string pfname_R = reader.GetAttribute("filename_R");
+
                     reader.ReadStartElement(cracks.ChildNodes[i].Name);
-                    Crack crack = new Crack(reader.GetAttribute("filename_L"), reader.GetAttribute("filename_R"));
+                    Crack crack = new Crack(pfname_L, pfname_R);
                     p_active_library.lib_cracks.Add(crack);
                     reader.ReadEndElement();
                 }
@@ -1000,8 +1018,9 @@ namespace metadata01
                 reader.ReadStartElement(freeobjs.Name);
                 for (int i = 0; i < freeobjs.ChildNodes.Count; i++)
                 {
+                    string pfname = reader.GetAttribute("filename");
                     reader.ReadStartElement(freeobjs.ChildNodes[i].Name);
-                    FreeObj freeobj = new FreeObj(reader.GetAttribute("filename"));
+                    FreeObj freeobj = new FreeObj(pfname);
                     p_active_library.lib_freeobjs.Add(freeobj);
                     reader.ReadEndElement();
                 }
@@ -1017,8 +1036,9 @@ namespace metadata01
                 reader.ReadStartElement(beacons.Name);
                 for (int i = 0; i < beacons.ChildNodes.Count; i++)
                 {
+                    string pfname = reader.GetAttribute("filename");
                     reader.ReadStartElement(beacons.ChildNodes[i].Name);
-                    Beacon beacon = new Beacon(reader.GetAttribute("filename"));
+                    Beacon beacon = new Beacon(pfname);
                     p_active_library.lib_beacons.Add(beacon);
                     reader.ReadEndElement();
                 }
@@ -1091,8 +1111,6 @@ namespace metadata01
             reader.Close();
             //Load opened project into the form
             MainForm.active_project.library = p_active_library;
-
-
         }
 
         /// <summary>
