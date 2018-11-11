@@ -246,6 +246,18 @@ namespace metadata01
             //Rails
             for (int i = 0; i < active_objectlibrary.lib_rails.Count; i++)
             {
+                //For main rail menu
+                ListViewItem item = new ListViewItem();
+                item.Text = i.ToString();
+                //For cycle rail menu
+                ListViewItem item2 = new ListViewItem();
+                item2.Text = i.ToString();
+
+
+                raillistview.Items.Insert(i, item);
+                item.SubItems.Add(active_objectlibrary.lib_rails[i].filename);
+                raillistview2.Items.Insert(i, item2);
+                item2.SubItems.Add(active_objectlibrary.lib_rails[i].filename);
 
             }
             //Walls
