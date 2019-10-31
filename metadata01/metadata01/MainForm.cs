@@ -25,7 +25,10 @@ namespace metadata01
         Graphics ws_graphics;
         Pen ws_pen;
         Brush ws_brush;
-        
+        Timer ws_timer = new Timer();
+
+        //Mouse coordinates
+        int mouse_x, mouse_y = 0;
 
         public MainForm()
         {
@@ -37,17 +40,40 @@ namespace metadata01
 
             //initialize workspace
             ws_graphics = Workspace.CreateGraphics();
+            ws_timer.Interval = 10;
 
+
+            ws_timer.Tick += new EventHandler(ws_timer_Tick); 
+            ws_timer.Start();
+            Workspace.MouseMove += new MouseEventHandler(ws_MouseMove);
+            //Initialize coordinates status label
+            statuslabel_coordinates.Text = "X="+mouse_x.ToString() + ", Y=" + mouse_y.ToString();
 
 
 
 
         }
+
+        private void ws_MouseMove(object sender, EventArgs e)
+        {
+            mouse_x = Cursor.Position.X;
+            mouse_y = Cursor.Position.Y;
+            statuslabel_coordinates.Text = "X=" + mouse_x.ToString() + ", Y=" + mouse_y.ToString();
+
+
+
+        }
+
+        private void ws_timer_Tick(object sender, EventArgs e)
+        {
+            ws_graphics.Clear(Color.Green);
+        }
+
         /// <summary>
         /// Metadata form
         /// </summary>
-        
-        
+
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -70,23 +96,6 @@ namespace metadata01
              fol.Show();
         }
 
-        private void WRAMM_Click(object sender, EventArgs e)
-        {
-
-            exportinterface = active_project.CSVParsed();
-
-             //Writing all in the text file
-            exportstream = new StreamWriter(Application.StartupPath + "\\rud.csv");
-                    for(int i=0;i<exportinterface.Count;i++)
-                    {
-                        exportstream.WriteLine(exportinterface[i]);
-                    }
-                    exportstream.Close();
-
-
-
-        }
-
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             active_project = new Project();
@@ -100,6 +109,19 @@ namespace metadata01
         private void btn_modules_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exportinterface = active_project.CSVParsed();
+
+            //Writing all in the text file
+            exportstream = new StreamWriter(Application.StartupPath + "\\rud.csv");
+            for (int i = 0; i < exportinterface.Count; i++)
+            {
+                exportstream.WriteLine(exportinterface[i]);
+            }
+            exportstream.Close();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
