@@ -640,6 +640,11 @@ namespace metadata01
             ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameL = FormL_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
+
+            ListViewItem item = formlistview.Items[index];
+            item.SubItems[1].Text = active_objectlibrary.lib_platforms[index].filenameL;
+            UpdateIDs();
+
         }
 
         /*
@@ -866,6 +871,10 @@ namespace metadata01
             ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameCL = FormCL_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
+
+            ListViewItem item = formlistview.Items[index];
+            item.SubItems[2].Text = active_objectlibrary.lib_platforms[index].filenameCL;
+            UpdateIDs();
         }
 
         private void btn_formchoosecright_Click(object sender, EventArgs e)
@@ -875,6 +884,10 @@ namespace metadata01
             ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameCR = FormCR_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
+
+            ListViewItem item = formlistview.Items[index];
+            item.SubItems[3].Text = active_objectlibrary.lib_platforms[index].filenameCR;
+            UpdateIDs();
         }
 
         private void btn_formchooseright_Click(object sender, EventArgs e)
@@ -884,42 +897,62 @@ namespace metadata01
             ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameR = FormR_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
+
+            ListViewItem item = formlistview.Items[index];
+            item.SubItems[4].Text = active_objectlibrary.lib_platforms[index].filenameR;
+            UpdateIDs();
         }
 
         private void btn_roofchooseleft_Click(object sender, EventArgs e)
         {
             RoofL_OpenFileDialog.ShowDialog();
-            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
             ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameL = RoofL_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
+
+            ListViewItem item = rooflistview.Items[index];
+            item.SubItems[1].Text = active_objectlibrary.lib_roofs[index].filenameL;
+            UpdateIDs();
         }
 
         private void btn_roofchoosecleft_Click(object sender, EventArgs e)
         {
             RoofCL_OpenFileDialog.ShowDialog();
-            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
             ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameCL = RoofCL_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
+
+            ListViewItem item = rooflistview.Items[index];
+            item.SubItems[2].Text = active_objectlibrary.lib_roofs[index].filenameCL;
+            UpdateIDs();
         }
 
         private void btn_roofchoosecright_Click(object sender, EventArgs e)
         {
             RoofCR_OpenFileDialog.ShowDialog();
-            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
             ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameCR = RoofCR_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
+
+            ListViewItem item = rooflistview.Items[index];
+            item.SubItems[3].Text = active_objectlibrary.lib_roofs[index].filenameCR;
+            UpdateIDs();
         }
 
         private void btn_roofchooseright_Click(object sender, EventArgs e)
         {
             RoofR_OpenFileDialog.ShowDialog();
-            int index = rooflistview.Items.IndexOf(formlistview.SelectedItems[0]);
+            int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
             ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameR = RoofR_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
+
+            ListViewItem item = rooflistview.Items[index];
+            item.SubItems[4].Text = active_objectlibrary.lib_roofs[index].filenameR;
+            UpdateIDs();
         }
 
         private void bckdelbutton_Click(object sender, EventArgs e)
