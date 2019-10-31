@@ -72,6 +72,44 @@ namespace metadata01
 
 
         /// <summary>
+        /// BVE 5 parsed code of a project, which will be your BVE route!
+        /// </summary>
+        /// <returns></returns>
+        public List<string>BVE5ScenarioParsed()
+        {
+            //Commencing parsing route data
+            List<string> parsed_interface = new List<string>();
+            //Header
+            parsed_interface.Add("BveTs Scenario 1.00");
+
+            //Title
+
+            //Comment
+            parsed_interface.Add("Comment=" + this.description);
+
+
+            return parsed_interface;
+
+        }
+
+        /// <summary>
+        /// Parsed map code for BVE5
+        /// </summary>
+        /// <returns></returns>
+        public List<string>BVE5MapParsed()
+        {
+            List<string> parsed_interface = new List<string>();
+
+
+            //Gauge
+            parsed_interface.Add("Gauge.Set(" + this.gauge + ");");
+
+
+            return parsed_interface;
+        }
+
+
+        /// <summary>
         /// Parsed CSV code of a project, which would be your BVE route!
         /// </summary>
         /// <returns>Whole route project's CSV parsed code - to be ran in BVE!!!</returns>

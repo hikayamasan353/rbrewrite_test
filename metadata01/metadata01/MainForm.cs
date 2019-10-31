@@ -19,13 +19,25 @@ namespace metadata01
         public List<string> exportinterface;
         public StreamWriter exportstream;
 
+
+
+        //Testing workspace code
+        Graphics ws_graphics;
+        Pen ws_pen;
+        Brush ws_brush;
+        
+
         public MainForm()
         {
             InitializeComponent();
                                     
-                 ////new project
+            //new project
             active_project = new Project();
             active_project.library = new ObjectLibrary();
+
+            //initialize workspace
+            ws_graphics = Workspace.CreateGraphics();
+
 
 
 
