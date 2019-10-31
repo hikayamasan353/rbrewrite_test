@@ -8,6 +8,18 @@ namespace metadata01
 {
 
     /// <summary>
+    /// Position enum for walls, dikes, forms and roofs
+    /// </summary>
+    public enum Position
+    {
+        Left,
+        Both,
+        Right,
+        None
+
+    }
+
+    /// <summary>
     /// A code snippet that represents the "block" for route building. Similar to a Connection in old RouteBuilder.
     /// Unlike RouteBuilder Connections, it actually is not a single connection, but a full-coded part of the route.
     /// Is also used like include files in manual coding.
@@ -29,13 +41,42 @@ namespace metadata01
         /// Length of the module.
         /// For route editing.
         /// </summary>
-        public uint length;
+        public int length;
 
         /// <summary>
         /// Distance of the module.
         /// Used to make modules previewable in RouteViewer
         /// </summary>
-        public uint distance;
+        public int distance;
+
+
+        //Pitch height difference
+        public int pitch_difference;
+
+        //Pitch rate. Will be used in code.
+        public int pitch_rate
+        {
+            get
+            {
+                return 1000 * (length / pitch_difference);
+            }
+        }
+
+        //Curve radius. 0 for straight.
+        public int curve;
+
+        //Height above ground
+        public int height;
+
+        //Track objects
+        //public ObjectLibrary.Wall wall;
+        public int wall_index;
+        public Position pos_wall;
+
+
+        //public ObjectLibrary.Dike dike;
+        public int dike_index;
+        public Position pos_dike;
 
 
 

@@ -7,17 +7,7 @@ using System.Threading.Tasks;
 namespace metadata01
 {
 
-    /// <summary>
-    /// Position enum for walls, dikes, forms and roofs
-    /// </summary>
-    public enum Position
-    {
-        Left,
-        Both,
-        Right,
-        None
 
-    }
 
     /// <summary>
     /// A custom settable length track section
@@ -42,7 +32,7 @@ namespace metadata01
         {
             get
             {
-                return 1000 * (length / pitch_difference);
+                return 1000 * (pitch_difference / length);
             }
         }
 
@@ -62,12 +52,17 @@ namespace metadata01
         public int dike_index;
         public Position pos_dike;
 
+        //Forms and roofs go together.
+        public int form_index;
+        public int roof_index;
+        public Position pos_form;
+
 
         /// <summary>
         /// CSV parsed code piece for use in the complete route code.
         /// </summary>
         /// <returns>A piece of code</returns>
-        public string CSVParsed()
+        public List<string> CSVParsed()
         {
             //TODO: Multiple rails
 
@@ -127,11 +122,37 @@ namespace metadata01
                         break;
                     }
             }
+            //Forms with roofs
+            //ToDo: Forms are strictly 25 m. Do some interpolation.
+            switch (pos_form)
+            {
+                case Position.Left:
+                    {
+                        list.Add(".Form 0;L;" + roof_index.ToString() + ";" + form_index.ToString());
+                        break;
+
+                    }
+                case Position.Right:
+                    {
+                        list.Add(".Form 0;R;" + roof_index.ToString() + ";" + form_index.ToString());
+                        break;
+                    }
+                case Position.Both:
+                    {
+                        list.Add(".Form 0;B;" + roof_index.ToString() + ";" + form_index.ToString());
+                        break;
+                    }
+                case Position.None:
+                    break;
+
+            }
 
 
 
 
-            return null;
+
+
+            return list;
         }
 
 

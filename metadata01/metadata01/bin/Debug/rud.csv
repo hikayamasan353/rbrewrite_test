@@ -8,13 +8,86 @@ With Route
 .LightDirection 0;0
 With Structure
 
-.WallL(0) Undefined, 
-.WallR(0) Undefined, 
-.WallL(1) F:\Games\OpenBVE\Railway\Object\hi-speed\dike\DikeL2.csv, 
-.WallR(1) F:\Games\OpenBVE\Railway\Object\hi-speed\dike\DikeR3.csv, 
+.Ground(0) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\ground\Grass.csv, 
+
+.Ground(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\ground\Grass2.csv, 
+
+.Ground(2) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\ground\Grass3.csv, 
+
+.Ground(3) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\ground\Grass4.csv, 
+
+.Rail(0) Undefined, 
+.Rail(1) Undefined, 
+.Rail(2) Undefined, 
+.Rail(3) Undefined, 
+.WallL(0) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\dike\DikeL.csv, 
+.WallR(0) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\dike\DikeR.csv, 
+.WallL(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\dike\DikeL2.csv, 
+.WallR(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\dike\DikeR2.csv, 
 .WallL(2) Undefined, 
 .WallR(2) Undefined, 
+.WallL(3) Undefined, 
+.WallR(3) Undefined, 
+.DikeL(0) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\dike\DikeL8.csv, 
+.DikeR(0) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\dike\DikeR3.csv, 
+.DikeL(1) Undefined, 
+.DikeR(1) Undefined, 
+.DikeL(2) Undefined, 
+.DikeR(2) Undefined, 
+.DikeL(3) Undefined, 
+.DikeR(3) Undefined, 
+.FormCL(0) Undefined, 
+.FormCR(0) Undefined, 
+.FormL(0) Undefined, 
+.FormR(0) Undefined,
+.FormCL(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\FormCL.csv, 
+.FormCR(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\FormCR.csv, 
+.FormL(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\FormL.csv, 
+.FormR(1) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\FormR.csv,
+.FormCL(2) Undefined, 
+.FormCR(2) Undefined, 
+.FormL(2) Undefined, 
+.FormR(2) Undefined,
+.RoofCL(0) Undefined, 
+.RoofCR(0) Undefined, 
+.RoofL(0) Undefined, 
+.RoofR(0) Undefined,
+.RoofCL(1) Undefined, 
+.RoofCR(1) Undefined, 
+.RoofL(1) Undefined, 
+.RoofR(1) Undefined,
+.RoofCL(2) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\RoofCL.csv, 
+.RoofCR(2) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\RoofCR.csv, 
+.RoofL(2) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\RoofL.csv, 
+.RoofR(2) F:\DOBRO\BVE\GBMaps\bve\obve\hi-speed\form\RoofR.csv,
+.Pole(1; 0) Undefined, 
+
+.Pole(3; 1) Undefined, 
+
+.Pole(4; 2) Undefined, 
+
+.Pole(2; 3) Undefined, 
+
+.CrackL(0) Undefined, 
+.CrackR(0) Undefined,
+.CrackL(1) Undefined, 
+.CrackR(1) Undefined,
+.CrackL(2) Undefined, 
+.CrackR(2) Undefined,
+.FreeObj(0) Undefined, 
+.FreeObj(1) Undefined, 
+.FreeObj(2) Undefined, 
+.FreeObj(3) Undefined, 
+.Beacon(0) Undefined, 
+.Beacon(1) Undefined, 
+.Beacon(2) Undefined, 
 With Texture
 
 With Cycle
+
+.Ground(0) 1;2;3;, 
+
+.Ground(1) 1;2;, 
+
+.Ground(2) 0;2;, 
 
