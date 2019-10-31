@@ -1,5 +1,17 @@
 With Structure
 
+.Ground(0) , 
+
+.Ground(1) , 
+
+.Ground(2) , 
+
+.Ground(3) , 
+
+.Rail(0) Undefined, 
+.Rail(1) Undefined, 
+.Rail(2) Undefined, 
+.Rail(3) Undefined, 
 .WallL(0) Undefined, 
 .WallR(0) Undefined, 
 .WallL(1) Undefined, 
@@ -14,6 +26,8 @@ With Structure
 .DikeR(1) Undefined, 
 .DikeL(2) Undefined, 
 .DikeR(2) Undefined, 
+.DikeL(3) Undefined, 
+.DikeR(3) Undefined, 
 .FormCL(0) Undefined, 
 .FormCR(0) Undefined, 
 .FormL(0) Undefined, 
@@ -26,10 +40,6 @@ With Structure
 .FormCR(2) Undefined, 
 .FormL(2) Undefined, 
 .FormR(2) Undefined,
-.FormCL(3) Undefined, 
-.FormCR(3) Undefined, 
-.FormL(3) Undefined, 
-.FormR(3) Undefined,
 .RoofCL(0) Undefined, 
 .RoofCR(0) Undefined, 
 .RoofL(0) Undefined, 
@@ -42,17 +52,13 @@ With Structure
 .RoofCR(2) Undefined, 
 .RoofL(2) Undefined, 
 .RoofR(2) Undefined,
-.RoofCL(3) Undefined, 
-.RoofCR(3) Undefined, 
-.RoofL(3) Undefined, 
-.RoofR(3) Undefined,
-.Pole(0; 0) Undefined, 
+.Pole(1; 0) Undefined, 
 
-.Pole(0; 1) Undefined, 
+.Pole(3; 1) Undefined, 
 
-.Pole(3; 2) Undefined, 
+.Pole(4; 2) Undefined, 
 
-.Pole(4; 3) Undefined, 
+.Pole(2; 3) Undefined, 
 
 .CrackL(0) Undefined, 
 .CrackR(0) Undefined,
@@ -70,4 +76,8 @@ With Structure
 With Texture
 
 With Cycle
+
+.Ground(0) 1;2;, 
+
+.Ground(1) 0;2;, 
 

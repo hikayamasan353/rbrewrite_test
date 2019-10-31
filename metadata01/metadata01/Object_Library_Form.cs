@@ -599,9 +599,7 @@ namespace metadata01
             item.Text = item.Index.ToString(); 
             item2.Text = item2.Index.ToString();
 
-            //Prompting the user to choose the ground file name
-            GroundOpenFileDialog.ShowDialog();
-            string gnd_fname = GroundOpenFileDialog.FileName;
+
 
             //Updating the grounds list on Grounds tab
             gndlistview.Items.Add(item); //Adding the item
@@ -613,23 +611,10 @@ namespace metadata01
             gndlistview2.Items.Add(item2);
             
             item2.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
+            //Adding blank ground entry
+            active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined", (uint)item.Index));
 
 
-
-            //Check if the file name is not empty
-            if ((gnd_fname != null) || (gnd_fname != ""))
-            {
-                //Adding the ground entry with the file name specified
-                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground(gnd_fname, (uint)item.Index));
-                item.SubItems[0].Text = gnd_fname;
-                item2.SubItems[0].Text = gnd_fname;
-
-            }
-            else //If empty
-            {
-                //Adding the blank ground entry
-                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined", (uint)item.Index));
-            }
             UpdateIDs();
             active_objectlibrary.UpdateIDs();
         }
@@ -657,7 +642,7 @@ namespace metadata01
             active_objectlibrary.lib_platforms[index] = pform;
         }
 
-
+        /*
         //
         //Temporary code: Export the object library as CSV code
         private void button3_Click(object sender, EventArgs e)
@@ -676,6 +661,7 @@ namespace metadata01
 
 
         }
+        */
 
         private void btn_RailAdd_Click(object sender, EventArgs e)
         {
@@ -962,6 +948,41 @@ namespace metadata01
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
+        }
+
+        private void btn_gndchoose_Click(object sender, EventArgs e)
+        {
+            //Prompting the user to choose the ground file name
+            GroundOpenFileDialog.ShowDialog();
+            string gnd_fname = GroundOpenFileDialog.FileName;
+
+            //ListViewItem item = gndlistview.SelectedItems[0];
+
+            //Due to multiselect enabled, replace multiple grounds selected.
+            for (int i = 0; i < gndlistview.SelectedItems.Count; i++)
+            {
+                ListViewItem item = gndlistview.SelectedItems[i];
+
+                item.SubItems[1].Text = gnd_fname;
+                int i1 = gndlistview.SelectedIndices[i];
+
+
+                ObjectLibrary.Ground pgnd = active_objectlibrary.lib_grounds[i1];
+                pgnd.filename = gnd_fname;
+                active_objectlibrary.lib_grounds[i1] = pgnd;
+
+                //Do the same on the cycles panel
+                ListViewItem item2 = gndlistview2.Items[i1];
+                item2.SubItems[1].Text = gnd_fname;
+
+
+            }
+
+
+            //Update
+            UpdateIDs();
+            active_objectlibrary.UpdateIDs();
 
         }
     }

@@ -151,7 +151,6 @@
             this.poleid_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.polename_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.polerailnum_col = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button3 = new System.Windows.Forms.Button();
             this.GroundOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.WallL_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -178,6 +177,7 @@
             this.ObjLibrary_OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btn_ApplyLibrary = new System.Windows.Forms.Button();
             this.btn_CancelLibrary = new System.Windows.Forms.Button();
+            this.btn_gndchoose = new System.Windows.Forms.Button();
             this.objlib_tabcontrol.SuspendLayout();
             this.bcktabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bckpreviewpicbox)).BeginInit();
@@ -273,6 +273,7 @@
             // 
             // gndtabpage
             // 
+            this.gndtabpage.Controls.Add(this.btn_gndchoose);
             this.gndtabpage.Controls.Add(this.btn_gnddelete);
             this.gndtabpage.Controls.Add(this.btn_gndadd);
             this.gndtabpage.Controls.Add(this.gndlistview);
@@ -1295,16 +1296,6 @@
             this.polerailnum_col.Text = "Width (rails)";
             this.polerailnum_col.Width = 89;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(480, 27);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 184);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "TWEAK LIBR";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // GroundOpenFileDialog
             // 
             this.GroundOpenFileDialog.Filter = "B3D files|*.b3d|CSV filex|*.csv|X files|*.x|Animated object files|*.animated";
@@ -1321,7 +1312,7 @@
             this.libraryToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(563, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(483, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -1455,14 +1446,23 @@
             this.btn_CancelLibrary.UseVisualStyleBackColor = true;
             this.btn_CancelLibrary.Click += new System.EventHandler(this.btn_CancelLibrary_Click);
             // 
+            // btn_gndchoose
+            // 
+            this.btn_gndchoose.Location = new System.Drawing.Point(342, 70);
+            this.btn_gndchoose.Name = "btn_gndchoose";
+            this.btn_gndchoose.Size = new System.Drawing.Size(105, 27);
+            this.btn_gndchoose.TabIndex = 8;
+            this.btn_gndchoose.Text = "Choose";
+            this.btn_gndchoose.UseVisualStyleBackColor = true;
+            this.btn_gndchoose.Click += new System.EventHandler(this.btn_gndchoose_Click);
+            // 
             // Object_Library_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 375);
+            this.ClientSize = new System.Drawing.Size(483, 375);
             this.Controls.Add(this.btn_CancelLibrary);
             this.Controls.Add(this.btn_ApplyLibrary);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.objlib_tabcontrol);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1507,7 +1507,6 @@
         private System.Windows.Forms.TabControl objlib_tabcontrol;
         private System.Windows.Forms.TabPage gndtabpage;
         private System.Windows.Forms.TabPage waltabpage;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.OpenFileDialog GroundOpenFileDialog;
         private System.Windows.Forms.TabPage diktabpage;
         private System.Windows.Forms.TabPage raitabpage;
@@ -1650,5 +1649,6 @@
         private System.Windows.Forms.OpenFileDialog ObjLibrary_OpenFileDialog;
         private System.Windows.Forms.Button btn_ApplyLibrary;
         private System.Windows.Forms.Button btn_CancelLibrary;
+        private System.Windows.Forms.Button btn_gndchoose;
     }
 }
