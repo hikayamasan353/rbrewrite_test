@@ -239,8 +239,13 @@ namespace metadata01
                 ListViewItem item = new ListViewItem();
                 item.Text = i.ToString();
 
+                ListViewItem item2 = new ListViewItem();
+                item2.Text = i.ToString();
+
                 gndlistview.Items.Insert(i, item);
                 item.SubItems.Add(active_objectlibrary.lib_grounds[i].filename);
+                gndlistview2.Items.Insert(i, item2);
+                item2.SubItems.Add(active_objectlibrary.lib_grounds[i].filename);
 
             }
             //Rails
@@ -609,7 +614,7 @@ namespace metadata01
             
             item2.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
 
- 
+
 
             //Check if the file name is not empty
             if ((gnd_fname != null) || (gnd_fname != ""))
@@ -623,7 +628,7 @@ namespace metadata01
             else //If empty
             {
                 //Adding the blank ground entry
-                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined"));
+                active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined", (uint)item.Index));
             }
             UpdateIDs();
             active_objectlibrary.UpdateIDs();

@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ObjectLibrary>
+﻿<ObjectLibrary>
 	<Backgrounds />
 	<Grounds>
 		<ground id="0"></ground>
@@ -59,11 +58,11 @@
 	</Beacons>
 	<Cycles>
 		<ground cycleid="0">
-			<id>1</id>
+			<id>0</id>
 			<id>2</id>
 		</ground>
 		<ground cycleid="1">
-			<id>0</id>
+			<id>1</id>
 			<id>2</id>
 		</ground>
 	</Cycles>
