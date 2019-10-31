@@ -8,84 +8,13 @@ With Route
 .LightDirection 0;0
 With Structure
 
-.Ground(0) , 
-
-.Ground(1) , 
-
-.Ground(2) , 
-
-.Ground(3) , 
-
-.Rail(0) Undefined, 
-.Rail(1) Undefined, 
-.Rail(2) Undefined, 
-.Rail(3) Undefined, 
 .WallL(0) Undefined, 
 .WallR(0) Undefined, 
-.WallL(1) Undefined, 
-.WallR(1) Undefined, 
+.WallL(1) F:\Games\OpenBVE\Railway\Object\hi-speed\dike\DikeL2.csv, 
+.WallR(1) F:\Games\OpenBVE\Railway\Object\hi-speed\dike\DikeR3.csv, 
 .WallL(2) Undefined, 
 .WallR(2) Undefined, 
-.WallL(3) Undefined, 
-.WallR(3) Undefined, 
-.DikeL(0) Undefined, 
-.DikeR(0) Undefined, 
-.DikeL(1) Undefined, 
-.DikeR(1) Undefined, 
-.DikeL(2) Undefined, 
-.DikeR(2) Undefined, 
-.DikeL(3) Undefined, 
-.DikeR(3) Undefined, 
-.FormCL(0) Undefined, 
-.FormCR(0) Undefined, 
-.FormL(0) Undefined, 
-.FormR(0) Undefined,
-.FormCL(1) Undefined, 
-.FormCR(1) Undefined, 
-.FormL(1) Undefined, 
-.FormR(1) Undefined,
-.FormCL(2) Undefined, 
-.FormCR(2) Undefined, 
-.FormL(2) Undefined, 
-.FormR(2) Undefined,
-.RoofCL(0) Undefined, 
-.RoofCR(0) Undefined, 
-.RoofL(0) Undefined, 
-.RoofR(0) Undefined,
-.RoofCL(1) Undefined, 
-.RoofCR(1) Undefined, 
-.RoofL(1) Undefined, 
-.RoofR(1) Undefined,
-.RoofCL(2) Undefined, 
-.RoofCR(2) Undefined, 
-.RoofL(2) Undefined, 
-.RoofR(2) Undefined,
-.Pole(1; 0) Undefined, 
-
-.Pole(3; 1) Undefined, 
-
-.Pole(4; 2) Undefined, 
-
-.Pole(2; 3) Undefined, 
-
-.CrackL(0) Undefined, 
-.CrackR(0) Undefined,
-.CrackL(1) Undefined, 
-.CrackR(1) Undefined,
-.CrackL(2) Undefined, 
-.CrackR(2) Undefined,
-.FreeObj(0) Undefined, 
-.FreeObj(1) Undefined, 
-.FreeObj(2) Undefined, 
-.FreeObj(3) Undefined, 
-.Beacon(0) Undefined, 
-.Beacon(1) Undefined, 
-.Beacon(2) Undefined, 
 With Texture
 
 With Cycle
-
-.Ground(0) 1;2;, 
-
-.Ground(1) 0;2;, 
 

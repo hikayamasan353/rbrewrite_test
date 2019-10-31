@@ -795,6 +795,11 @@ namespace metadata01
             ObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
             pwall.filename_L = WallL_OpenFileDialog.FileName;
             active_objectlibrary.lib_walls[index] = pwall;
+
+            ListViewItem item = walllistview.Items[index];
+            item.SubItems[1].Text = pwall.filename_L;
+            UpdateIDs();
+
         }
 
         private void btn_wallchooseright_Click(object sender, EventArgs e)
@@ -804,6 +809,10 @@ namespace metadata01
             ObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
             pwall.filename_R = WallR_OpenFileDialog.FileName;
             active_objectlibrary.lib_walls[index] = pwall;
+
+            ListViewItem item = walllistview.Items[index];
+            item.SubItems[2].Text = pwall.filename_R;
+            UpdateIDs();
         }
 
         private void btn_dikechooseleft_Click(object sender, EventArgs e)
@@ -813,6 +822,10 @@ namespace metadata01
             ObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
             pdike.filename_L = DikeL_OpenFileDialog.FileName;
             active_objectlibrary.lib_dikes[index] = pdike;
+
+            ListViewItem item = dikelistview.Items[index];
+            item.SubItems[1].Text = pdike.filename_L;
+            UpdateIDs();
         }
 
         private void btn_dikechooseright_Click(object sender, EventArgs e)
@@ -822,6 +835,10 @@ namespace metadata01
             ObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
             pdike.filename_R = DikeR_OpenFileDialog.FileName;
             active_objectlibrary.lib_dikes[index] = pdike;
+
+            ListViewItem item = dikelistview.Items[index];
+            item.SubItems[2].Text = pdike.filename_L;
+            UpdateIDs();
         }
 
         private void btn_crackchooseleft_Click(object sender, EventArgs e)
