@@ -7,19 +7,111 @@ using System.Threading.Tasks;
 namespace metadata01
 {
 
+    /// <summary>
+    /// RouteBuilder editor track grid. Like in old RouteBuilder.
+    /// </summary>
+    public class RBGrid
+    {
+        /// <summary>
+        /// Horizontal size
+        /// </summary>
+        public int H;
+        /// <summary>
+        /// Vertical size
+        /// </summary>
+        public int V;
+
+        /// <summary>
+        /// Tracks that belong to the grid. [Horizontal, Vertical]
+        /// </summary>
+        public RBGridTrack[,] tracks;
+
+        /// <summary>
+        /// Grid curve radius
+        /// To distinguish .Curve from .Turn
+        /// </summary>
+        public int curve=0;
+
+        /// <summary>
+        /// Grid rotation in workspace. Not for export. Used to calculate.
+        /// </summary>
+        public int rotation=0;
+
+        /// <summary>
+        /// Creates an 1x1 grid for tracks
+        /// </summary>
+        public RBGrid()
+        {
+            this.H = 1;
+            this.V = 1;
+            tracks = new RBGridTrack[1, 1];
+
+        }
+
+        public RBGrid(int h, int v)
+        {
+            this.H = h;
+            this.V = v;
+            tracks = new RBGridTrack[h, v];
+        }
+
+        /// <summary>
+        /// Adds horizontal row
+        /// </summary>
+        public void AddH()
+        {
+            this.H += 1;
+        }
+
+        public void AddV()
+        {
+            this.V += 1;
+        }
+
+
+
+    }
+
+    public enum RBGridTrackType
+    {
+        Straight,
+        TurnL,
+        TurnR,
+        SwitchLL,
+        SwitchLR,
+        SwitchRL,
+        SwitchRR,
+        SwitchYL,
+        SwitchYR
+    }
 
 
     /// <summary>
-    /// A custom settable length track section
-    /// In code parser it's broken down into several 25 m connections.
-    /// 
+    /// A track that belongs to a grid. 25 m long. Can be parsed if belongs to the RouteDefinition.
     /// </summary>
-    public class Track
+    public class RBGridTrack
     {
+
+        public RBGridTrackType TrackType;
+
+        /// <summary>
+        /// Creates a default straight track
+        /// </summary>
+        public RBGridTrack()
+        {
+            this.TrackType = RBGridTrackType.Straight;
+        }
+
+        public RBGridTrack(RBGridTrackType tracktype)
+        {
+            this.TrackType = tracktype;
+        }
+
+
         //ObjectLibrary that it uses
         RBObjectLibrary library;
 
-        
+
 
         //Length of a track
         public int length;
@@ -75,7 +167,7 @@ namespace metadata01
 
 
             //Wall used by track
-            switch(pos_wall)
+            switch (pos_wall)
             {
                 case Position.Both:
                     {
@@ -156,44 +248,14 @@ namespace metadata01
         }
 
 
+
+
+
+
+
+
     }
 
-    /// <summary>
-    /// A 25 m track piece.
-    /// The BVE Route is broken down into several of those.
-    /// Unlike manual coding which omits insignificant details, the RouteBuilder tracks will generate every 25 m of the route.
-    /// </summary>
-    public class Track25
-    {
-
-        //ObjectLibrary that it uses
-        RBObjectLibrary library;
-
-        //Parts of track piece
-
-            //Pitch height difference
-        public int pitch_difference;
-
-        //Pitch of the track
-        public int pitch_rate
-        {
-            get
-            {
-                return 1000 * (25 / pitch_difference);
-            }
-        }
 
 
-        public string CSVParsed()
-        {
-            //TODO: Multiple rails
-
-            List<string> list = new List<string>();
-
-            list.Add(".Pitch " + pitch_rate.ToString() + "\n");
-
-
-            return null;
-        }
-    }
 }

@@ -13,7 +13,7 @@ namespace metadata01
 {
     public partial  class MainForm : Form
     {
-        public static Project active_project;
+        public static RBProject active_project;
 
 
         public List<string> exportinterface;
@@ -35,8 +35,8 @@ namespace metadata01
             InitializeComponent();
                                     
             //new project
-            active_project = new Project();
-            active_project.library = new ObjectLibrary();
+            active_project = new RBProject();
+            active_project.library = new RBObjectLibrary();
 
             //initialize workspace
             ws_graphics = Workspace.CreateGraphics();
@@ -98,7 +98,7 @@ namespace metadata01
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            active_project = new Project();
+            active_project = new RBProject();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

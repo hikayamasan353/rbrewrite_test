@@ -35,7 +35,7 @@ namespace metadata01
         /// <summary>
         /// Object library used by module
         /// </summary>
-        public ObjectLibrary used_library;
+        public RBObjectLibrary used_library;
 
         /// <summary>
         /// Length of the module.

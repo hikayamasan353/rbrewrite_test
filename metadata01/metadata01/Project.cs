@@ -12,7 +12,7 @@ namespace metadata01
     /// RouteBuilder in-software project. Contains all attributes that can be
     /// converted into .CSV and .RW files in future.
     /// </summary>
-    public class Project
+    public class RBProject
     {
                       /// <summary>
                       /// Route safety system settings (Route.Change)
@@ -61,7 +61,7 @@ namespace metadata01
         /// <summary>
         /// Object library used by project
         /// </summary>
-        public ObjectLibrary library;
+        public RBObjectLibrary library;
 
 
 
@@ -162,7 +162,7 @@ namespace metadata01
         /// <summary>
         /// Creates a new project with default settings
         /// </summary>
-        public Project()
+        public RBProject()
         {
             //by default, set the most popular settings:
             //safety system on, emergency brakes.
@@ -188,7 +188,7 @@ namespace metadata01
             lightdir_yaw = 0;
 
             //Create new default empty object library
-            library = new ObjectLibrary();
+            library = new RBObjectLibrary();
 
 
         }

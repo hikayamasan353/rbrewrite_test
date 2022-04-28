@@ -31,7 +31,7 @@ namespace metadata01
         /// <summary>
         /// Object library that is being processed
         /// </summary>
-        public ObjectLibrary active_objectlibrary;
+        public RBObjectLibrary active_objectlibrary;
 
 
         public Object_Library_Form()
@@ -92,7 +92,7 @@ namespace metadata01
         private void newLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Creating a new library
-            active_objectlibrary = new ObjectLibrary();
+            active_objectlibrary = new RBObjectLibrary();
 
             //Clearing all items list view
             walllistview.Items.Clear();
@@ -119,7 +119,7 @@ namespace metadata01
             item.Selected = true;
 
             //Adding the blank wall entry
-            active_objectlibrary.lib_walls.Insert(item.Index, new ObjectLibrary.Wall("Undefined", "Undefined"));
+            active_objectlibrary.lib_walls.Insert(item.Index, new RBObjectLibrary.Wall("Undefined", "Undefined"));
 
             UpdateIDs();
         }
@@ -127,7 +127,7 @@ namespace metadata01
         private void bckaddbutton_Click(object sender, EventArgs e)
         {
             BackgroundOpenFileDialog.ShowDialog();
-            active_objectlibrary.lib_backgrounds.Add(new ObjectLibrary.Background(BackgroundOpenFileDialog.FileName));
+            active_objectlibrary.lib_backgrounds.Add(new RBObjectLibrary.Background(BackgroundOpenFileDialog.FileName));
             BckListBox.Items.Add(BackgroundOpenFileDialog.FileName);
         }
 
@@ -164,7 +164,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(cracklistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            active_objectlibrary.lib_cracks.Insert(item.Index, new ObjectLibrary.Crack("Undefined", "Undefined"));
+            active_objectlibrary.lib_cracks.Insert(item.Index, new RBObjectLibrary.Crack("Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -179,7 +179,7 @@ namespace metadata01
             item.SubItems.Add("Undefined", Color.Red, Color.White, new Font(dikelistview.Font, FontStyle.Bold));
 
             //Adding the blank dike entry
-            active_objectlibrary.lib_dikes.Insert(item.Index, new ObjectLibrary.Dike("Undefined", "Undefined"));
+            active_objectlibrary.lib_dikes.Insert(item.Index, new RBObjectLibrary.Dike("Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -208,7 +208,7 @@ namespace metadata01
 
 
             //Adding the blank platform entry
-            active_objectlibrary.lib_platforms.Insert(item.Index, new ObjectLibrary.Platform("Undefined", "Undefined", "Undefined", "Undefined"));
+            active_objectlibrary.lib_platforms.Insert(item.Index, new RBObjectLibrary.Platform("Undefined", "Undefined", "Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -372,7 +372,7 @@ namespace metadata01
             for (int i = 0; i < gndlistview.Items.Count; i++)
             {
                 int pid = gndlistview.Items.IndexOf(gndlistview.Items[i]);
-                ObjectLibrary.Ground pground = active_objectlibrary.lib_grounds[i];
+                RBObjectLibrary.Ground pground = active_objectlibrary.lib_grounds[i];
                 gndlistview.Items[i].Text = pid.ToString();
                 pground.id = (uint)pid;
                 active_objectlibrary.lib_grounds[i] = pground;
@@ -395,7 +395,7 @@ namespace metadata01
             for (int i = 0; i < raillistview.Items.Count; i++)
             {
                 int pid = raillistview.Items.IndexOf(raillistview.Items[i]);
-                ObjectLibrary.Rail prail = active_objectlibrary.lib_rails[i];
+                RBObjectLibrary.Rail prail = active_objectlibrary.lib_rails[i];
                 raillistview.Items[i].Text = pid.ToString();
                 prail.id = (uint)pid;
                 active_objectlibrary.lib_rails[i] = prail;
@@ -482,7 +482,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            active_objectlibrary.lib_roofs.Insert(item.Index, new ObjectLibrary.Roof("Undefined", "Undefined", "Undefined", "Undefined"));
+            active_objectlibrary.lib_roofs.Insert(item.Index, new RBObjectLibrary.Roof("Undefined", "Undefined", "Undefined", "Undefined"));
             UpdateIDs();
         }
 
@@ -519,7 +519,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            active_objectlibrary.lib_freeobjs.Insert(item.Index, new ObjectLibrary.FreeObj("Undefined"));
+            active_objectlibrary.lib_freeobjs.Insert(item.Index, new RBObjectLibrary.FreeObj("Undefined"));
             UpdateIDs();
         }
 
@@ -547,7 +547,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            active_objectlibrary.lib_poles.Insert(item.Index, new ObjectLibrary.Pole("Undefined", (int)numericUpDown1.Value));
+            active_objectlibrary.lib_poles.Insert(item.Index, new RBObjectLibrary.Pole("Undefined", (int)numericUpDown1.Value));
             UpdateIDs();
 
         }
@@ -574,7 +574,7 @@ namespace metadata01
 
 
             //Adding the blank roof entry
-            active_objectlibrary.lib_beacons.Insert(item.Index, new ObjectLibrary.Beacon("Undefined"));
+            active_objectlibrary.lib_beacons.Insert(item.Index, new RBObjectLibrary.Beacon("Undefined"));
             UpdateIDs();
         }
 
@@ -612,7 +612,7 @@ namespace metadata01
             
             item2.SubItems.Add("Undefined", Color.Red, Color.White, new Font(rooflistview.Font, FontStyle.Bold));
             //Adding blank ground entry
-            active_objectlibrary.lib_grounds.Insert(item.Index, new ObjectLibrary.Ground("Undefined", (uint)item.Index));
+            active_objectlibrary.lib_grounds.Insert(item.Index, new RBObjectLibrary.Ground("Undefined", (uint)item.Index));
 
 
             UpdateIDs();
@@ -637,7 +637,7 @@ namespace metadata01
         {
             FormL_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
+            RBObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameL = FormL_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
 
@@ -684,7 +684,7 @@ namespace metadata01
 
 
 
-            active_objectlibrary.lib_rails.Insert(item.Index, new ObjectLibrary.Rail("Undefined",(uint)item.Index));
+            active_objectlibrary.lib_rails.Insert(item.Index, new RBObjectLibrary.Rail("Undefined",(uint)item.Index));
             UpdateIDs();
             active_objectlibrary.UpdateIDs();
 
@@ -713,7 +713,7 @@ namespace metadata01
             GndCycleListView.Items.Add(item);
             item.Text = item.Index.ToString();
 
-            active_objectlibrary.lib_cyclegrounds.Insert(item.Index, new ObjectLibrary.CycleGround(new List<metadata01.ObjectLibrary.Ground>()));
+            active_objectlibrary.lib_cyclegrounds.Insert(item.Index, new RBObjectLibrary.CycleGround(new List<metadata01.RBObjectLibrary.Ground>()));
             item.SubItems.Add(active_objectlibrary.lib_cyclegrounds[item.Index].CycledGrounds);
 
         }
@@ -724,7 +724,7 @@ namespace metadata01
             RailCycleListView.Items.Add(item);
             item.Text = item.Index.ToString();
 
-            active_objectlibrary.lib_cyclerails.Insert(item.Index, new ObjectLibrary.CycleRail(new List<metadata01.ObjectLibrary.Rail>()));
+            active_objectlibrary.lib_cyclerails.Insert(item.Index, new RBObjectLibrary.CycleRail(new List<metadata01.RBObjectLibrary.Rail>()));
             item.SubItems.Add(active_objectlibrary.lib_cyclerails[item.Index].CycledRails);
 
         }
@@ -797,7 +797,7 @@ namespace metadata01
         {
             WallL_OpenFileDialog.ShowDialog();
             int index = walllistview.Items.IndexOf(walllistview.SelectedItems[0]);
-            ObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
+            RBObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
             pwall.filename_L = WallL_OpenFileDialog.FileName;
             active_objectlibrary.lib_walls[index] = pwall;
 
@@ -811,7 +811,7 @@ namespace metadata01
         {
             WallR_OpenFileDialog.ShowDialog();
             int index = walllistview.Items.IndexOf(walllistview.SelectedItems[0]);
-            ObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
+            RBObjectLibrary.Wall pwall = active_objectlibrary.lib_walls[index];
             pwall.filename_R = WallR_OpenFileDialog.FileName;
             active_objectlibrary.lib_walls[index] = pwall;
 
@@ -824,7 +824,7 @@ namespace metadata01
         {
             DikeL_OpenFileDialog.ShowDialog();
             int index = dikelistview.Items.IndexOf(dikelistview.SelectedItems[0]);
-            ObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
+            RBObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
             pdike.filename_L = DikeL_OpenFileDialog.FileName;
             active_objectlibrary.lib_dikes[index] = pdike;
 
@@ -837,7 +837,7 @@ namespace metadata01
         {
             DikeR_OpenFileDialog.ShowDialog();
             int index = dikelistview.Items.IndexOf(dikelistview.SelectedItems[0]);
-            ObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
+            RBObjectLibrary.Dike pdike = active_objectlibrary.lib_dikes[index];
             pdike.filename_R = DikeR_OpenFileDialog.FileName;
             active_objectlibrary.lib_dikes[index] = pdike;
 
@@ -850,7 +850,7 @@ namespace metadata01
         {
             CrackL_OpenFileDialog.ShowDialog();
             int index = cracklistview.Items.IndexOf(cracklistview.SelectedItems[0]);
-            ObjectLibrary.Crack pcrack = active_objectlibrary.lib_cracks[index];
+            RBObjectLibrary.Crack pcrack = active_objectlibrary.lib_cracks[index];
             pcrack.filename_L = CrackL_OpenFileDialog.FileName;
             active_objectlibrary.lib_cracks[index] = pcrack;
         }
@@ -859,7 +859,7 @@ namespace metadata01
         {
             CrackR_OpenFileDialog.ShowDialog();
             int index = cracklistview.Items.IndexOf(cracklistview.SelectedItems[0]);
-            ObjectLibrary.Crack pcrack = active_objectlibrary.lib_cracks[index];
+            RBObjectLibrary.Crack pcrack = active_objectlibrary.lib_cracks[index];
             pcrack.filename_R = CrackR_OpenFileDialog.FileName;
             active_objectlibrary.lib_cracks[index] = pcrack;
         }
@@ -868,7 +868,7 @@ namespace metadata01
         {
             FormCL_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
+            RBObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameCL = FormCL_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
 
@@ -881,7 +881,7 @@ namespace metadata01
         {
             FormCR_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
+            RBObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameCR = FormCR_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
 
@@ -894,7 +894,7 @@ namespace metadata01
         {
             FormR_OpenFileDialog.ShowDialog();
             int index = formlistview.Items.IndexOf(formlistview.SelectedItems[0]);
-            ObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
+            RBObjectLibrary.Platform pform = active_objectlibrary.lib_platforms[index];
             pform.filenameR = FormR_OpenFileDialog.FileName;
             active_objectlibrary.lib_platforms[index] = pform;
 
@@ -907,7 +907,7 @@ namespace metadata01
         {
             RoofL_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
+            RBObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameL = RoofL_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
 
@@ -920,7 +920,7 @@ namespace metadata01
         {
             RoofCL_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
+            RBObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameCL = RoofCL_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
 
@@ -933,7 +933,7 @@ namespace metadata01
         {
             RoofCR_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
+            RBObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameCR = RoofCR_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
 
@@ -946,7 +946,7 @@ namespace metadata01
         {
             RoofR_OpenFileDialog.ShowDialog();
             int index = rooflistview.Items.IndexOf(rooflistview.SelectedItems[0]);
-            ObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
+            RBObjectLibrary.Roof proof = active_objectlibrary.lib_roofs[index];
             proof.filenameR = RoofR_OpenFileDialog.FileName;
             active_objectlibrary.lib_roofs[index] = proof;
 
@@ -1018,7 +1018,7 @@ namespace metadata01
                 int i1 = gndlistview.SelectedIndices[i];
 
 
-                ObjectLibrary.Ground pgnd = active_objectlibrary.lib_grounds[i1];
+                RBObjectLibrary.Ground pgnd = active_objectlibrary.lib_grounds[i1];
                 pgnd.filename = gnd_fname;
                 active_objectlibrary.lib_grounds[i1] = pgnd;
 

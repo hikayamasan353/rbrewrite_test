@@ -12,7 +12,7 @@ namespace metadata01
     /// <summary>
     /// RouteBuilder in-software object library.
     /// </summary>
-    public class ObjectLibrary
+    public class RBObjectLibrary
     {
         /*
          * When we code a BVE route, for proper depiction in BVE we must
@@ -767,23 +767,23 @@ namespace metadata01
         /// <summary>
         /// Creates a blank new object library
         /// </summary>
-        public ObjectLibrary()
+        public RBObjectLibrary()
         {
             //Create all lists blank
-            this.lib_backgrounds = new List<metadata01.ObjectLibrary.Background>();
+            this.lib_backgrounds = new List<metadata01.RBObjectLibrary.Background>();
             this.lib_grounds = new List<Ground>();
             this.lib_rails = new List<Rail>();
             UpdateIDs();
-            this.lib_walls = new List<metadata01.ObjectLibrary.Wall>();
-            this.lib_dikes = new List<metadata01.ObjectLibrary.Dike>();
-            this.lib_platforms = new List<metadata01.ObjectLibrary.Platform>();
-            this.lib_roofs = new List<metadata01.ObjectLibrary.Roof>();
-            this.lib_cracks = new List<metadata01.ObjectLibrary.Crack>();
-            this.lib_freeobjs = new List<metadata01.ObjectLibrary.FreeObj>();
+            this.lib_walls = new List<metadata01.RBObjectLibrary.Wall>();
+            this.lib_dikes = new List<metadata01.RBObjectLibrary.Dike>();
+            this.lib_platforms = new List<metadata01.RBObjectLibrary.Platform>();
+            this.lib_roofs = new List<metadata01.RBObjectLibrary.Roof>();
+            this.lib_cracks = new List<metadata01.RBObjectLibrary.Crack>();
+            this.lib_freeobjs = new List<metadata01.RBObjectLibrary.FreeObj>();
             this.lib_poles = new List<Pole>();
             this.lib_beacons = new List<Beacon>();
-            this.lib_cyclegrounds = new List<metadata01.ObjectLibrary.CycleGround>();
-            this.lib_cyclerails = new List<metadata01.ObjectLibrary.CycleRail>();
+            this.lib_cyclegrounds = new List<metadata01.RBObjectLibrary.CycleGround>();
+            this.lib_cyclerails = new List<metadata01.RBObjectLibrary.CycleRail>();
 
         }
 
@@ -797,7 +797,7 @@ namespace metadata01
         {
 
 
-            ObjectLibrary p_active_library = MainForm.active_project.library;
+            RBObjectLibrary p_active_library = MainForm.active_project.library;
 
             //Clear lists to replace the library
             p_active_library.lib_backgrounds.Clear();
